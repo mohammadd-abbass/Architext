@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16.8
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  node-app:
+    build:
+      context: ./node-server
+      dockerfile: Dockerfile
+    container_name: node-app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://myuser:mypassword@postgres:5432/mydatabase
+
+  flask-app:
+    build:
+      context: ./flask-server
+      dockerfile: Dockerfile
+    container_name: flask-app
+    ports:
+      - "8000:8000"
+
+  react-app:
+    build:
+      context: ./docs-web
+      dockerfile: Dockerfile
+    container_name: react-app
+    ports:
+      - "3000:80"
+
+volumes:
+  postgres_data:
