@@ -7,8 +7,8 @@ services:
     restart: always
     environment:
       POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: mydatabase
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: architext_db
     ports:
       - "5432:5432"
     volumes:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgresql://myuser:mypassword@postgres:5432/mydatabase
+      - DATABASE_URL=postgresql://myuser:secret@postgres:5432/architext_db
 
   flask-app:
     build:
