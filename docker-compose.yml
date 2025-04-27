@@ -20,7 +20,7 @@ services:
       dockerfile: Dockerfile
     container_name: node-app
     ports:
-      - "5000:5000"
+      - "3000:3000"
     depends_on:
       - postgres
     environment:
@@ -32,7 +32,7 @@ services:
       dockerfile: Dockerfile
     container_name: flask-app
     ports:
-      - "8000:8000"
+      - "5000:5000"
 
   react-app:
     build:
@@ -40,7 +40,7 @@ services:
       dockerfile: Dockerfile
     container_name: react-app
     ports:
-      - "3000:80"
+      - "80:80"
 
 volumes:
   postgres_data:
