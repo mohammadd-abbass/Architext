@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: architext_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  node-app:
+    build:
+      context: ./node-server
+      dockerfile: Dockerfile
+    container_name: node-app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://myuser:secret@postgres:5432/architext_db
+
+  flask-app:
+    build:
+      context: ./flask-server
+      dockerfile: Dockerfile
+    container_name: flask-app
+    ports:
+      - "5000:5000"
+
+  react-app:
+    build:
+      context: ./docs-web
+      dockerfile: Dockerfile
+    container_name: react-app
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_data:
