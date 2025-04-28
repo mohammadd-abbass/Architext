@@ -17,10 +17,18 @@
         "command": "vscode-extension.helloWorld",
         "title": "Hello World"
       },
-      
+
       {
         "command": "extension.addFunctionComments",
         "title": "Add Comments to Functions"
+      }
+    ],
+    
+    "keybindings": [
+      {
+        "command": "extension.addFunctionComments",
+        "key": "ctrl+alt+c",
+        "when": "editorTextFocus"
       }
     ]
   },
