@@ -4,7 +4,7 @@ export async function callFlaskAPI(route: string, payload: any) {
   try {
     const response = await axios({
       method: 'post',
-      url: `http://localhost:5000/${route}`,
+      url: `http://localhost:5000/ai/${route}`,
       headers: {
         'Content-Type': 'application/json'
       },
