@@ -7,5 +7,8 @@ export async function commentFunction() {
       return;
     }
   
+    const code = editor.document.getText();
+    const language = editor.document.languageId;
+  
 
 }
