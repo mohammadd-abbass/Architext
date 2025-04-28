@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from models.classes import generateCommentsRequestModel
+from services.ai_controller_service import generate_function_comments
 
 ai = Blueprint("ai", __name__)
 

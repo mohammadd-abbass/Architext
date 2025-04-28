@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
-from controllers.ai_controller import ai
+from controllers.ai_controllers import ai
 
 app = Flask(__name__)
 CORS(app)
