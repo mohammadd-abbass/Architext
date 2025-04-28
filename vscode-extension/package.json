@@ -16,6 +16,11 @@
       {
         "command": "vscode-extension.helloWorld",
         "title": "Hello World"
+      },
+      
+      {
+        "command": "extension.addFunctionComments",
+        "title": "Add Comments to Functions"
       }
     ]
   },
