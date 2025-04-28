@@ -9,37 +9,25 @@ services:
       POSTGRES_DB: architext_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    networks:
-      - app-network
 
   node-app:
     image: mohammaddabbas/architext-node:${TAG}
     ports:
-      - "3000:3000"  # Host:Container port mapping
+      - "3000:3000"
     environment:
       - DATABASE_URL=postgresql://myuser:secret@postgres:5432/architext_db
     depends_on:
       - postgres
-    networks:
-      - app-network
 
   flask-app:
-    image: mohammaddabbas/architext-flask:${TAG}
     ports:
-      - "5000:5000"  # Added port mapping for Flask
-    networks:
-      - app-network
+      - "3000:3000"
+    image: mohammaddabbas/architext-flask:${TAG}
 
   react-app:
     image: mohammaddabbas/architext-react:${TAG}
     ports:
       - "80:80"
-    networks:
-      - app-network
 
 volumes:
   postgres_data:
-
-networks:
-  app-network:
-    driver: bridge
