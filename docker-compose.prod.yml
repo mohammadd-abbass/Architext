@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: architext_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  node-app:
+    image: mohammaddabbas/architext-node:${TAG}
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://myuser:secret@postgres:5432/architext_db
+    depends_on:
+      - postgres
+
+  flask-app:
+    ports:
+      - "5000:5000"
+    image: mohammaddabbas/architext-flask:${TAG}
+
+  react-app:
+    image: mohammaddabbas/architext-react:${TAG}
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_data:

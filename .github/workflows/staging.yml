@@ -1,0 +1,63 @@
+name: Deploy To Stage
+
+on:
+  push:
+    branches:
+      - stage
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Node.js Image
+        working-directory: ./node-server 
+        run: |
+          docker build -t mohammaddabbas/architext-node:${{ github.sha }} .
+          docker push mohammaddabbas/architext-node:${{ github.sha }}
+
+      - name: Build and Push Flask Image
+        working-directory: ./flask-server  
+        run: |
+          docker build -t mohammaddabbas/architext-flask:${{ github.sha }} .
+          docker push mohammaddabbas/architext-flask:${{ github.sha }}
+
+      - name: Build and Push React Image
+        working-directory: ./docs-web  
+        run: |
+          docker build -t mohammaddabbas/architext-react:${{ github.sha }} .
+          docker push mohammaddabbas/architext-react:${{ github.sha }}
+
+  deploy:
+    needs: build-push
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Pull Latest Images
+        run: |
+          docker pull mohammaddabbas/architext-node:${{ github.sha }}
+          docker pull mohammaddabbas/architext-flask:${{ github.sha }}
+          docker pull mohammaddabbas/architext-react:${{ github.sha }}
+
+      - name: Stop and Remove Old Containers
+        run: docker-compose -f docker-compose.prod.yml down
+
+      - name: Start Services
+        run: |
+          TAG=${{ github.sha }} docker-compose -f docker-compose.prod.yml up -d
