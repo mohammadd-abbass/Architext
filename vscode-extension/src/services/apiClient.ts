@@ -1,17 +1,21 @@
-
+import axios from 'axios';
 
 export async function callFlaskAPI(route: string, payload: any) {
-    const res = await fetch(`http://localhost:5000/${route}`, {
-      method: 'POST',
+  try {
+    const response = await axios({
+      method: 'post',
+      url: `http://localhost:5000/${route}`,
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(payload)
+      data: payload
     });
-  
-    if (!res.ok) {
-      throw new Error(`Request failed: ${res.status}`);
+
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(`Request failed: ${error.response?.status} - ${error.message}`);
     }
-  
-    return res.json();
+    throw new Error(`Request failed: ${error}`);
   }
+}
