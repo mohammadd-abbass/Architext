@@ -13,3 +13,4 @@ def call_openai(prompt: str) -> str:
         temperature=0.2,
     )
     return response.output_text.strip()
+
