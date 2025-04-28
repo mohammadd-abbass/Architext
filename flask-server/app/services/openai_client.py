@@ -8,7 +8,15 @@ def call_openai(prompt: str) -> str:
     response = client.responses.create(
         model="gpt-4o", 
         input=[
-            {"role": "user", "content": prompt}
+            {
+                "role": "developer",
+                "content": ""
+            },
+
+            {    
+                "role": "user", 
+                "content": prompt
+            }
         ],
         temperature=0.2,
     )

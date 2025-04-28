@@ -8,7 +8,6 @@ ai = Blueprint("ai", __name__)
 @ai.route("/generateComments", methods=["POST"])
 def generate_comments():
     try:
-        # Validate request body using Pydantic model
         body = generateCommentsRequestModel(**request.get_json())
     except ValidationError as e:
         return jsonify({"error": str(e)}), 400
