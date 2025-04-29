@@ -34,4 +34,4 @@ export const commentCode = async () => {
       } catch (error: any) {
         vscode.window.showErrorMessage(`Failed to add comments: ${error.message}`);
       }
-}
+};
