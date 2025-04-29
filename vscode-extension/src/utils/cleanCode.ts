@@ -9,4 +9,4 @@ export const cleanCodeResponse = (rawCode: string) => {
         }
     }
     return rawCode.trim();
-}
+};
