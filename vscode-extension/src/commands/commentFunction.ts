@@ -13,21 +13,21 @@ export const commentFunction = async () => {
 
     try {
   
-    const result = await callFlaskAPI('generateComments', {
-        selectedText,
-        language
-    });
-  
-    const commentedCode = result.code;
-    console.log(commentedCode);
-  
-    editor.edit(editBuilder => {
-      editBuilder.replace(selection, commentedCode);
-    });
-  
-    vscode.window.showInformationMessage('Comments added to selected code!');
+        const result = await callFlaskAPI('generateComments', {
+            code: selectedText,
+            language
+        });
+    
+        const commentedCode = result.code;
+        console.log(commentedCode);
+    
+        editor.edit(editBuilder => {
+        editBuilder.replace(selection, commentedCode);
+        });
+    
+        vscode.window.showInformationMessage('Comments added to selected code!');
 
-    }catch{
-
+    }catch(error : any){
+        vscode.window.showErrorMessage(`Failed to add comments: ${error.message}`);
     }
 };
