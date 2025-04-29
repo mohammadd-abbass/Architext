@@ -19,7 +19,6 @@ export const commentFunction = async () => {
         });
     
         const commentedCode = result.code;
-        console.log(commentedCode);
     
         editor.edit(editBuilder => {
         editBuilder.replace(selection, commentedCode);
