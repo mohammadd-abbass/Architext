@@ -18,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const codeComplexity = vscode.commands.registerCommand('extension.caculateCodeComplexity', calculateComplexityCode);
 
-	context.subscriptions.push(disposable, codeComments, functionComment);
+	context.subscriptions.push(disposable, codeComments, functionComment, codeComplexity);
 }
 
 export function deactivate() {}
