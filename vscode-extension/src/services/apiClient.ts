@@ -10,7 +10,7 @@ export const callFlaskAPI = async (route: string, payload: any) => {
             },
             data: payload
           });
-      
+          
           return response.data;
     } catch (error) {
         if (axios.isAxiosError(error)) {

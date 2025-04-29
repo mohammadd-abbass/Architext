@@ -1,4 +1,6 @@
-function cleanCodeResponse(rawCode: string) {
+
+
+export const cleanCodeResponse = (rawCode: string) => {
     if (rawCode.startsWith("```")) {
         rawCode = rawCode.split('\n').slice(1).join('\n');
 
