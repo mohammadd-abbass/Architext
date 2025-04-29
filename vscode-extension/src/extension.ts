@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { commentCode } from './commands/commentCode';
 import { commentFunction } from './commands/commentFunction';
+import { calculateComplexityCode } from './commands/calcComplexity';
 
 
 export function activate(context: vscode.ExtensionContext) {
@@ -14,6 +15,8 @@ export function activate(context: vscode.ExtensionContext) {
 	const codeComments = vscode.commands.registerCommand('extension.addCodeComments', commentCode);
 
 	const functionComment = vscode.commands.registerCommand('extension.commentSelectedCode', commentFunction);
+
+	const codeComplexity = vscode.commands.registerCommand('extension.caculateCodeComplexity', calculateComplexityCode);
 
 	context.subscriptions.push(disposable, codeComments, functionComment);
 }
