@@ -9,7 +9,7 @@ export async function commentFunction() {
   
     const code = editor.document.getText();
     const language = editor.document.languageId;
-  
+    
     try {
         const result = await callFlaskAPI('generateComments', {
             code,
