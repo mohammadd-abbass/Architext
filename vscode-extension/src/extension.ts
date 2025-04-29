@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { commentCode } from './commands/commentCode';
+import { commentFunction } from './commands/commentFunction';
 
 
 export function activate(context: vscode.ExtensionContext) {
@@ -10,9 +11,11 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from vscode-extension!');
 	});
 	
-	const comments = vscode.commands.registerCommand('extension.addCodeComments', commentCode);
+	const codeComments = vscode.commands.registerCommand('extension.addCodeComments', commentCode);
 
-	context.subscriptions.push(disposable, comments);
+	const functionComment = vscode.commands.registerCommand('extension.', commentFunction);
+
+	context.subscriptions.push(disposable, codeComments, functionComment);
 }
 
 export function deactivate() {}
