@@ -69,6 +69,7 @@
           "command": "extension.commentSelectedCode",
           "when": "editorHasSelection"
         }
+
       ]
     }
   },
