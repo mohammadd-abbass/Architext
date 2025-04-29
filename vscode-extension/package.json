@@ -39,6 +39,12 @@
         "command": "extension.addCodeComments",
         "key": "ctrl+alt+c",
         "when": "editorTextFocus"
+      },
+
+      {
+        "command": "extension.caculateCodeComplexity",
+        "key": "ctrl+alt+o",
+        "when": "editorTextFocus"
       }
     ],
 
