@@ -11,6 +11,10 @@ export async function commentCode() {
     const language = editor.document.languageId;
     
     try {
+      vscode.window.withProgress({
+        location: vscode.ProgressLocation.Notification,
+        title: "Generating comments..."
+      }, async () => {
         const result = await callFlaskAPI('generateComments', {
             code,
             language
@@ -25,8 +29,8 @@ export async function commentCode() {
             );
             editBuilder.replace(fullRange, commentedCode);
           });
-      
           vscode.window.showInformationMessage('Comments added successfully!');
+        });
       } catch (error: any) {
         vscode.window.showErrorMessage(`Failed to add comments: ${error.message}`);
       }
