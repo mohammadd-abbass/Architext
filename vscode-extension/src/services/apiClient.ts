@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { cleanCodeResponse } from '../utils/cleanCode';
 
 export const callFlaskAPI = async (route: string, payload: any) => {
     try {
@@ -10,7 +11,7 @@ export const callFlaskAPI = async (route: string, payload: any) => {
             },
             data: payload
           });
-          
+
           return response.data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
