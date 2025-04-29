@@ -26,6 +26,11 @@
       {
         "command": "extension.commentSelectedCode",
         "title": "Add Comments to Selected Code"
+      },
+
+      {
+        "command": "extension.caculateCodeComplexity",
+        "title": "Calulate complexity of the code functions"
       }
     ],
     
