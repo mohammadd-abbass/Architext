@@ -4,3 +4,7 @@ from pydantic import BaseModel, Field, StrictFloat, StrictInt, StrictStr, Strict
 class generateCommentsRequestModel(BaseModel): 
     code : StrictStr = Field(..., min_length=1)
     language : StrictStr = Field(..., min_length=1)
+
+class calculateComplexityRequestModel(BaseModel): 
+    code : StrictStr = Field(..., min_length=1)
+    language : StrictStr = Field(..., min_length=1)
