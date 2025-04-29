@@ -21,6 +21,11 @@
       {
         "command": "extension.addCodeComments",
         "title": "Add Comments to Code"
+      },
+      
+      {
+        "command": "extension.commentSelectedCode",
+        "title": "Add Comments to Selected Code"
       }
     ],
     
@@ -30,7 +35,17 @@
         "key": "ctrl+alt+c",
         "when": "editorTextFocus"
       }
-    ]
+    ],
+
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.commentSelectedCode",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
