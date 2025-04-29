@@ -37,12 +37,26 @@
       }
     ],
 
+    "submenus": [
+      {
+        "id": "architext.submenu",
+        "label": "Architext"
+      }
+    ],
+
     "menus": {
       "editor/context": [
         {
-          "command": "extension.commentSelectedCode",
+          "submenu": "architext.submenu",
           "when": "editorHasSelection",
           "group": "navigation"
+        }
+      ],
+
+      "architext.submenu": [
+        {
+          "command": "extension.commentSelectedCode",
+          "when": "editorHasSelection"
         }
       ]
     }
