@@ -19,18 +19,47 @@
       },
 
       {
-        "command": "extension.addFunctionComments",
-        "title": "Add Comments to Functions"
+        "command": "extension.addCodeComments",
+        "title": "Add Comments to Code"
+      },
+      
+      {
+        "command": "extension.commentSelectedCode",
+        "title": "Add Comments to Selected Code"
       }
     ],
     
     "keybindings": [
       {
-        "command": "extension.addFunctionComments",
+        "command": "extension.addCodeComments",
         "key": "ctrl+alt+c",
         "when": "editorTextFocus"
       }
-    ]
+    ],
+
+    "submenus": [
+      {
+        "id": "architext.submenu",
+        "label": "Architext"
+      }
+    ],
+
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "architext.submenu",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        }
+      ],
+
+      "architext.submenu": [
+        {
+          "command": "extension.commentSelectedCode",
+          "when": "editorHasSelection"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
