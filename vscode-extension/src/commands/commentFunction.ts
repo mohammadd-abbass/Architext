@@ -10,6 +10,8 @@ export const commentFunction = async () => {
     const selection = editor.selection;
     const selectedText = editor.document.getText(selection);
     const language = editor.document.languageId;
+
+    try {
   
     const result = await callFlaskAPI('generateComments', {
         selectedText,
@@ -17,10 +19,15 @@ export const commentFunction = async () => {
     });
   
     const commentedCode = result.code;
+    console.log(commentedCode);
   
     editor.edit(editBuilder => {
       editBuilder.replace(selection, commentedCode);
     });
   
     vscode.window.showInformationMessage('Comments added to selected code!');
-}
+
+    }catch{
+
+    }
+};
