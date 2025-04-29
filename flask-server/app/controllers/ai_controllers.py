@@ -10,6 +10,7 @@ def generate_comments():
     try:
         body = generateCommentsRequestModel(**request.get_json())
     except ValidationError as e:
+        print(e)
         return jsonify({"error": str(e)}), 400
 
     code = body.code

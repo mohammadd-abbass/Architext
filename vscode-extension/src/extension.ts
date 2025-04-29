@@ -13,7 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
 	
 	const codeComments = vscode.commands.registerCommand('extension.addCodeComments', commentCode);
 
-	const functionComment = vscode.commands.registerCommand('extension.', commentFunction);
+	const functionComment = vscode.commands.registerCommand('extension.commentSelectedCode', commentFunction);
 
 	context.subscriptions.push(disposable, codeComments, functionComment);
 }
