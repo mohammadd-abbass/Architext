@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { commentFunction } from './commands/commentFunction';
+import { commentFunction } from './commands/commentCode';
 
 
 export function activate(context: vscode.ExtensionContext) {
