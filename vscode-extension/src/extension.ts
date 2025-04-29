@@ -10,7 +10,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from vscode-extension!');
 	});
 	
-	const comments = vscode.commands.registerCommand('extension.addFunctionComments', commentCode);
+	const comments = vscode.commands.registerCommand('extension.addCodeComments', commentCode);
 
 	context.subscriptions.push(disposable, comments);
 }

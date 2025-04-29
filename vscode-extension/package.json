@@ -19,8 +19,8 @@
       },
 
       {
-        "command": "extension.addFunctionComments",
-        "title": "Add Comments to Functions"
+        "command": "extension.addCodeComments",
+        "title": "Add Comments to Code"
       }
     ],
     
