@@ -8,6 +8,7 @@ For each function in the code below, make sure to insert a brief comment or wher
 Note that: 
 - In case the recieved code already contains comments; make sure to not remove them or add redudandat comments
 LANGUAGE: {{language}}
+- In case the provided code is invalid or it is too short to know it's functionality you should return a comment that indicates that. MAKE SURE TO RETURN A COMMENT ON A SEPARATE LINE (BEFORE THE PROVIDED CODE), ALSO MAKE SURE TO RETURN THE PROVIDED PIECE OF CODE TO NOT GET ERRORS IN THE ORIGINAL CODE IF REMOVED
 
 ```{{language}}
 {{code}}
