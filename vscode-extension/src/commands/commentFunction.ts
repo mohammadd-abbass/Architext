@@ -12,19 +12,25 @@ export const commentFunction = async () => {
     const language = editor.document.languageId;
 
     try {
-  
-        const result = await callFlaskAPI('generateComments', {
-            code: selectedText,
-            language
+        vscode.window.withProgress({
+        location: vscode.ProgressLocation.Notification,
+        title: "Generating comments..."
+        }, async () => {
+
+            const result = await callFlaskAPI('generateComments', {
+                code: selectedText,
+                language
+            });
+        
+            const commentedCode = result.code;
+        
+            editor.edit(editBuilder => {
+            editBuilder.replace(selection, commentedCode);
+            });
+        
+            vscode.window.showInformationMessage('Comments added to selected code!');
         });
-    
-        const commentedCode = result.code;
-    
-        editor.edit(editBuilder => {
-        editBuilder.replace(selection, commentedCode);
-        });
-    
-        vscode.window.showInformationMessage('Comments added to selected code!');
+
 
     }catch(error : any){
         vscode.window.showErrorMessage(`Failed to add comments: ${error.message}`);
