@@ -31,6 +31,11 @@
       {
         "command": "extension.caculateCodeComplexity",
         "title": "Calulate complexity of the code functions"
+      },
+
+      {
+        "command": "extension.complexitySelectedCode",
+        "title": "Calulate complexity of the code functions"
       }
     ],
     
@@ -67,6 +72,11 @@
       "architext.submenu": [
         {
           "command": "extension.commentSelectedCode",
+          "when": "editorHasSelection"
+        },
+        
+        {
+          "command": "extension.complexitySelectedCode",
           "when": "editorHasSelection"
         }
 
