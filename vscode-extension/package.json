@@ -35,7 +35,7 @@
 
       {
         "command": "extension.complexitySelectedCode",
-        "title": "Calulate complexity of the code functions"
+        "title": "Calulate complexity of the selected code"
       }
     ],
     
