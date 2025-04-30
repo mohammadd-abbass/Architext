@@ -1,9 +1,9 @@
-name: Deploy To Stage
+name: Deploy To production
 
 on:
   push:
     branches:
-      - stage
+      - main
 
 jobs:
   build-push:
@@ -38,7 +38,7 @@ jobs:
 
   deploy:
     needs: build-push
-    runs-on: [self-hosted, staging]
+    runs-on: [self-hosted, production]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
