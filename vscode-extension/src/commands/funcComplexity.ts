@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import { callFlaskAPI } from '../services/apiClient';
 
-export const calculateComplexityCode = async () => {
+export const calculateFunctionComplexity = async () => {
     const editor = vscode.window.activeTextEditor;
     if(!editor) {
         return;
