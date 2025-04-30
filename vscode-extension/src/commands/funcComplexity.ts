@@ -1,11 +1,11 @@
 import * as vscode from 'vscode';
 import { callFlaskAPI } from '../services/apiClient';
 
-export const commentFunction = async () => {
+export const calculateFunctionComplexity = async () => {
     const editor = vscode.window.activeTextEditor;
-    if (!editor) {
+    if(!editor) {
         return;
-    } 
+    }
 
     const selection = editor.selection;
     const selectedText = editor.document.getText(selection);
@@ -13,26 +13,23 @@ export const commentFunction = async () => {
 
     try {
         vscode.window.withProgress({
-        location: vscode.ProgressLocation.Notification,
-        title: "Generating comments..."
+            location: vscode.ProgressLocation.Notification,
+            title: "Calculating complexity..."
         }, async () => {
-
-            const result = await callFlaskAPI('generateComments', {
+            const result = await callFlaskAPI('calculateComplexity', {
                 code: selectedText,
                 language
             });
-        
+
             const commentedCode = result.code;
         
             editor.edit(editBuilder => {
             editBuilder.replace(selection, commentedCode);
             });
         
-            vscode.window.showInformationMessage('Comments added to selected code!');
+            vscode.window.showInformationMessage('Complexity calculated of the selected code!');
         });
-
-
-    }catch(error : any){
-        vscode.window.showErrorMessage(`Failed to add comments: ${error.message}`);
+    } catch (error: any) {
+        vscode.window.showErrorMessage(`Failed to calculate complexity: ${error.message}`);
     }
 };
