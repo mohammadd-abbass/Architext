@@ -26,6 +26,16 @@
       {
         "command": "extension.commentSelectedCode",
         "title": "Add Comments to Selected Code"
+      },
+
+      {
+        "command": "extension.caculateCodeComplexity",
+        "title": "Calulate complexity of the code functions"
+      },
+
+      {
+        "command": "extension.complexitySelectedCode",
+        "title": "Calulate complexity of the selected code"
       }
     ],
     
@@ -33,6 +43,12 @@
       {
         "command": "extension.addCodeComments",
         "key": "ctrl+alt+c",
+        "when": "editorTextFocus"
+      },
+
+      {
+        "command": "extension.caculateCodeComplexity",
+        "key": "ctrl+alt+o",
         "when": "editorTextFocus"
       }
     ],
@@ -57,7 +73,13 @@
         {
           "command": "extension.commentSelectedCode",
           "when": "editorHasSelection"
+        },
+        
+        {
+          "command": "extension.complexitySelectedCode",
+          "when": "editorHasSelection"
         }
+
       ]
     }
   },

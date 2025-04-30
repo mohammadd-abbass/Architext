@@ -1,13 +1,14 @@
 import * as vscode from 'vscode';
 import { callFlaskAPI } from '../services/apiClient';
 
-export const calculateComplexityCode = async () => {
+export const calculateFunctionComplexity = async () => {
     const editor = vscode.window.activeTextEditor;
     if(!editor) {
         return;
     }
 
-    const code = editor.document.getText();
+    const selection = editor.selection;
+    const selectedText = editor.document.getText(selection);
     const language = editor.document.languageId;
 
     try {
@@ -16,20 +17,17 @@ export const calculateComplexityCode = async () => {
             title: "Calculating complexity..."
         }, async () => {
             const result = await callFlaskAPI('calculateComplexity', {
-                code,
+                code: selectedText,
                 language
             });
 
-            const responseCode = result.code;
-
+            const commentedCode = result.code;
+        
             editor.edit(editBuilder => {
-                const fullRange = new vscode.Range(
-                    editor.document.positionAt(0),
-                    editor.document.positionAt(code.length)
-                );
-                editBuilder.replace(fullRange, responseCode);
+            editBuilder.replace(selection, commentedCode);
             });
-            vscode.window.showInformationMessage('Complexity calculated successfully!');
+        
+            vscode.window.showInformationMessage('Complexity calculated of the selected code!');
         });
     } catch (error: any) {
         vscode.window.showErrorMessage(`Failed to calculate complexity: ${error.message}`);
