@@ -60,4 +60,4 @@ jobs:
 
       - name: Start Services
         run: |
-          TAG=${{ github.sha }} docker-compose -f docker compose.delivery.yml up -d
+          TAG=${{ github.sha }} docker compose -f docker-compose.delivery.yml up -d
