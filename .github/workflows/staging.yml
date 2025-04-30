@@ -56,8 +56,8 @@ jobs:
           docker pull mohammaddabbas/architext-react:${{ github.sha }}
 
       - name: Stop and Remove Old Containers
-        run: docker compose --file docker-compose.delivery.yml down
+        run: docker compose -f docker-compose.delivery.yml down
 
       - name: Start Services
         run: |
-          TAG=${{ github.sha }} docker compose --file docker-compose.delivery.yml up -d
+          TAG=${{ github.sha }} docker compose -f docker-compose.delivery.yml up -d
