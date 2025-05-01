@@ -3,6 +3,7 @@ import { commentCode } from './commands/commentCode';
 import { commentFunction } from './commands/commentFunction';
 import { calculateComplexityCode } from './commands/calcComplexity';
 import { calculateFunctionComplexity } from './commands/funcComplexity';
+import { checkArchitecture } from './commands/checkArchitecture';
 
 
 export function activate(context: vscode.ExtensionContext) {
@@ -21,7 +22,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const functionComplexity = vscode.commands.registerCommand('architext.complexitySelectedCode', calculateFunctionComplexity);
 
-	context.subscriptions.push(disposable, codeComments, functionComment, codeComplexity,functionComplexity);
+	const checkProjectArchitecture = vscode.commands.registerCommand('architext.checkArchitecture', checkArchitecture);
+
+	context.subscriptions.push(disposable, codeComments, functionComment, codeComplexity, functionComplexity, checkProjectArchitecture);
 }
 
 export function deactivate() {}
