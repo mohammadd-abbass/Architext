@@ -13,13 +13,13 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from vscode-extension!');
 	});
 	
-	const codeComments = vscode.commands.registerCommand('extension.addCodeComments', commentCode);
+	const codeComments = vscode.commands.registerCommand('architext.addCodeComments', commentCode);
 
-	const functionComment = vscode.commands.registerCommand('extension.commentSelectedCode', commentFunction);
+	const functionComment = vscode.commands.registerCommand('architext.commentSelectedCode', commentFunction);
 
-	const codeComplexity = vscode.commands.registerCommand('extension.caculateCodeComplexity', calculateComplexityCode);
+	const codeComplexity = vscode.commands.registerCommand('architext.caculateCodeComplexity', calculateComplexityCode);
 
-	const functionComplexity = vscode.commands.registerCommand('extension.complexitySelectedCode', calculateFunctionComplexity);
+	const functionComplexity = vscode.commands.registerCommand('architext.complexitySelectedCode', calculateFunctionComplexity);
 
 	context.subscriptions.push(disposable, codeComments, functionComment, codeComplexity,functionComplexity);
 }
