@@ -13,3 +13,9 @@ def calculate_function_complexity(code: str, language: str) -> str:
     prompt = prompt_template.replace("{{code}}", code).replace("{{language}}", language)
 
     return call_openai(prompt)
+
+def check_architecture(files, reference) -> str:
+    prompt_template = load_prompt("refArchitecture.md")
+    prompt = prompt_template.replace("{{files}}", files).replace("{{reference}}", reference)
+
+    return call_openai(prompt)

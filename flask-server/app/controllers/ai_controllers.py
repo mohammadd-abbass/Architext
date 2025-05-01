@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from models.classes import generateCommentsRequestModel, calculateComplexityRequestModel
+from models.classes import generateCommentsRequestModel, calculateComplexityRequestModel, CheckArchitectureRequestModel
 from services.ai_controller_service import generate_function_comments, calculate_function_complexity
 from pydantic import ValidationError
 
@@ -25,6 +25,8 @@ def generate_comments():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
+
+    
 @ai.route("/calculateComplexity", methods=["POST"])
 def calculate_complexity():
     try:
@@ -44,4 +46,16 @@ def calculate_complexity():
         return jsonify({"code": result})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
     
+@ai.route("/checkArchitecture", methods=["POST"])
+def check_architecture():
+    try:
+        data = CheckArchitectureRequestModel(**request.get_json())
+    except ValidationError as e:
+        return  jsonify({'error': str(e)}), 400
+    
+    files = data.files
+    reference = data.referenceArchitecture
+
