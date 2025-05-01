@@ -1,3 +1,4 @@
+import json
 from utils.prompts_loader import load_prompt
 from services.openai_client import call_openai
 
@@ -16,6 +17,10 @@ def calculate_function_complexity(code: str, language: str) -> str:
 
 def check_project_architecture(files, reference) -> str:
     prompt_template = load_prompt("refArchitecture.md")
-    prompt = prompt_template.replace("{{files}}", files).replace("{{reference}}", reference)
+    
+    files_str = json.dumps([file.__dict__ for file in files], indent=2)  # assuming FileItem is a class
+    reference_str = json.dumps(reference, indent=2)
+
+    prompt = prompt_template.replace("{{files}}", files_str).replace("{{reference}}", reference_str)
 
     return call_openai(prompt)

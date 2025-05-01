@@ -18,16 +18,19 @@ export const checkArchitecture = async () => {
         return;
     }
 
-    const paths: string[] = [];
-    readAllFiles(rootPath, rootPath, paths);
+    const entries: { path: string; type: 'file' | 'folder' }[] = [];
+    readAllFiles(rootPath, rootPath, entries);
 
     try {
-        const response = await checkArchitectureAPI(paths, architecture);
-        
+        console.log("hello");
+        const response = await checkArchitectureAPI(entries, architecture);
+        console.log(response);
+        console.log("hello response");
         if (response.success) {
             vscode.window.showInformationMessage('Folder structure is valid.');
         } else {
             vscode.window.showWarningMessage(`Issues found: ${response.message || 'Structure mismatch.'}`);
+            console.log(response);
         }
     } catch (error: any) {
         vscode.window.showErrorMessage(`Failed to validate architecture: ${error.message}`);

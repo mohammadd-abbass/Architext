@@ -51,11 +51,15 @@ def calculate_complexity():
     
 @ai.route("/checkArchitecture", methods=["POST"])
 def check_architecture():
+    print("hello")
+    print(request.json)
+
     try:
         data = CheckArchitectureRequestModel(**request.get_json())
+        print(data)
     except ValidationError as e:
         return  jsonify({'error': str(e)}), 400
-    
+
     files = data.files
     reference = data.referenceArchitecture
 
@@ -63,5 +67,7 @@ def check_architecture():
         result = check_project_architecture(files, reference)
         return jsonify({"result": result})
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": f"Internal Server Error: {str(e)}"}), 500
 

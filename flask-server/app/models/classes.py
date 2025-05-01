@@ -15,4 +15,4 @@ class FileItem(BaseModel):
 
 class CheckArchitectureRequestModel(BaseModel):
     files: List[FileItem]
-    referenceArchitecture: Dict[str, List[StrictStr]] 
+    referenceArchitecture: Dict[str, Dict[str, List[StrictStr]]]
