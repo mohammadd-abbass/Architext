@@ -12,3 +12,16 @@ export const loadArchIgnore = (basePath: string): string[] => {
         .map(line => line.trim())
         .filter(line => line && !line.startsWith('#'));
 };
+
+export const shouldIgnore = (relativePath: string, ignorePatterns: string[]): boolean => {
+    return ignorePatterns.some(pattern => {
+        if (pattern.endsWith('/')) {
+            return relativePath.startsWith(pattern);
+        } else if (pattern.includes('*')) {
+            const regex = new RegExp('^' + pattern.replace(/\*/g, '.*') + '$');
+            return regex.test(relativePath);
+        } else {
+            return relativePath === pattern;
+        }
+    });
+};
