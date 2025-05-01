@@ -1,6 +1,6 @@
 {
   "name": "vscode-extension",
-  "displayName": "vscode-extension",
+  "displayName": "Architext",
   "description": "An AI-powered VS Code extension that reviews your code, enforces architecture rules, generates smart comments, analyzes complexity, and keeps your project clean, consistent, and scalable.",
   "version": "0.0.1",
   "engines": {
@@ -8,6 +8,11 @@
   },
   "categories": [
     "Other"
+  ],
+  "files": [
+    "dist",
+    "src/default.arch.json",
+    ".archignore"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
@@ -19,36 +24,47 @@
       },
 
       {
-        "command": "extension.addCodeComments",
+        "command": "architext.addCodeComments",
         "title": "Add Comments to Code"
       },
       
       {
-        "command": "extension.commentSelectedCode",
+        "command": "architext.commentSelectedCode",
         "title": "Add Comments to Selected Code"
       },
 
       {
-        "command": "extension.caculateCodeComplexity",
+        "command": "architext.caculateCodeComplexity",
         "title": "Calulate complexity of the code functions"
       },
 
       {
-        "command": "extension.complexitySelectedCode",
+        "command": "architext.complexitySelectedCode",
         "title": "Calulate complexity of the selected code"
+      },
+
+      {
+        "command": "architext.checkArchitecture",
+        "title": "Check Reference Architecture"
       }
     ],
     
     "keybindings": [
       {
-        "command": "extension.addCodeComments",
+        "command": "architext.addCodeComments",
         "key": "ctrl+alt+c",
         "when": "editorTextFocus"
       },
 
       {
-        "command": "extension.caculateCodeComplexity",
+        "command": "architext.caculateCodeComplexity",
         "key": "ctrl+alt+o",
+        "when": "editorTextFocus"
+      },
+
+      {
+        "command": "architext.checkArchitecture",
+        "key": "ctrl+alt+a",
         "when": "editorTextFocus"
       }
     ],
@@ -71,12 +87,12 @@
 
       "architext.submenu": [
         {
-          "command": "extension.commentSelectedCode",
+          "command": "architext.commentSelectedCode",
           "when": "editorHasSelection"
         },
         
         {
-          "command": "extension.complexitySelectedCode",
+          "command": "architext.complexitySelectedCode",
           "when": "editorHasSelection"
         }
 
@@ -84,8 +100,11 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "npm run build",
     "compile": "tsc -p ./",
+    "copy-json": "powershell -Command \"New-Item -ItemType Directory -Force -Path out\\src; Copy-Item -Path src\\default.arch.json -Destination out\\src\\default.arch.json\"",
+    "copy-ignore": "powershell -Command \"New-Item -ItemType Directory -Force -Path out\\src; Copy-Item -Path src\\.archignore -Destination out\\src\\.archignore\"",
+    "build": "npm run compile && npm run copy-json && npm run copy-ignore",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",

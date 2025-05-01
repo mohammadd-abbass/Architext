@@ -3,25 +3,25 @@ import { commentCode } from './commands/commentCode';
 import { commentFunction } from './commands/commentFunction';
 import { calculateComplexityCode } from './commands/calcComplexity';
 import { calculateFunctionComplexity } from './commands/funcComplexity';
+import { checkArchitecture } from './commands/checkArchitecture';
 
 
 export function activate(context: vscode.ExtensionContext) {
 
-	console.log('Congratulations, your extension "vscode-extension" is now active!');
+	console.log('Architext is Active!');
 
-	const disposable = vscode.commands.registerCommand('vscode-extension.helloWorld', () => {
-		vscode.window.showInformationMessage('Hello World from vscode-extension!');
-	});
 	
-	const codeComments = vscode.commands.registerCommand('extension.addCodeComments', commentCode);
+	const codeComments = vscode.commands.registerCommand('architext.addCodeComments', commentCode);
 
-	const functionComment = vscode.commands.registerCommand('extension.commentSelectedCode', commentFunction);
+	const functionComment = vscode.commands.registerCommand('architext.commentSelectedCode', commentFunction);
 
-	const codeComplexity = vscode.commands.registerCommand('extension.caculateCodeComplexity', calculateComplexityCode);
+	const codeComplexity = vscode.commands.registerCommand('architext.caculateCodeComplexity', calculateComplexityCode);
 
-	const functionComplexity = vscode.commands.registerCommand('extension.complexitySelectedCode', calculateFunctionComplexity);
+	const functionComplexity = vscode.commands.registerCommand('architext.complexitySelectedCode', calculateFunctionComplexity);
 
-	context.subscriptions.push(disposable, codeComments, functionComment, codeComplexity,functionComplexity);
+	const checkProjectArchitecture = vscode.commands.registerCommand('architext.checkArchitecture', () => checkArchitecture(context));
+
+	context.subscriptions.push(codeComments, functionComment, codeComplexity, functionComplexity, checkProjectArchitecture);
 }
 
 export function deactivate() {}
