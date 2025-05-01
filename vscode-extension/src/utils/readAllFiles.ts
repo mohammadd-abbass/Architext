@@ -2,20 +2,25 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 export const readAllFiles = (
-    rootPath: string,
     dirPath: string,
-    paths: string[]
+    basePath: string,
+    result: { path: string; type: 'file' | 'folder' }[]
 ) => {
-    const items = fs.readdirSync(dirPath);
-    for (const item of items) {
-        const fullPath = path.join(dirPath, item);
-        const relPath = path.relative(rootPath, fullPath);
-        const stats = fs.statSync(fullPath);
+    const entries = fs.readdirSync(dirPath, { withFileTypes: true });
 
-        paths.push(relPath);
+    for (const entry of entries) {
+        const fullPath = path.join(dirPath, entry.name);
+        const relativePath = path.relative(basePath, fullPath).replace(/\\/g, '/');
 
-        if (stats.isDirectory()) {
-            readAllFiles(rootPath, fullPath, paths);
+        if (relativePath.startsWith('node_modules')) {
+            continue;
+        }
+
+        if (entry.isDirectory()) {
+            result.push({ path: relativePath, type: 'folder' });
+            readAllFiles(fullPath, basePath, result);
+        } else {
+            result.push({ path: relativePath, type: 'file' });
         }
     }
 };

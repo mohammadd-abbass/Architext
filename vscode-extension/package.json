@@ -9,6 +9,10 @@
   "categories": [
     "Other"
   ],
+  "files": [
+    "dist",
+    "src/default.arch.json"
+  ],
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
@@ -95,8 +99,10 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "npm run build",
     "compile": "tsc -p ./",
+    "copy-json": "powershell -Command \"New-Item -ItemType Directory -Force -Path out\\src; Copy-Item -Path src\\default.arch.json -Destination out\\src\\default.arch.json\"",
+    "build": "npm run compile && npm run copy-json",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",

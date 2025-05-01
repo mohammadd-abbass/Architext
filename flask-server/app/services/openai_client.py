@@ -1,7 +1,9 @@
 from openai import OpenAI
 import os
 from utils.prompts_loader import load_prompt
+from dotenv import load_dotenv
 
+load_dotenv()
 
 api_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=api_key)
