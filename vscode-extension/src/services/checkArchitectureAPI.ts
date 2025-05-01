@@ -1,11 +1,11 @@
 import { callFlaskAPI } from './apiClient';
 
 export const checkArchitectureAPI = async (
-    files: { path: string; content: string }[],
+    paths: string[],
     referenceArchitecture: any
 ) => {
     return await callFlaskAPI('checkArchitecture', {
-        files,
+        paths,
         referenceArchitecture
     });
 };
