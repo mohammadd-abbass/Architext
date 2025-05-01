@@ -8,11 +8,7 @@ import { checkArchitecture } from './commands/checkArchitecture';
 
 export function activate(context: vscode.ExtensionContext) {
 
-	console.log('Congratulations, your extension "vscode-extension" is now active!');
-
-	const disposable = vscode.commands.registerCommand('vscode-extension.helloWorld', () => {
-		vscode.window.showInformationMessage('Hello World from vscode-extension!');
-	});
+	console.log('Architext is Active!');
 	
 	const codeComments = vscode.commands.registerCommand('architext.addCodeComments', commentCode);
 
@@ -24,7 +20,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const checkProjectArchitecture = vscode.commands.registerCommand('architext.checkArchitecture', checkArchitecture);
 
-	context.subscriptions.push(disposable, codeComments, functionComment, codeComplexity, functionComplexity, checkProjectArchitecture);
+	context.subscriptions.push(codeComments, functionComment, codeComplexity, functionComplexity, checkProjectArchitecture);
 }
 
 export function deactivate() {}
