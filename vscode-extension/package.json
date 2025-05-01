@@ -55,6 +55,12 @@
         "command": "architext.caculateCodeComplexity",
         "key": "ctrl+alt+o",
         "when": "editorTextFocus"
+      },
+
+      {
+        "command": "architext.checkArchitecture",
+        "key": "ctrl+alt+a",
+        "when": "editorTextFocus"
       }
     ],
 
