@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
-import { loadArchitecture } from '../utils/loadArchitecture'; // update path as needed
+import { loadArchitecture } from '../utils/loadArchitecture'; 
 
 export const checkArchitecture = async () => {
     const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -13,7 +13,7 @@ export const checkArchitecture = async () => {
     const rootPath = workspaceFolders[0].uri.fsPath;
 
     const architecture = await loadArchitecture();
-    
+
     if (!architecture) {
         return;
     };
