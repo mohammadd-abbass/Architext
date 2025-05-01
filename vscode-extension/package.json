@@ -36,6 +36,11 @@
       {
         "command": "architext.complexitySelectedCode",
         "title": "Calulate complexity of the selected code"
+      },
+
+      {
+        "command": "architext.checkArchitecture",
+        "title": "Check Reference Architecture"
       }
     ],
     
