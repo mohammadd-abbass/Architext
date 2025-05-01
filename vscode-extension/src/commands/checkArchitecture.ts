@@ -26,12 +26,13 @@ export const checkArchitecture = async () => {
         const response = await checkArchitectureAPI(entries, architecture);
         console.log(response);
         console.log("hello response");
-        if (response?.message) {
-            vscode.window.showInformationMessage(response.message);
+        const parsedResult = JSON.parse(response.result);
+        if (parsedResult?.message) {
+            vscode.window.showInformationMessage(parsedResult.message);
         }
 
-        if (response?.issues?.length > 0) {
-            for (const issue of response.issues) {
+        if (parsedResult?.issues?.length > 0) {
+            for (const issue of parsedResult.issues) {
                 vscode.window.showWarningMessage(issue);
             }
         }

@@ -17,3 +17,20 @@ the reference architecture of their project contains a layers like this
 
 you should only focus on this part of the refernce architecture (other details in the reference architecture must be igored)
 and according to the layers listed here you must evaluate their folder structure to see if they are following the correct refernce architecture
+
+NOTE THAT:
+the reponse you send will be always be in the following format
+if failed:
+{
+  "message": "Checked architecture. Some issues found.",
+  "issues": [
+    "Missing folder: src/services",
+    "Unexpected folder: src/misc",
+    "Violation: business logic found in controller folder"
+  ]
+}
+
+if success: 
+{
+  "message": "Checked architecture. No issues found.",
+}

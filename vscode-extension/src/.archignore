@@ -1,0 +1,41 @@
+# Node & Frontend
+node_modules/
+dist/
+build/
+.vite/
+.next/
+out/
+*.map
+*.log
+.npmrc
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+*.egg-info/
+
+# PHP & Laravel
+vendor/
+composer.lock
+.env
+.env.*
+bootstrap/cache/
+storage/
+*.cache
+
+# Common
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.bak
+coverage/
+test/
+tests/
+tmp/
