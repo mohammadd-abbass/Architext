@@ -1,10 +1,12 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { shouldIgnore } from './archIgnore';
 
 export const readAllFiles = (
     dirPath: string,
     basePath: string,
-    result: { path: string; type: 'file' | 'folder' }[]
+    result: { path: string; type: 'file' | 'folder' }[],
+    ignorePatterns: string[] = []
 ) => {
     const entries = fs.readdirSync(dirPath, { withFileTypes: true });
 
@@ -12,13 +14,13 @@ export const readAllFiles = (
         const fullPath = path.join(dirPath, entry.name);
         const relativePath = path.relative(basePath, fullPath).replace(/\\/g, '/');
 
-        if (relativePath.startsWith('node_modules')) {
+        if (shouldIgnore(relativePath, ignorePatterns)) {
             continue;
-        }
+        };
 
         if (entry.isDirectory()) {
             result.push({ path: relativePath, type: 'folder' });
-            readAllFiles(fullPath, basePath, result);
+            readAllFiles(fullPath, basePath, result, ignorePatterns);
         } else {
             result.push({ path: relativePath, type: 'file' });
         }
