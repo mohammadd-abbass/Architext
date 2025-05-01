@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import { loadArchitecture } from '../utils/loadArchitecture'; // update path as needed
 
 export const checkArchitecture = async () => {
     const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -10,21 +11,12 @@ export const checkArchitecture = async () => {
     }
 
     const rootPath = workspaceFolders[0].uri.fsPath;
-    const userArchPath = path.join(rootPath, 'reference.arch.json');
-    const defaultArchPath = path.join(__dirname, 'default.arch.json');
 
-    let architecture: any;
-
-    try {
-        const archContent = fs.existsSync(userArchPath)
-            ? fs.readFileSync(userArchPath, 'utf-8')
-            : fs.readFileSync(defaultArchPath, 'utf-8');
-
-        architecture = JSON.parse(archContent);
-    } catch (error) {
-        vscode.window.showErrorMessage('Failed to read reference architecture.');
+    const architecture = await loadArchitecture();
+    
+    if (!architecture) {
         return;
-    }
+    };
 
     const missingFolders: string[] = [];
 
