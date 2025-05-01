@@ -11,7 +11,8 @@
   ],
   "files": [
     "dist",
-    "src/default.arch.json"
+    "src/default.arch.json",
+    ".archignore"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
@@ -102,7 +103,8 @@
     "vscode:prepublish": "npm run build",
     "compile": "tsc -p ./",
     "copy-json": "powershell -Command \"New-Item -ItemType Directory -Force -Path out\\src; Copy-Item -Path src\\default.arch.json -Destination out\\src\\default.arch.json\"",
-    "build": "npm run compile && npm run copy-json",
+    "copy-ignore": "powershell -Command \"New-Item -ItemType Directory -Force -Path out\\src; Copy-Item -Path src\\.archignore -Destination out\\src\\.archignore\"",
+    "build": "npm run compile && npm run copy-json && npm run copy-ignore",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
