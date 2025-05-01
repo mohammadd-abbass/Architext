@@ -1,0 +1,8 @@
+{
+    "layers": {
+      "controllers": ["src/controllers"],
+      "services": ["src/services"],
+      "models": ["src/models"]
+    }
+  }
+  
