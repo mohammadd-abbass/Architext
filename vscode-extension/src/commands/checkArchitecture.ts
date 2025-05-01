@@ -12,18 +12,17 @@ export const checkArchitecture = async () => {
     }
 
     const rootPath = workspaceFolders[0].uri.fsPath;
-
     const architecture = await loadArchitecture();
     if (!architecture) {
         vscode.window.showErrorMessage('Reference architecture not found.');
         return;
     }
 
-    const files: { path: string; content: string }[] = [];
-    readAllFiles(rootPath, rootPath, files); 
+    const paths: string[] = [];
+    readAllFiles(rootPath, rootPath, paths);
 
     try {
-        const response = await checkArchitectureAPI(files, architecture);
+        const response = await checkArchitectureAPI(paths, architecture);
         
         if (response.success) {
             vscode.window.showInformationMessage('Folder structure is valid.');
