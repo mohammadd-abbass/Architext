@@ -1,6 +1,6 @@
 {
   "name": "vscode-extension",
-  "displayName": "vscode-extension",
+  "displayName": "Architext",
   "description": "An AI-powered VS Code extension that reviews your code, enforces architecture rules, generates smart comments, analyzes complexity, and keeps your project clean, consistent, and scalable.",
   "version": "0.0.1",
   "engines": {
@@ -19,35 +19,35 @@
       },
 
       {
-        "command": "extension.addCodeComments",
+        "command": "architext.addCodeComments",
         "title": "Add Comments to Code"
       },
       
       {
-        "command": "extension.commentSelectedCode",
+        "command": "architext.commentSelectedCode",
         "title": "Add Comments to Selected Code"
       },
 
       {
-        "command": "extension.caculateCodeComplexity",
+        "command": "architext.caculateCodeComplexity",
         "title": "Calulate complexity of the code functions"
       },
 
       {
-        "command": "extension.complexitySelectedCode",
+        "command": "architext.complexitySelectedCode",
         "title": "Calulate complexity of the selected code"
       }
     ],
     
     "keybindings": [
       {
-        "command": "extension.addCodeComments",
+        "command": "architext.addCodeComments",
         "key": "ctrl+alt+c",
         "when": "editorTextFocus"
       },
 
       {
-        "command": "extension.caculateCodeComplexity",
+        "command": "architext.caculateCodeComplexity",
         "key": "ctrl+alt+o",
         "when": "editorTextFocus"
       }
@@ -71,12 +71,12 @@
 
       "architext.submenu": [
         {
-          "command": "extension.commentSelectedCode",
+          "command": "architext.commentSelectedCode",
           "when": "editorHasSelection"
         },
         
         {
-          "command": "extension.complexitySelectedCode",
+          "command": "architext.complexitySelectedCode",
           "when": "editorHasSelection"
         }
 
