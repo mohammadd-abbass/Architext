@@ -3,11 +3,6 @@
       "controllers": ["src/controllers"],
       "services": ["src/services"],
       "models": ["src/models"]
-    },
-    "rules": {
-      "controllers": { "canCall": ["services"] },
-      "services": { "canCall": ["models"] },
-      "models": { "canCall": [] }
     }
   }
   
