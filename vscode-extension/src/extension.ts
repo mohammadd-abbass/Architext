@@ -19,7 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const functionComplexity = vscode.commands.registerCommand('architext.complexitySelectedCode', calculateFunctionComplexity);
 
-	const checkProjectArchitecture = vscode.commands.registerCommand('architext.checkArchitecture', checkArchitecture);
+	const checkProjectArchitecture = vscode.commands.registerCommand('architext.checkArchitecture', () => checkArchitecture(context));
 
 	context.subscriptions.push(codeComments, functionComment, codeComplexity, functionComplexity, checkProjectArchitecture);
 }

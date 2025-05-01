@@ -12,7 +12,10 @@ export const readAllFiles = (
 
     for (const entry of entries) {
         const fullPath = path.join(dirPath, entry.name);
-        const relativePath = path.relative(basePath, fullPath).replace(/\\/g, '/');
+        let relativePath = path.relative(basePath, fullPath);
+        
+        // Normalize path separators
+        relativePath = relativePath.replace(/\\/g, '/');
 
         if (shouldIgnore(relativePath, ignorePatterns)) {
             continue;

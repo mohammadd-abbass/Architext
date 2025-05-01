@@ -3,8 +3,9 @@ import * as path from 'path';
 import { loadArchitecture } from '../utils/loadArchitecture';
 import { readAllFiles } from '../utils/readAllFiles';
 import { checkArchitectureAPI } from '../services/checkArchitectureAPI';
+import { loadArchIgnore } from '../utils/archIgnore';
 
-export const checkArchitecture = async () => {
+export const checkArchitecture = async (context: vscode.ExtensionContext) => {
     const workspaceFolders = vscode.workspace.workspaceFolders;
     if (!workspaceFolders) {
         vscode.window.showErrorMessage('No workspace open.');
@@ -19,7 +20,9 @@ export const checkArchitecture = async () => {
     }
 
     const entries: { path: string; type: 'file' | 'folder' }[] = [];
-    readAllFiles(rootPath, rootPath, entries);
+    const ignorePatterns = loadArchIgnore(context);
+
+    readAllFiles(rootPath, rootPath, entries, await ignorePatterns);
 
     try {
         console.log("hello");
