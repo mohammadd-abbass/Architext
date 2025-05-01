@@ -26,11 +26,14 @@ export const checkArchitecture = async () => {
         const response = await checkArchitectureAPI(entries, architecture);
         console.log(response);
         console.log("hello response");
-        if (response.success) {
-            vscode.window.showInformationMessage('Folder structure is valid.');
-        } else {
-            vscode.window.showWarningMessage(`Issues found: ${response.message || 'Structure mismatch.'}`);
-            console.log(response);
+        if (response?.message) {
+            vscode.window.showInformationMessage(response.message);
+        }
+
+        if (response?.issues?.length > 0) {
+            for (const issue of response.issues) {
+                vscode.window.showWarningMessage(issue);
+            }
         }
     } catch (error: any) {
         vscode.window.showErrorMessage(`Failed to validate architecture: ${error.message}`);
