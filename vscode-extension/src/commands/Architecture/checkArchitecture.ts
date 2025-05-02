@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import { loadArchitecture } from '../utils/loadArchitecture';
-import { readAllFiles } from '../utils/readAllFiles';
-import { checkArchitectureAPI } from '../services/checkArchitectureAPI';
-import { loadArchIgnore } from '../utils/archIgnore';
+import { loadArchitecture } from '../../utils/loadArchitecture';
+import { readAllFiles } from '../../utils/readAllFiles';
+import { checkArchitectureAPI } from '../../services/checkArchitectureAPI';
+import { loadArchIgnore } from '../../utils/archIgnore';
 
 export const checkArchitecture = async (context: vscode.ExtensionContext) => {
     const workspaceFolders = vscode.workspace.workspaceFolders;

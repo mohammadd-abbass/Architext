@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
-import { checkArchitecture } from './checkArchitecture';
-import { commentCode } from './commentCode';
-import { commentFunction } from './commentFunction';
-import { calculateComplexityCode } from './calcComplexity';
-import { calculateFunctionComplexity } from './funcComplexity';
+import { checkArchitecture } from './Architecture/checkArchitecture';
+import { commentCode } from './Comments/commentCode';
+import { commentFunction } from './Comments/commentFunction';
+import { calculateComplexityCode } from './Complexity/calcComplexity';
+import { calculateFunctionComplexity } from './Complexity/funcComplexity';
 
 export const registerCommands = (context: vscode.ExtensionContext) => {
     context.subscriptions.push(
