@@ -1,32 +1,11 @@
-import * as vscode from 'vscode';
 import { calculateComplexityAPI } from '../../services/complexityAPI';
+import { processEditorAction } from '../../utils/editorUtils';
 
 export const calculateFunctionComplexity = async () => {
-    const editor = vscode.window.activeTextEditor;
-    if(!editor) {
-        return;
-    }
-
-    const selection = editor.selection;
-    const selectedText = editor.document.getText(selection);
-    const language = editor.document.languageId;
-
-    try {
-        vscode.window.withProgress({
-            location: vscode.ProgressLocation.Notification,
-            title: "Calculating complexity..."
-        }, async () => {
-            const result = await calculateComplexityAPI(selectedText, language);
-
-            const commentedCode = result.code;
-        
-            editor.edit(editBuilder => {
-            editBuilder.replace(selection, commentedCode);
-            });
-        
-            vscode.window.showInformationMessage('Complexity calculated of the selected code!');
-        });
-    } catch (error: any) {
-        vscode.window.showErrorMessage(`Failed to calculate complexity: ${error.message}`);
-    }
+    await processEditorAction({
+        title: "Calculating complexity...",
+        useSelection: true,
+        apiCall: calculateComplexityAPI,
+        successMessage: "Complexity calculated of the selected code!"
+    });
 };
