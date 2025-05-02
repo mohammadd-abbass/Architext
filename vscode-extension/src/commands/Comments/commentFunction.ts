@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { callFlaskAPI } from '../../services/apiClient';
+import { commentCodeAPI } from '../../services/commentAPI';
 
 export const commentFunction = async () => {
     const editor = vscode.window.activeTextEditor;
@@ -17,10 +17,7 @@ export const commentFunction = async () => {
         title: "Generating comments..."
         }, async () => {
 
-            const result = await callFlaskAPI('generateComments', {
-                code: selectedText,
-                language
-            });
+            const result = await commentCodeAPI(selectedText, language); 
         
             const commentedCode = result.code;
         
