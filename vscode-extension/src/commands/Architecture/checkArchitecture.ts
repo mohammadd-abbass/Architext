@@ -25,6 +25,10 @@ export const checkArchitecture = async (context: vscode.ExtensionContext) => {
     readAllFiles(rootPath, rootPath, entries, await ignorePatterns);
 
     try {
+        vscode.window.withProgress({
+            location: vscode.ProgressLocation.Notification,
+            title: "Checking architecture..."
+        }, async () => {
         const response = await checkArchitectureAPI(entries, architecture);
 
         const parsedResult = JSON.parse(response.result);
@@ -37,6 +41,7 @@ export const checkArchitecture = async (context: vscode.ExtensionContext) => {
                 vscode.window.showWarningMessage(issue);
             }
         }
+    });
     } catch (error: any) {
         vscode.window.showErrorMessage(`Failed to validate architecture: ${error.message}`);
     }
