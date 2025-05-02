@@ -25,10 +25,8 @@ export const checkArchitecture = async (context: vscode.ExtensionContext) => {
     readAllFiles(rootPath, rootPath, entries, await ignorePatterns);
 
     try {
-        console.log("hello");
         const response = await checkArchitectureAPI(entries, architecture);
-        console.log(response);
-        console.log("hello response");
+
         const parsedResult = JSON.parse(response.result);
         if (parsedResult?.message) {
             vscode.window.showInformationMessage(parsedResult.message);
