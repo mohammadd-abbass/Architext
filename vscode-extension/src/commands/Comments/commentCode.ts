@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { callFlaskAPI } from '../services/apiClient';
+import { callFlaskAPI } from '../../services/apiClient';
 
 export const commentCode = async () => {
     const editor = vscode.window.activeTextEditor;
