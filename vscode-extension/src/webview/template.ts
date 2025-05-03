@@ -56,7 +56,7 @@ export const getWebviewContent =  (
         </div>
     `).join('');
 
-    template = template.replace('${data.issues.map(...)', issueCardsHtml);
+    template = template.replace('<!-- ISSUE_CARDS_PLACEHOLDER -->', issueCardsHtml);
 
     return template;
 };
