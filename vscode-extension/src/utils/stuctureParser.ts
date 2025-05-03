@@ -8,7 +8,7 @@ export const renderFolderStructure = (structure: any): string => {
         `).join('');
     }
     return renderNode(structure);
-}
+};
 
 export const getIssueIcon = (issueType: 'missing-folder' | 'misplaced-file' | 'extraneous-folder'): string => {
     const icons = {
@@ -17,4 +17,4 @@ export const getIssueIcon = (issueType: 'missing-folder' | 'misplaced-file' | 'e
         'extraneous-folder': 'delete'
     };
     return icons[issueType] || 'info';
-}
+};
