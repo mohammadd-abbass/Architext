@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-import { renderFolderStructure, getIssueIcon } from '../utils/renderFolderStructure';
+import { re, getIssueIcon } from '../utils/stuctureParser';
 
 // Utility to generate a random nonce for CSP
 function getNonce(): string {
