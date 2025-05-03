@@ -1,4 +1,5 @@
 import json
+from prompts.structured_output import ARCHITECTURE_CHECK
 from utils.prompts_loader import load_prompt
 from services.openai_client import call_openai
 
@@ -23,4 +24,4 @@ def check_project_architecture(files, reference) -> str:
 
     prompt = prompt_template.replace("{{files}}", files_str).replace("{{reference}}", reference_str)
 
-    return call_openai(prompt)
+    return call_openai(prompt, ARCHITECTURE_CHECK)

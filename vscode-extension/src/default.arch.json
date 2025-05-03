@@ -4,5 +4,5 @@
       "services": ["src/services"],
       "models": ["src/models"]
     }
-  }
+}
   

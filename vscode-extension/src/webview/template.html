@@ -12,11 +12,21 @@
     <link nonce="${nonce}" rel="stylesheet" href="${stylesIssuesUri}">
 </head>
 <body>
+    <div class="header">
+        <div class="header-content">
+            <h1 class="project-title">
+                <span class="logo-accent">Arch</span>itext
+            </h1>
+        </div>
+    </div>
+    
     <div class="dashboard">
         <div class="summary-card">
-            <h2>${data.summary}</h2>
-            <div class="severity-indicator">
-                <span class="critical">${data.issues.length} Issues Found</span>
+            <div class="summary-header">
+                <h2>📋 ${data.summary}</h2>
+                <div class="severity-indicator">
+                    <span class="critical">⚠️ ${data.issues.length} Issues Found</span>
+                </div>
             </div>
         </div>
 
@@ -25,7 +35,13 @@
         </div>
 
         <div class="structure-section">
-            <h2>Recommended Structure</h2>
+            <div class="section-header">
+                <h2>🗂 Recommended Structure</h2>
+                <div class="legend">
+                    <span class="legend-item"><span class="folder-icon">📂</span> Folder</span>
+                    <span class="legend-item"><span class="file-icon">📄</span> File</span>
+                </div>
+            </div>
             <div class="folder-tree">
                 ${renderFolderStructure(data.recommendedStructure)}
             </div>
