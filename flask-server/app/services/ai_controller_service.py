@@ -19,7 +19,7 @@ def calculate_function_complexity(code: str, language: str) -> str:
 def check_project_architecture(files, reference) -> str:
     prompt_template = load_prompt("refArchitecture.md")
     
-    files_str = json.dumps([file.__dict__ for file in files], indent=2)  # assuming FileItem is a class
+    files_str = json.dumps([file.__dict__ for file in files], indent=2)  
     reference_str = json.dumps(reference, indent=2)
 
     prompt = prompt_template.replace("{{files}}", files_str).replace("{{reference}}", reference_str)
