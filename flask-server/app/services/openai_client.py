@@ -33,4 +33,4 @@ def call_openai(prompt: str, structure_format = None) -> str:
     print("#####################################################")
     print(response.output_text)
     print("#######################################")
-    return response.output_text
+    return response.output_text.strip()
