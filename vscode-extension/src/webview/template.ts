@@ -1,56 +1,70 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
+import { getNonce } from '../utils/getNonce'; // helper function you'll create
 import { renderFolderStructure, getIssueIcon } from '../utils/stuctureParser';
 
-// Utility to generate a random nonce for CSP
-function getNonce(): string {
-  let text = '';
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  for (let i = 0; i < 32; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
+export function getWebviewContent(
+    context: vscode.ExtensionContext,
+    webview: vscode.Webview,
+    data: any
+): string {
+    const nonce = getNonce();
+
+    const templatePath = path.join(context.extensionPath,'src', 'webview', 'template.html');
+    let template = fs.readFileSync(templatePath, 'utf-8');
+
+    const scriptUri = webview.asWebviewUri(
+        vscode.Uri.file(path.join(context.extensionPath,'src', 'webview', 'static', 'scripts', 'main.js'))
+    );
+
+    const stylesMainUri = webview.asWebviewUri(
+        vscode.Uri.file(path.join(context.extensionPath,'src', 'webview', 'static', 'styles', 'main.css'))
+    );
+
+    const stylesIssuesUri = webview.asWebviewUri(
+        vscode.Uri.file(path.join(context.extensionPath,'src', 'webview', 'static', 'styles', 'issues.css'))
+    );
+
+    // Replace template variables
+    template = template
+        .replace(/\${webview.cspSource}/g, webview.cspSource)
+        .replace(/\${nonce}/g, nonce)
+        .replace(/\${scriptUri}/g, scriptUri.toString())
+        .replace(/\${stylesMainUri}/g, stylesMainUri.toString())
+        .replace(/\${stylesIssuesUri}/g, stylesIssuesUri.toString())
+        .replace(/\${data\.summary}/g, data.summary)
+        .replace(/\${data\.issues\.length}/g, data.issues.length.toString())
+        .replace('${renderFolderStructure(data.recommendedStructure)}', renderFolderStructure(data.recommendedStructure));
+
+    // Dynamically inject issue cards
+    const issueCardsHtml = data.issues.map((issue: any) => `
+        <div class="issue-card ${issue.type}">
+            <div class="issue-header">
+                <span class="icon ${getIssueIcon(issue.type)}"></span>
+                <h3>${issue.message}</h3>
+            </div>
+            <div class="issue-details">
+                <p><strong>Path:</strong> ${issue.filePath || issue.folderPath}</p>
+                <p><strong>Suggested Action:</strong> ${issue.suggestion}</p>
+                <button class="action-button" 
+                        data-command="applySuggestion" 
+                        data-suggestion="${escapeHtml(issue.suggestion)}">
+                    Apply Suggestion
+                </button>
+            </div>
+        </div>
+    `).join('');
+
+    template = template.replace('${data.issues.map(...)', issueCardsHtml);
+
+    return template;
 }
 
-export function getWebviewContent(
-  context: vscode.ExtensionContext,
-  webview: vscode.Webview,
-  data: any
-): string {
-  const nonce = getNonce();
-
-  // Paths to our static files in the extension
-  const scriptPathOnDisk = vscode.Uri.file(
-    path.join(context.extensionPath, 'src', 'webview', 'static', 'scripts', 'main.js')
-  );
-  const styleMainPathOnDisk = vscode.Uri.file(
-    path.join(context.extensionPath, 'src', 'webview', 'static', 'styles', 'main.css')
-  );
-  // You can add additional style files similarly
-  const styleIssuesPathOnDisk = styleMainPathOnDisk;
-
-  // Convert to webview URIs
-  const scriptUri = webview.asWebviewUri(scriptPathOnDisk);
-  const stylesMainUri = webview.asWebviewUri(styleMainPathOnDisk);
-  const stylesIssuesUri = webview.asWebviewUri(styleIssuesPathOnDisk);
-
-  // Load the HTML template
-  const templatePath = path.join(context.extensionPath, 'src', 'webview', 'template.html');
-  const template = fs.readFileSync(templatePath, 'utf8');
-
-  const html = new Function(
-    'data', 'nonce', 'scriptUri', 'stylesMainUri', 'stylesIssuesUri', 'getIssueIcon', 'renderFolderStructure',
-    `return \`${template}\`;`
-  )(
-    data,
-    nonce,
-    scriptUri.toString(),
-    stylesMainUri.toString(),
-    stylesIssuesUri.toString(),
-    getIssueIcon,
-    renderFolderStructure
-  );
-
-  return html;
+function escapeHtml(text: string): string {
+    return text.replace(/&/g, '&amp;')
+               .replace(/</g, '&lt;')
+               .replace(/>/g, '&gt;')
+               .replace(/"/g, '&quot;')
+               .replace(/'/g, '&#039;');
 }
