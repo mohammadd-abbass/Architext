@@ -1,181 +1,166 @@
+
 body {
-    color: #10212F;
+    color: #CCCCCC;
+    background-color: #0D1A25;
+    font-family: var(--vscode-font-family);
+    font-size: var(--vscode-font-size);
+    margin: 0;
+    padding: 0;
 }
 
 .header {
-    background: white;
-    box-shadow: 0 2px 8px rgba(16,33,47,0.1);
-    padding: 16px 0;
+    background: #10212F;
+    border-bottom: 1px solid #1D2B3A;
+    padding: 12px 0;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
 .project-title {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 700;
-    color: #10212F;
-    display: flex;
-    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #E6E6E6;
+    letter-spacing: 0.5px;
 }
 
 .logo-accent {
-    color: #ffc400;
-    font-weight: 800;
-    position: relative;
-}
-
-.logo-accent::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #ffc400 0%, #10212F 100%);
+    color: #FFC400;
+    font-weight: 700;
 }
 
 .dashboard {
+    margin-top: 1.5rem;
     padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fef8f2;
-    min-height: 100vh;
+    background: #0D1A25;
 }
 
 .summary-card {
-    background: #10212F;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    color: white;
-}
-
-.summary-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.severity-indicator {
-    background: #ffc400;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 600;
-    color: #10212F;
-}
-
-.issues-container {
-    margin-bottom: 30px;
-    display: grid;
-    gap: 15px;
-}
-
-.issue-card {
-    background: white;
-    border-left: 4px solid;
-    border-radius: 8px;
-    padding: 18px;
-    box-shadow: 0 2px 8px rgba(16,33,47,0.1);
-    transition: transform 0.2s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.issue-card:hover {
-    transform: translateY(-2px);
-}
-
-.issue-card.missing-folder { border-color: #ffc400; }
-.issue-card.misplaced-file { border-color: #10212F; }
-.issue-card.extraneous-folder { border-color: #dc3545; }
-
-.issue-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.icon {
-    width: 24px;
-    height: 24px;
-    background-size: contain;
-    flex-shrink: 0;
-}
-
-.icon.missing-folder { background-image: url('warning-icon.svg'); filter: invert(75%) sepia(63%) saturate(1407%) hue-rotate(358deg) brightness(101%) contrast(105%); }
-.icon.misplaced-file { background-image: url('move-icon.svg'); filter: invert(13%) sepia(20%) saturate(1388%) hue-rotate(169deg) brightness(94%) contrast(97%); }
-.icon.extraneous-folder { background-image: url('delete-icon.svg'); filter: invert(32%) sepia(64%) saturate(2832%) hue-rotate(340deg) brightness(92%) contrast(89%); }
-
-.action-button {
-    background: #ffc400;
-    color: #10212F;
-    border: none;
-    padding: 8px 20px;
+    background: #15202B;
+    border: 1px solid #1D2B3A;
     border-radius: 4px;
-    cursor: pointer;
-    margin-top: 12px;
-    font-weight: 600;
-    transition: background 0.2s ease;
-}
-
-.action-button:hover {
-    background: #e6b000;
-}
-
-.folder-tree {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(16,33,47,0.1);
-    font-family: 'SF Mono', Menlo, monospace;
-    color: #10212F;
-}
-
-.folder-level {
-    position: relative;
-    padding-left: 25px;
-    margin: 4px 0;
-}
-
-.folder-level::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: rgba(16,33,47,0.1);
-}
-
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 16px;
     margin-bottom: 16px;
 }
 
+.severity-indicator {
+    background: #FFC40033;
+    border: 1px solid #FFC40066;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #FFC400;
+}
+
+.issues-container {
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.issue-card {
+    background: #15202B;
+    border-left: 3px solid;
+    border-radius: 4px;
+    padding: 16px;
+    border-color: currentColor;
+    margin: 8px 0;
+}
+
+.issue-header h3 {
+    font-size: 14px;
+    margin: 0;
+    color: #E6E6E6;
+}
+
+.issue-details {
+    font-size: 13px;
+    color: #999;
+    margin-top: 8px;
+}
+
+.action-button {
+    background: #FFC400;
+    color: #10212F;
+    border: none;
+    padding: 6px 16px;
+    font-size: 13px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.action-button:hover {
+    opacity: 0.9;
+}
+
+.folder-tree {
+    background: #15202B;
+    border: 1px solid #1D2B3A;
+    padding: 16px;
+    border-radius: 4px;
+    font-family: var(--vscode-editor-font-family);
+    font-size: 13px;
+}
+
+.section-header {
+    margin-bottom: 12px;
+}
+
+.section-header h2 {
+    font-size: 14px;
+    color: #E6E6E6;
+    margin: 0;
+}
+
 .legend {
-    display: flex;
-    gap: 20px;
-    font-size: 0.9em;
-    color: #666;
+    gap: 16px;
+    font-size: 13px;
 }
 
 .legend-item {
-    display: flex;
-    align-items: center;
     gap: 6px;
+    color: #999;
 }
 
-.folder-icon, .file-icon {
-    font-size: 1.1em;
+.folder-icon::before {
+    content: '📁';
+    font-size: 14px;
+}
+
+.file-icon::before {
+    content: '📄';
+    font-size: 14px;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* More compact spacing */
+.header-content, .dashboard {
+    max-width: 100%;
+    padding: 0 16px;
+}
+
+/* VS Code-like tree structure */
+.folder-level {
+    padding-left: 20px;
+    margin: 2px 0;
+    position: relative;
+}
+
+.folder-level::before {
+    left: 6px;
+    background: #30475A;
+}
+
+.folder-level::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 11px;
+    width: 8px;
+    height: 1px;
+    background: #30475A;
 }
