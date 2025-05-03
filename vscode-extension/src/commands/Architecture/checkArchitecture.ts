@@ -31,10 +31,6 @@ export const checkArchitecture = async (context: vscode.ExtensionContext) => {
             title: "Checking architecture..."
         }, async () => {
         const response = await checkArchitectureAPI(entries, architecture);
-        console.log(`the following is the response ${response}`);
-        console.log(`the following is the response.result ${response.result}`);
-        console.log(`the following is the response.result.issues ${response.result.issues}`);
-        console.log(`the following is the response.result.summary ${response.result.summary}`);
 
         const parsedResult = JSON.parse(response.result);
         console.log(parsedResult);
