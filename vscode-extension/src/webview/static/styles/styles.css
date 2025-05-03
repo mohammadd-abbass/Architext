@@ -1,0 +1,69 @@
+.dashboard {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.summary-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.severity-indicator {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #dc3545;
+}
+
+.issues-container {
+    margin-bottom: 30px;
+}
+
+.issue-card {
+    background: white;
+    border-left: 4px solid;
+    border-radius: 6px;
+    margin: 10px 0;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.issue-card.missing-folder { border-color: #ffc107; }
+.issue-card.misplaced-file { border-color: #007bff; }
+.issue-card.extraneous-folder { border-color: #dc3545; }
+
+.issue-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+}
+
+.icon.missing-folder { background-image: url('warning-icon.svg'); }
+.icon.misplaced-file { background-image: url('move-icon.svg'); }
+.icon.extraneous-folder { background-image: url('delete-icon.svg'); }
+
+.action-button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.folder-tree {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: monospace;
+}
