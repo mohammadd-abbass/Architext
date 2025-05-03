@@ -59,7 +59,7 @@ export const getWebviewContent =  (
     template = template.replace('${data.issues.map(...)', issueCardsHtml);
 
     return template;
-}
+};
 
 const escapeHtml = (text: string): string => {
     return text.replace(/&/g, '&amp;')
@@ -67,4 +67,4 @@ const escapeHtml = (text: string): string => {
                .replace(/>/g, '&gt;')
                .replace(/"/g, '&quot;')
                .replace(/'/g, '&#039;');
-}
+};
