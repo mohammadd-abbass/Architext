@@ -21,7 +21,7 @@ export class WebviewProvider {
                 {
                     enableScripts: true,
                     localResourceRoots: [
-                        vscode.Uri.file(path.join(this.context.extensionPath, 'media'))
+                        vscode.Uri.file(path.join(this.context.extensionPath, 'src', 'webview', 'static'))
                     ]
                 }
             );
