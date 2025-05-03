@@ -4,11 +4,11 @@ import * as fs from 'fs';
 import { getNonce } from '../utils/getNonce'; // helper function you'll create
 import { renderFolderStructure, getIssueIcon } from '../utils/stuctureParser';
 
-export function getWebviewContent(
+export const getWebviewContent =  (
     context: vscode.ExtensionContext,
     webview: vscode.Webview,
     data: any
-): string {
+): string => {
     const nonce = getNonce();
 
     const templatePath = path.join(context.extensionPath,'src', 'webview', 'template.html');
@@ -61,7 +61,7 @@ export function getWebviewContent(
     return template;
 }
 
-function escapeHtml(text: string): string {
+const escapeHtml = (text: string): string => {
     return text.replace(/&/g, '&amp;')
                .replace(/</g, '&lt;')
                .replace(/>/g, '&gt;')
