@@ -21,23 +21,7 @@
         </div>
 
         <div class="issues-container">
-            ${data.issues.map(issue => `
-                <div class="issue-card ${issue.type}">
-                    <div class="issue-header">
-                        <span class="icon ${getIssueIcon(issue.type)}"></span>
-                        <h3>${issue.message}</h3>
-                    </div>
-                    <div class="issue-details">
-                        <p><strong>Path:</strong> ${issue.filePath || issue.folderPath}</p>
-                        <p><strong>Suggested Action:</strong> ${issue.suggestion}</p>
-                        <button class="action-button" 
-                                data-command="applySuggestion" 
-                                data-suggestion="${escapeHtml(issue.suggestion)}">
-                            Apply Suggestion
-                        </button>
-                    </div>
-                </div>
-            `).join('')}
+            <!-- ISSUE_CARDS_PLACEHOLDER -->
         </div>
 
         <div class="structure-section">
