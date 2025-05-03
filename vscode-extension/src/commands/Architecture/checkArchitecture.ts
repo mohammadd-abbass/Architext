@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
-import { loadArchitecture } from '../utils/loadArchitecture';
-import { readAllFiles } from '../utils/readAllFiles';
-import { checkArchitectureAPI } from '../services/checkArchitectureAPI';
-import { loadArchIgnore } from '../utils/archIgnore';
+import { loadArchitecture } from '../../utils/loadArchitecture';
+import { readAllFiles } from '../../utils/readAllFiles';
+import { checkArchitectureAPI } from '../../services/checkArchitectureAPI';
+import { loadArchIgnore } from '../../utils/archIgnore';
 
 export const checkArchitecture = async (context: vscode.ExtensionContext) => {
     const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -25,10 +25,12 @@ export const checkArchitecture = async (context: vscode.ExtensionContext) => {
     readAllFiles(rootPath, rootPath, entries, await ignorePatterns);
 
     try {
-        console.log("hello");
+        vscode.window.withProgress({
+            location: vscode.ProgressLocation.Notification,
+            title: "Checking architecture..."
+        }, async () => {
         const response = await checkArchitectureAPI(entries, architecture);
-        console.log(response);
-        console.log("hello response");
+
         const parsedResult = JSON.parse(response.result);
         if (parsedResult?.message) {
             vscode.window.showInformationMessage(parsedResult.message);
@@ -39,6 +41,7 @@ export const checkArchitecture = async (context: vscode.ExtensionContext) => {
                 vscode.window.showWarningMessage(issue);
             }
         }
+    });
     } catch (error: any) {
         vscode.window.showErrorMessage(`Failed to validate architecture: ${error.message}`);
     }
