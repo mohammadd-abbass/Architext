@@ -1,69 +1,181 @@
+body {
+    color: #10212F;
+}
+
+.header {
+    background: white;
+    box-shadow: 0 2px 8px rgba(16,33,47,0.1);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.project-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #10212F;
+    display: flex;
+    align-items: center;
+}
+
+.logo-accent {
+    color: #ffc400;
+    font-weight: 800;
+    position: relative;
+}
+
+.logo-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ffc400 0%, #10212F 100%);
+}
+
 .dashboard {
     padding: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fef8f2;
+    min-height: 100vh;
 }
 
 .summary-card {
-    background: #f8f9fa;
+    background: #10212F;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    color: white;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .severity-indicator {
-    margin-top: 10px;
-    font-weight: bold;
-    color: #dc3545;
+    background: #ffc400;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #10212F;
 }
 
 .issues-container {
     margin-bottom: 30px;
+    display: grid;
+    gap: 15px;
 }
 
 .issue-card {
     background: white;
     border-left: 4px solid;
-    border-radius: 6px;
-    margin: 10px 0;
-    padding: 15px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(16,33,47,0.1);
+    transition: transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.issue-card.missing-folder { border-color: #ffc107; }
-.issue-card.misplaced-file { border-color: #007bff; }
+.issue-card:hover {
+    transform: translateY(-2px);
+}
+
+.issue-card.missing-folder { border-color: #ffc400; }
+.issue-card.misplaced-file { border-color: #10212F; }
 .issue-card.extraneous-folder { border-color: #dc3545; }
 
 .issue-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    cursor: pointer;
+    gap: 12px;
+    margin-bottom: 12px;
 }
 
 .icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     background-size: contain;
+    flex-shrink: 0;
 }
 
-.icon.missing-folder { background-image: url('warning-icon.svg'); }
-.icon.misplaced-file { background-image: url('move-icon.svg'); }
-.icon.extraneous-folder { background-image: url('delete-icon.svg'); }
+.icon.missing-folder { background-image: url('warning-icon.svg'); filter: invert(75%) sepia(63%) saturate(1407%) hue-rotate(358deg) brightness(101%) contrast(105%); }
+.icon.misplaced-file { background-image: url('move-icon.svg'); filter: invert(13%) sepia(20%) saturate(1388%) hue-rotate(169deg) brightness(94%) contrast(97%); }
+.icon.extraneous-folder { background-image: url('delete-icon.svg'); filter: invert(32%) sepia(64%) saturate(2832%) hue-rotate(340deg) brightness(92%) contrast(89%); }
 
 .action-button {
-    background: #28a745;
-    color: white;
+    background: #ffc400;
+    color: #10212F;
     border: none;
-    padding: 8px 16px;
+    padding: 8px 20px;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 12px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.action-button:hover {
+    background: #e6b000;
 }
 
 .folder-tree {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 6px;
-    font-family: monospace;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(16,33,47,0.1);
+    font-family: 'SF Mono', Menlo, monospace;
+    color: #10212F;
+}
+
+.folder-level {
+    position: relative;
+    padding-left: 25px;
+    margin: 4px 0;
+}
+
+.folder-level::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(16,33,47,0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.legend {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.folder-icon, .file-icon {
+    font-size: 1.1em;
 }
