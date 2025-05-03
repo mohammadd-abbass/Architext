@@ -41,7 +41,7 @@ export const checkArchitecture = async (context: vscode.ExtensionContext) => {
         const dataForWebview = {
             summary: parsedResult.summary || "Check completed",
             issues: parsedResult.issues, 
-            recommendedStructure: architecture
+            recommendedStructure: parsedResult.recommendedStructure,
         };
 
         const provider = new WebviewProvider(context);
