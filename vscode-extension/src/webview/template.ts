@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
-import { getNonce } from '../utils/getNonce'; // helper function you'll create
+import { getNonce } from '../utils/getNonce'; 
 import { renderFolderStructure, getIssueIcon } from '../utils/stuctureParser';
 
 export const getWebviewContent =  (
