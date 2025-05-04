@@ -51,9 +51,6 @@ def calculate_complexity():
     
 @ai.route("/checkArchitecture", methods=["POST"])
 def check_architecture():
-    print("hello")
-    print(request.json)
-
     try:
         data = CheckArchitectureRequestModel(**request.get_json())
         print(data)

@@ -1,8 +1,87 @@
 {
-    "layers": {
-      "controllers": ["src/controllers"],
-      "services": ["src/services"],
-      "models": ["src/models"]
-    }
+  "layers": {
+    "controllers": {
+      "paths": [
+        "src/controllers",
+        "app/controllers",
+        "backend/controllers",
+        "controllers"
+      ],
+      "filePattern": "*_controller.*"
+    },
+    "services": {
+      "paths": [
+        "src/services",
+        "app/services",
+        "backend/services",
+        "services"
+      ],
+      "filePattern": "*_service.*"
+    },
+    "models": {
+      "paths": [
+        "src/models",
+        "app/models",
+        "backend/models",
+        "models"
+      ],
+      "filePattern": "*_model.*"
+    },
+    "routes": {
+      "paths": [
+        "src/routes",
+        "app/routes",
+        "backend/routes",
+        "routes"
+      ],
+      "filePattern": "*_route.*"
+    },
+    "utils": {
+      "paths": [
+        "src/utils",
+        "app/utils",
+        "backend/utils",
+        "utils"
+      ],
+      "filePattern": "*_util.*"
+    },
+    "middlewares": {
+      "paths": [
+        "src/middlewares",
+        "app/middlewares",
+        "backend/middlewares",
+        "middlewares"
+      ],
+      "filePattern": "*_middleware.*"
+    },
+    "config": {
+      "paths": [
+        "src/config",
+        "app/config",
+        "backend/config",
+        "config"
+      ],
+      "filePattern": "*.js"
+    },
+    "tests": {
+      "paths": [
+        "tests",
+        "src/tests",
+        "app/tests"
+      ],
+      "filePattern": "*.test.*"
+    },
+    "public": {
+      "paths": ["public"],
+      "filePattern": "*"
+    },
+    "mainFiles": [
+      "index.js",
+      "server.js",
+      "app.js"
+    ],
+    "packageFile": [
+      "package.json"
+    ]
   }
-  
+}
