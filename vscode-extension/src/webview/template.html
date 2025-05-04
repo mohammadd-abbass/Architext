@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'none';
+        img-src ${webview.cspSource};
+        script-src 'nonce-${nonce}';
+        style-src 'nonce-${nonce}';
+    ">
+    <link nonce="${nonce}" rel="stylesheet" href="${stylesMainUri}">
+    <link nonce="${nonce}" rel="stylesheet" href="${stylesIssuesUri}">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1 class="project-title">
+                <span class="logo-accent">Arch</span>itext
+            </h1>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="summary-card">
+            <div class="summary-header">
+                <h2>📋 ${data.summary}</h2>
+                <div class="severity-indicator">
+                    <span class="critical">⚠️ ${data.issues.length} Issues Found</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="issues-container">
+            <!-- ISSUE_CARDS_PLACEHOLDER -->
+        </div>
+
+        <div class="structure-section">
+            <div class="section-header">
+                <h2>🗂 Recommended Structure</h2>
+                <div class="legend">
+                    <span class="legend-item"><span class="folder-icon"></span> Folder</span>
+                    <span class="legend-item"><span class="file-icon"></span> File</span>
+                </div>
+            </div>
+            <div class="folder-tree">
+                ${renderFolderStructure(data.recommendedStructure)}
+            </div>
+        </div>
+    </div>
+
+    <script nonce="${nonce}" src="${scriptUri}"></script>
+</body>
+</html>

@@ -4,6 +4,7 @@ import { loadArchitecture } from '../../utils/loadArchitecture';
 import { readAllFiles } from '../../utils/readAllFiles';
 import { checkArchitectureAPI } from '../../services/checkArchitectureAPI';
 import { loadArchIgnore } from '../../utils/archIgnore';
+import { WebviewProvider } from '../../webview/WebviewProvider';
 
 export const checkArchitecture = async (context: vscode.ExtensionContext) => {
     const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -32,15 +33,15 @@ export const checkArchitecture = async (context: vscode.ExtensionContext) => {
         const response = await checkArchitectureAPI(entries, architecture);
 
         const parsedResult = JSON.parse(response.result);
-        if (parsedResult?.message) {
-            vscode.window.showInformationMessage(parsedResult.message);
-        }
+        console.log(parsedResult);
+        const dataForWebview = {
+            summary: parsedResult.summary || "Check completed",
+            issues: parsedResult.issues, 
+            recommendedStructure: parsedResult.recommendedStructure,
+        };
 
-        if (parsedResult?.issues?.length > 0) {
-            for (const issue of parsedResult.issues) {
-                vscode.window.showWarningMessage(issue);
-            }
-        }
+        const provider = new WebviewProvider(context);
+        provider.showReport(dataForWebview);
     });
     } catch (error: any) {
         vscode.window.showErrorMessage(`Failed to validate architecture: ${error.message}`);
