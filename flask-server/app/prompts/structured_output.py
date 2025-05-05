@@ -129,5 +129,43 @@ ARCHITECTURE_CHECK = {
 
 
 FILE_ARCHITECTURE_CHECK = {
-    
+  "diagnostics": [
+    {
+      "message": "Function 'fetchData' should follow camelCase naming convention.",
+      "severity": "warning",
+      "line": 12,
+      "range": {
+        "start": { "line": 12, "character": 9 },
+        "end": { "line": 12, "character": 18 }
+      }
+    },
+    {
+      "message": "Function 'getUserData' is 52 lines long, exceeding the maximum allowed length of 40.",
+      "severity": "warning",
+      "line": 34,
+      "range": {
+        "start": { "line": 34, "character": 0 },
+        "end": { "line": 34, "character": 12 }
+      }
+    },
+    {
+      "message": "Missing JSDoc comment for function 'saveUser'.",
+      "severity": "info",
+      "line": 75,
+      "range": {
+        "start": { "line": 75, "character": 0 },
+        "end": { "line": 75, "character": 9 }
+      }
+    },
+    {
+      "message": "Disallowed pattern 'console.log' found.",
+      "severity": "error",
+      "line": 90,
+      "range": {
+        "start": { "line": 90, "character": 2 },
+        "end": { "line": 90, "character": 14 }
+      }
+    }
+  ]
 }
+
