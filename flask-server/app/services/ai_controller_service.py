@@ -25,3 +25,14 @@ def check_project_architecture(files, reference) -> str:
     prompt = prompt_template.replace("{{files}}", files_str).replace("{{reference}}", reference_str)
 
     return call_openai(prompt, ARCHITECTURE_CHECK)
+
+
+def analyze_file_against_architecture(code: str, language, reference: dict) -> str:
+    prompt_template = load_prompt("analyze.md") 
+
+    code_str = code
+    reference_str = json.dumps(reference, indent=2)
+
+    prompt = prompt_template.replace("{{code}}", code_str).replace("{{language}}", language).replace("{{reference}}", reference_str)
+
+    return call_openai(prompt, ARCHITECTURE_CHECK)
