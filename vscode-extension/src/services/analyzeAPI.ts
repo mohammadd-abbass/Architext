@@ -6,7 +6,7 @@ export const analyzeCode = async (
     language: string,
     referenceArchitecture: any
 ) => {
-    return await callFlaskAPI('/checkArchitecture', {
+    return await callFlaskAPI('/analyze', {
         code,
         language,
         referenceArchitecture
