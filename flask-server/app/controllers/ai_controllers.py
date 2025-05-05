@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from models.classes import generateCommentsRequestModel, calculateComplexityRequestModel, CheckArchitectureRequestModel
-from services.ai_controller_service import generate_function_comments, calculate_function_complexity, check_project_architecture
+from services.ai_controller_service import generate_function_comments, calculate_function_complexity, check_project_architecture, AnalyzeFileArchitectureRequestModel
 from pydantic import ValidationError
 
 ai = Blueprint("ai", __name__)
@@ -68,3 +68,22 @@ def check_architecture():
         traceback.print_exc()
         return jsonify({"error": f"Internal Server Error: {str(e)}"}), 500
 
+
+@ai.route("/analyze", methods=["POST"])
+def analyze_file_architecture():
+    try:
+        data = AnalyzeFileArchitectureRequestModel(**request.get_json())
+    except ValidationError as e:
+        return jsonify({"error": str(e)}), 400
+
+    file_code = data.code
+    reference = data.referenceArchitecture
+
+    try:
+        from services.ai_controller_service import analyze_file_against_architecture
+        result = analyze_file_against_architecture(file_code, reference)
+        return jsonify({"result": result})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": f"Internal Server Error: {str(e)}"}), 500
