@@ -16,3 +16,8 @@ class FileItem(BaseModel):
 class CheckArchitectureRequestModel(BaseModel):
     files: List[FileItem]
     referenceArchitecture: Dict[str, Dict[str, List[StrictStr]]]
+
+class AnalyzeFileArchitectureRequestModel(BaseModel):
+    code: StrictStr = Field(..., min_length=1)
+    language : StrictStr = Field(..., min_length=1)
+    referenceArchitecture: Dict[str, Dict[str, List[StrictStr]]]

@@ -126,3 +126,8 @@ ARCHITECTURE_CHECK = {
         },
     }
 }
+
+
+FILE_ARCHITECTURE_CHECK = {
+    
+}
