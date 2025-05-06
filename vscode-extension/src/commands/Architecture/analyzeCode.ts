@@ -27,6 +27,7 @@ export const analyzeCurrentFile = async () => {
             },
             async () => {
                 const response = await analyzeCode(code, languageId, referenceArchitecture);
+                console.log(response);
                 const parsed = JSON.parse(response.result);
 
                 const diagnostics: vscode.Diagnostic[] = parsed.diagnostics.map((item: any) => {
@@ -51,7 +52,7 @@ export const analyzeCurrentFile = async () => {
 
                 const diagnosticCollection = vscode.languages.createDiagnosticCollection('codeAnalysis');
                 diagnosticCollection.set(document.uri, diagnostics);
-                
+
                 vscode.window.showInformationMessage(`Analysis completed with ${diagnostics.length} issue(s).`);
             }
         );
