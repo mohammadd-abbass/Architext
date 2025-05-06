@@ -46,6 +46,11 @@
       {
         "command": "architext.checkArchitecture",
         "title": "Check Reference Architecture"
+      },
+
+      {
+        "command": "architext.analyzeCode",
+        "title": "Analyze code structure"
       }
     ],
     
