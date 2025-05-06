@@ -13,7 +13,6 @@ export const registerCommands = (context: vscode.ExtensionContext) => {
         vscode.commands.registerCommand('architext.addCodeComments', commentCode),
         vscode.commands.registerCommand('architext.commentSelectedCode', commentFunction),
         vscode.commands.registerCommand('architext.caculateCodeComplexity', calculateComplexityCode),
-        vscode.commands.registerCommand('architext.complexitySelectedCode', calculateFunctionComplexity),
         vscode.commands.registerCommand('architext.complexitySelectedCode', calculateFunctionComplexity)
     );
 };
