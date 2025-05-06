@@ -76,13 +76,17 @@ def analyze_file_architecture():
     except ValidationError as e:
         return jsonify({"error": str(e)}), 400
 
-    file_code = data.code
+    code = data.code
     language = data.language
     reference = data.referenceArchitecture
 
+    print(code)
+    print(language)
+    print(reference)
+
     try:
         from services.ai_controller_service import analyze_file_against_architecture
-        result = analyze_file_against_architecture(file_code, reference, language)
+        result = analyze_file_against_architecture(code, language, reference)
         return jsonify({"result": result})
     except Exception as e:
         import traceback
