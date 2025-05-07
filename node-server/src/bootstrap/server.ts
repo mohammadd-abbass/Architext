@@ -4,7 +4,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-import authRoutes from '../routes/api/auth.routes';
+import authRoutes from '../routes/api/auth.routes.js';
 
 const app = express();
 
