@@ -127,45 +127,78 @@ ARCHITECTURE_CHECK = {
     }
 }
 
-
 FILE_ARCHITECTURE_CHECK = {
-  "diagnostics": [
-    {
-      "message": "Function 'fetchData' should follow camelCase naming convention.",
-      "severity": "warning",
-      "line": 12,
-      "range": {
-        "start": { "line": 12, "character": 9 },
-        "end": { "line": 12, "character": 18 }
-      }
-    },
-    {
-      "message": "Function 'getUserData' is 52 lines long, exceeding the maximum allowed length of 40.",
-      "severity": "warning",
-      "line": 34,
-      "range": {
-        "start": { "line": 34, "character": 0 },
-        "end": { "line": 34, "character": 12 }
-      }
-    },
-    {
-      "message": "Missing JSDoc comment for function 'saveUser'.",
-      "severity": "info",
-      "line": 75,
-      "range": {
-        "start": { "line": 75, "character": 0 },
-        "end": { "line": 75, "character": 9 }
-      }
-    },
-    {
-      "message": "Disallowed pattern 'console.log' found.",
-      "severity": "error",
-      "line": 90,
-      "range": {
-        "start": { "line": 90, "character": 2 },
-        "end": { "line": 90, "character": 14 }
-      }
+    "format": {
+        "type": "json_schema",
+        "name": "file_architecture_check",
+        "schema": {
+            "type": "object",
+            "properties": {
+                "diagnostics": {
+                    "type": "array",
+                    "description": "A list of diagnostics found in the code.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "message": {
+                                "type": "string",
+                                "description": "Description of the diagnostic issue."
+                            },
+                            "severity": {
+                                "type": "string",
+                                "enum": ["info", "warning", "error"],
+                                "description": "Severity level of the diagnostic."
+                            },
+                            "line": {
+                                "type": "integer",
+                                "description": "Line number where the issue occurs."
+                            },
+                            "range": {
+                                "type": "object",
+                                "description": "Character range for the issue.",
+                                "properties": {
+                                    "start": {
+                                        "type": "object",
+                                        "properties": {
+                                            "line": {
+                                                "type": "integer",
+                                                "description": "Start line number."
+                                            },
+                                            "character": {
+                                                "type": "integer",
+                                                "description": "Start character position."
+                                            }
+                                        },
+                                        "required": ["line", "character"],
+                                        "additionalProperties": False 
+                                    },
+                                    "end": {
+                                        "type": "object",
+                                        "properties": {
+                                            "line": {
+                                                "type": "integer",
+                                                "description": "End line number."
+                                            },
+                                            "character": {
+                                                "type": "integer",
+                                                "description": "End character position."
+                                            }
+                                        },
+                                        "required": ["line", "character"],
+                                        "additionalProperties": False 
+                                    }
+                                },
+                                "required": ["start", "end"],
+                                "additionalProperties": False
+                            }
+                        },
+                        "required": ["message", "severity", "line", "range"],
+                        "additionalProperties": False
+                    }
+                }
+            },
+            "required": ["diagnostics"],
+            "additionalProperties": False
+        }
     }
-  ]
 }
-
