@@ -11,3 +11,11 @@ export const registerUser = async (email: string, password: string) => {
   return prisma.user.create({ data: { email, password: hashed } });
 };
 
+export const validateUser = async (email: string, password: string) => {
+    const user = await prisma.user.findUnique({ where: { email } });
+    if (!user) return null;
+  
+    const match = await bcrypt.compare(password, user.password);
+    return match ? user : null;
+  };
+  
