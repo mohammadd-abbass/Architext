@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { createUser, findUserByEmail } from '../models/user.model';
-import { sendWelcomeEmail } from '../../providers/mail.provider';
+import { createUser, findUserByEmail } from '../models/user.model.js';
+import { sendWelcomeEmail } from '../../providers/mail.provider.js';
 import bcrypt from 'bcrypt';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'supersecret';
