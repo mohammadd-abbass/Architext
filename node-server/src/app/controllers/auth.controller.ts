@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
 import * as authService from '../services/auth.service';
+import { successResponse, errorResponse } from '../traits/response.trait';
 
 export const signupHandler = async (req: Request, res: Response) => {
   try {
     const user = await authService.signup(req.body);
-    res.status(201).json({ message: 'User created', user });
+    return successResponse(res, 'User created successfully', user, 201);
   } catch (err: any) {
     res.status(400).json({ error: err.message });
   }
