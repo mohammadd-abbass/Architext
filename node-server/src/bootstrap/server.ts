@@ -4,14 +4,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-const userRoutes = require('../routes/api/user.routes');
+// import userRoutes from '../routes/api/user.routes.js';
 
 const app = express();
 
 app.use(cors()); 
 app.use(bodyParser.json());
 
-app.use('/api/users', userRoutes);
+// app.use('/api/users', userRoutes);
 
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
