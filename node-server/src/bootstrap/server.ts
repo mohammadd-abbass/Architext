@@ -4,14 +4,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-// import userRoutes from '../routes/api/user.routes.js';
+import authRoutes from '../routes/api/auth.routes';
 
 const app = express();
 
 app.use(cors()); 
 app.use(bodyParser.json());
 
-// app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
