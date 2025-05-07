@@ -1,30 +1,20 @@
 import { Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
-import { registerUser, validateUser } from '../services/auth.service';
+import * as authService from '../services/auth.service';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'topSecret';
-
-export const signup = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+export const signupHandler = async (req: Request, res: Response) => {
   try {
-    const user = await registerUser(email, password);
-    res.status(201).json({ message: 'User created', user: { id: user.id, email: user.email } });
+    const user = await authService.signup(req.body);
+    res.status(201).json({ message: 'User created', user });
   } catch (err: any) {
     res.status(400).json({ error: err.message });
   }
 };
 
-export const login = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
-  const user = await validateUser(email, password);
-
-  if (!user) {
-    res.status(401).json({ error: 'Invalid credentials' });
+export const loginHandler = async (req: Request, res: Response) => {
+  try {
+    const { token, user } = await authService.login(req.body);
+    res.status(200).json({ message: 'Login successful', token, user });
+  } catch (err: any) {
+    res.status(401).json({ error: err.message });
   }
-
-  if (!JWT_SECRET) {
-    res.status(500).json({ error: 'JWT secret is not configured' });
-  }
-  const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
-  res.json({ token });
 };
