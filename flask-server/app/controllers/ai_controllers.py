@@ -72,6 +72,7 @@ def check_architecture():
 @ai.route("/analyze", methods=["POST"])
 def analyze_file_architecture():
     try:
+        print(request.get_json()),
         data = AnalyzeFileArchitectureRequestModel(**request.get_json())
     except ValidationError as e:
         return jsonify({"error": str(e)}), 400
