@@ -9,7 +9,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'supersecret';
 export const signup = async ({ name, email, password }: any) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await createUser({ name, email, password: hashedPassword });
-    await sendWelcomeEmail(user.email, user.name);
+    // await sendWelcomeEmail(user.email, user.name);
     return user;
   };
   
