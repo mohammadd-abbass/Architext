@@ -3,19 +3,19 @@ import * as authService from '../services/auth.service';
 import { successResponse, errorResponse } from '../traits/response.trait';
 
 export const signupHandler = async (req: Request, res: Response) => {
-  try {
+    try {
     const user = await authService.signup(req.body);
     return successResponse(res, 'User created successfully', user, 201);
-  } catch (err: any) {
-    res.status(400).json({ error: err.message });
-  }
+    } catch (err: any) {
+    return errorResponse(res, err.message, 400);
+    }
 };
 
 export const loginHandler = async (req: Request, res: Response) => {
-  try {
-    const { token, user } = await authService.login(req.body);
-    res.status(200).json({ message: 'Login successful', token, user });
-  } catch (err: any) {
-    res.status(401).json({ error: err.message });
-  }
+    try {
+        const { token, user } = await authService.login(req.body);
+        return successResponse(res, 'Login successful', { user, token });
+    } catch (err: any) {
+        return errorResponse(res, err.message, 401);
+    }
 };
