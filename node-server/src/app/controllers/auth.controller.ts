@@ -19,11 +19,11 @@ export const login = async (req: Request, res: Response) => {
   const user = await validateUser(email, password);
 
   if (!user) {
-    return res.status(401).json({ error: 'Invalid credentials' });
+    res.status(401).json({ error: 'Invalid credentials' });
   }
 
   if (!JWT_SECRET) {
-    return res.status(500).json({ error: 'JWT secret is not configured' });
+    res.status(500).json({ error: 'JWT secret is not configured' });
   }
   const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
   res.json({ token });
