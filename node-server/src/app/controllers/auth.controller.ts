@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { registerUser, validateUser } from '../services/auth.service';
 
-const JWT_SECRET = process.env.JWT_SECRET || '';
+const JWT_SECRET = process.env.JWT_SECRET || 'topSecret';
 
 export const signup = async (req: Request, res: Response) => {
   const { email, password } = req.body;
