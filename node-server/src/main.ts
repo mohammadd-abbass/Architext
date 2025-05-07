@@ -1,11 +1,11 @@
-import express from 'express';
-const app = express();
-const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Node.js is working!');
-});
+import dotenv from 'dotenv';
+import app from './bootstrap/server';
 
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running on port ${port}`);
+dotenv.config();
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
