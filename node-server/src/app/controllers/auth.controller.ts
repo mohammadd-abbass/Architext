@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { registerUser, validateUser } from '../services/auth.service';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'secret123';
+const JWT_SECRET = process.env.JWT_SECRET || '';
 
 export const signup = async (req: Request, res: Response) => {
   const { email, password } = req.body;
@@ -14,3 +14,17 @@ export const signup = async (req: Request, res: Response) => {
   }
 };
 
+export const login = async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+  const user = await validateUser(email, password);
+
+  if (!user) {
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+
+  if (!JWT_SECRET) {
+    return res.status(500).json({ error: 'JWT secret is not configured' });
+  }
+  const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
+  res.json({ token });
+};
