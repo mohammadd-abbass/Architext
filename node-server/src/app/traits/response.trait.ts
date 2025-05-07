@@ -7,3 +7,10 @@ export const successResponse = (res: Response, message: string, data: any = {}, 
       data,
     });
 };
+
+export const errorResponse = (res: Response, error: string, statusCode: number = 400) => {
+    return res.status(statusCode).json({
+      status: 'error',
+      message: error,
+    });
+};
