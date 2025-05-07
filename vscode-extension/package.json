@@ -46,6 +46,11 @@
       {
         "command": "architext.checkArchitecture",
         "title": "Check Reference Architecture"
+      },
+
+      {
+        "command": "architext.analyzeCode",
+        "title": "Analyze code structure"
       }
     ],
     
@@ -64,6 +69,12 @@
 
       {
         "command": "architext.checkArchitecture",
+        "key": "ctrl+alt+r",
+        "when": "editorTextFocus"
+      },
+
+      {
+        "command": "architext.analyzeCode",
         "key": "ctrl+alt+a",
         "when": "editorTextFocus"
       }
