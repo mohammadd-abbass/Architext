@@ -1,45 +1,36 @@
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
-export const sendWelcomeEmail = async (to: string, name: string) => {
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.SMTP_EMAIL,
-      pass: process.env.SMTP_PASSWORD,
-    },
-  });
+dotenv.config();
 
-  await transporter.sendMail({
-    from: process.env.SMTP_EMAIL,
-    to,
-    subject: 'Welcome to Architext',
-    html: `<h3>Hello ${name}!</h3><p>Welcome to our service. We're glad to have you.</p>`,
-  });
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+export const sendWelcomeEmail = async (toEmail: any, userName: String) => {
+  try {
+    const info = await transporter.sendMail({
+      from: `"Architext" <${process.env.EMAIL_USER}>`,
+      to: toEmail,
+      subject: 'Welcome to Our Service!',
+      html: `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <h2 style="color: #333;">Hi ${userName},</h2>
+        <p>Welcome to <strong>Architext</strong>! We're excited to have you join our community.</p>
+        <p>If you have any questions or need assistance, feel free to reply to this email — we're here to help.</p>
+        <p>Cheers,<br>The Architext Team</p>
+      </div>
+      `,
+    });
+
+    console.log('Email sent:', info.messageId);
+  } catch (err) {
+
+    console.error('Email sending failed:', err);
+  }
 };
 
-
-// export const sendWelcomeEmail = async (to: string, name: string) => {
-//     const transporter = nodemailer.createTransport({
-//       service: 'gmail',
-//       auth: {
-//         type: 'OAuth2',
-//         user: process.env.SMTP_EMAIL,
-//         clientId: process.env.OAUTH_CLIENTID,
-//         clientSecret: process.env.OAUTH_CLIENT_SECRET,
-//         refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-//         accessToken: process.env.OAUTH_ACCESS_TOKEN,
-//       },
-//     });
-  
-//     try {
-//       await transporter.sendMail({
-//         from: `"Architext" <${process.env.SMTP_EMAIL}>`,
-//         to,
-//         subject: 'Welcome to Architext',
-//         html: `<h3>Hello ${name}!</h3><p>Welcome to our service. We're glad to have you.</p>`,
-//       });
-//     } catch (error) {
-//       console.error('Email sending error:', error);
-//       throw new Error('Failed to send welcome email');
-//     }
-//   };
