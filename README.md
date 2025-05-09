@@ -5,7 +5,7 @@
 <!-- project overview -->
 <img src="./readme/title2.svg"/>
 
-> This project is a modern, AI-powered toolkit designed to enhance code quality, enforce structural consistency, and align software with custom reference architectures. It includes a smart Visual Studio Code extension that analyzes code for naming and style consistency, generates descriptive comments, estimates time complexity (Big O notation), and even translates code across languages. The system is supported by a React-based documentation and demo website with a live compiler, and an Electron-powered admin dashboard that provides real-time analytics, user activity tracking, and usage insights. Together, these tools aim to streamline development workflows and bring intelligent automation into the coding process.
+> Architext is an AI-powered toolkit that enhances code quality and enforces consistency with custom reference architectures. It includes a VS Code extension that checks naming, style, folder structure, and file-level code for architectural compliance. A React-based site provides documentation and a live compiler.
 
 <br><br>
 
