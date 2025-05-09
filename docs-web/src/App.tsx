@@ -1,13 +1,10 @@
 import './assets/style/globals.css'
+import Page404 from './pages/404Page'
 function App() {
 
   return (
     <>
-      <h1>Vite + React + TypeScript + Tailwind CSS</h1>
-      <p>Click the button below to see the magic happen!</p>
-      <button className="btn-outline ">
-        Click me!
-      </button>
+      <Page404/>
     </>
   )
 }
