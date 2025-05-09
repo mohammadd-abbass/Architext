@@ -5,7 +5,7 @@ function App() {
     <>
       <h1>Vite + React + TypeScript + Tailwind CSS</h1>
       <p>Click the button below to see the magic happen!</p>
-      <button className="btn-outline">
+      <button className="btn-outline ">
         Click me!
       </button>
     </>
