@@ -10,7 +10,6 @@ const DemoSection = () => {
       <div className="max-w-4xl mx-auto">
 
           <div className="rounded-lg overflow-hidden border-1 border-secondary/20 ">
-            {/* Placeholder image - replace with GIF later */}
             <img
               src={demo}
               alt="Architext extension demo"

@@ -1,4 +1,3 @@
-// components/sections/FeaturesSection.tsx
 import { Folder, BrainCircuit, HeartPulse, FileText } from 'lucide-react';
 import SectionWrapper from '../../common/SectionWrapper';
 import SectionTitle from '../../common/SectionTitle';

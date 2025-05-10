@@ -116,10 +116,9 @@ const Header = () => {
           </nav>
 
           {/* Right Section */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center">
             <Button
               variant="primary"
-              className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3"
               onClick={() => {/* Add login handler */}}
             >
               <LogIn className="w-5 h-5 md:hidden" />
