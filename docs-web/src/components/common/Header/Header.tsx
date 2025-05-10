@@ -4,7 +4,7 @@ import { Github, Moon, Sun, ChevronDown, LogIn, TerminalSquare, Star, GitFork, A
 import NavLinks from './NavLinks';
 import Button from '../Button';
 
-export const Header = () => {
+const Header = () => {
   const [isGitHubOpen, setIsGitHubOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
@@ -91,3 +91,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;
