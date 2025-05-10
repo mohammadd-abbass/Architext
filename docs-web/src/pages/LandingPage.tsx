@@ -4,6 +4,11 @@ import Button from "../components/common/Button";
 import Container from "../components/common/Container";
 import { Download, Code, Copy } from "lucide-react";
 import logo from "../assets/images/logo.svg";
+import OverviewSection from "../components/features/Landing/Overview";
+import FeaturesSection from "../components/features/Landing/Features";
+import DemoSection from "../components/features/Landing/Demo";
+import AvailableSection from "../components/features/Landing/Available";
+import FaqsSection from "../components/features/Landing/Faqs";
 
 const LandingPage = () => {
   const [isCopied, setIsCopied] = React.useState(false);
@@ -122,6 +127,12 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+        <OverviewSection/>
+        <FeaturesSection/>
+        <DemoSection/>
+        <AvailableSection/>
+        <FaqsSection/>  
+            
     </MainLayout>
   );
 };
