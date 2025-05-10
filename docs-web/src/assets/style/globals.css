@@ -1,2 +1,69 @@
-@import "@tailwindcss";
+@import "tailwindcss";
 
+@theme {
+  --color-primary: #10212F;
+  --color-accent: #FFDC00;
+  --color-secondary: #FEF8F2;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-primary text-secondary font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-accent;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-3xl;
+  }
+
+  a {
+    @apply text-accent underline-offset-4 hover:underline transition;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-primary px-6 py-3 rounded-lg font-bold hover:opacity-90 transition;
+  }
+
+  .btn-outline {
+    @apply border-2 border-accent text-accent px-6 py-3 rounded-lg font-bold hover:bg-accent hover:text-primary transition;
+  }
+
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  .container {
+    @apply px-4 md:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+
+  .auth-container {
+    @apply bg-secondary/5 backdrop-blur-sm border border-secondary/50;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-secondary-5 {
+    background-color: rgba(254, 249, 242, 0.05);
+  }
+}
