@@ -1,94 +1,12 @@
 import './assets/style/globals.css'
-import MainLayout from './layouts/MainLayout'
+import LandingPage from './pages/LandingPage'
 // import { AuthPage } from './pages/AuthPage'
  
 function App() {
 
   return (
     <>
-      <MainLayout>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-        <div>
-          Hi
-        </div>
-      </MainLayout>
+      <LandingPage/>
     </>
   )
 }
