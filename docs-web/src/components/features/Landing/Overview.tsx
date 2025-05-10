@@ -1,4 +1,3 @@
-// components/sections/OverviewSection.tsx
 import SectionWrapper from '../../common/SectionWrapper';
 import SectionTitle from '../../common/SectionTitle';
 import Container from '../../common/Container';
@@ -6,7 +5,6 @@ import Container from '../../common/Container';
 const MacBookContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="relative max-w-4xl mx-auto">
-      {/* MacBook Top Bar with Dots */}
       <div className="absolute top-4 left-4 flex gap-2 z-10">
         <div className="w-3 h-3 rounded-full bg-red-500" />
         <div className="w-3 h-3 rounded-full bg-yellow-500" />

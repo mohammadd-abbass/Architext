@@ -1,4 +1,3 @@
-// components/sections/TestimonialSection.tsx
 import SectionWrapper from '../../common/SectionWrapper';
 import SectionTitle from '../../common/SectionTitle';
 import Container from '../../common/Container';
@@ -10,7 +9,6 @@ const TestimonialSection = () => {
       <SectionTitle>Why We Built Architext</SectionTitle>
       
       <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
-        {/* Quote Container */}
         <Container className="flex-grow max-w-4xl">
           <blockquote className="space-y-6">
             <p className="text-2xl md:text-3xl text-secondary/80 italic">
@@ -26,7 +24,6 @@ const TestimonialSection = () => {
           </blockquote>
         </Container>
 
-        {/* Circular Photo */}
         <div className="flex-shrink-0">
           <img
             src={Me} 

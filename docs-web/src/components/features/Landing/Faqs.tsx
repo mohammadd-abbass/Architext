@@ -1,4 +1,3 @@
-// components/sections/FaqsSection.tsx
 import { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 import SectionWrapper from '../../common/SectionWrapper';
