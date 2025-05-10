@@ -9,6 +9,7 @@ import FeaturesSection from "../components/features/Landing/Features";
 import DemoSection from "../components/features/Landing/Demo";
 import AvailableSection from "../components/features/Landing/Available";
 import FaqsSection from "../components/features/Landing/Faqs";
+import TestimonialSection from "../components/features/Landing/Testimonial";
 
 const LandingPage = () => {
   const [isCopied, setIsCopied] = React.useState(false);
@@ -131,6 +132,7 @@ const LandingPage = () => {
         <FeaturesSection/>
         <DemoSection/>
         <AvailableSection/>
+        <TestimonialSection/>
         <FaqsSection/>  
             
     </MainLayout>
