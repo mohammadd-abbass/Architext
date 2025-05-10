@@ -1,6 +1,7 @@
 import React from "react";
 import MainLayout from "../layouts/MainLayout";
 import Button from "../components/common/Button";
+import Container from "../components/common/Container";
 import { Download, Code, Copy } from "lucide-react";
 import logo from "../assets/images/logo.svg";
 
@@ -82,8 +83,8 @@ const LandingPage = () => {
             </p>
 
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              {/* Code Snippet */}
-              <div className="bg-secondary/5 border border-accent/20 rounded-lg p-4 flex items-center gap-4 w-full md:w-auto backdrop-blur-sm">
+              {/* Updated Code Snippet with Container component */}
+              <Container className="flex items-center gap-4 w-full md:w-auto backdrop-blur-sm">
                 <button
                   onClick={copyToClipboard}
                   className="text-secondary hover:text-accent transition"
@@ -97,7 +98,7 @@ const LandingPage = () => {
                 <code className="text-secondary font-mono text-sm md:text-base">
                   npm init @architext/config@latest
                 </code>
-              </div>
+              </Container>
 
               {/* Buttons Group */}
               <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
