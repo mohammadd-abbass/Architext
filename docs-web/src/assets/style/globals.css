@@ -54,7 +54,7 @@
   }
 
   .auth-container {
-    @apply bg-secondary/5 backdrop-blur-sm border border-accent/20;
+    @apply bg-secondary/5 backdrop-blur-sm border border-secondary/50;
   }
 }
 

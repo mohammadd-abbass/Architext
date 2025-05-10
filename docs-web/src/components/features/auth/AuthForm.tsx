@@ -35,12 +35,12 @@ export const AuthForm = ({
   };
 
   return (
-    <div className="auth-container max-w-md mx-auto p-8 rounded-xl">
+    <div className="auth-container w-full max-w-md mx-auto p-8 rounded-xl"> 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">
+        <h2 className="text-3xl font-bold mb-2 text-center text-secondary">
           {isLogin ? 'Welcome Back' : 'Create Account'}
-        </h1>
-        <p className="text-secondary/80">
+        </h2>
+        <p className="text-secondary/80 text-center">
           {isLogin ? 'Sign in to continue' : 'Join our developer community'}
         </p>
       </div>
