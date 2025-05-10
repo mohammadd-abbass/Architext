@@ -36,7 +36,7 @@ export const AuthForm = ({
   };
 
   return (
-    <Container className="w-full max-w-md mx-auto p-8">
+    <Container className="w-full max-w-md mx-auto p-4 md:p-6 lg:p-8">
       <div className="mb-8">
         <h2 className="text-3xl font-bold mb-2 text-center text-secondary">
           {isLogin ? "Welcome Back" : "Create Account"}
