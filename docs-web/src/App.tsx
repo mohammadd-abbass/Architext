@@ -1,11 +1,12 @@
 import './assets/style/globals.css'
-import { AuthPage } from './pages/AuthPage'
+import { Header } from './components/common/Header/Header'
+// import { AuthPage } from './pages/AuthPage'
  
 function App() {
 
   return (
     <>
-      <AuthPage/>
+      <Header/>
     </>
   )
 }
