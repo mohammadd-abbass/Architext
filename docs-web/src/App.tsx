@@ -1,11 +1,11 @@
 import './assets/style/globals.css'
-import Footer from './components/common/Footer'
+import { AuthPage } from './pages/AuthPage'
  
 function App() {
 
   return (
     <>
-      <Footer/>
+      <AuthPage/>
     </>
   )
 }
