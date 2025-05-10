@@ -26,12 +26,13 @@ export const AuthPage = () => {
 //   }, [user, token, navigate]);
 
   return (
-    <div className="auth-page flex flex-col justify-center items-center min-h-screen">
-      <h1 className="title text-4xl font-bold text-accent mb-8">Architext</h1>
+    <div className="auth-page flex flex-col justify-center items-center min-h-screen relative">
+    <h1 className="title absolute left-8 top-8 text-4xl font-bold text-accent">Architext</h1>
       <AuthForm
         isLogin={isLoginForm}
         toggleAuthMode={() => setIsLoginForm((prev) => !prev)}
-        onSubmit={()=> {}}
+        // onSubmit={(handleAuthSubmit)}
+        onSubmit={()=>{}}
         // error={error}
         // isLoading={isLoading}
       />
