@@ -202,7 +202,7 @@ const Header = () => {
         )}
 
         {/* Bottom Border */}
-        <div className="h-px bg-accent/20 w-full mt-2" />
+        <div className="h-px bg-accent w-full " />
       </div>
     </header>
   );
