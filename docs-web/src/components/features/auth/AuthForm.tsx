@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Mail, Lock, User, Github } from "lucide-react";
 import InputField from "../../common/InputField";
 import Button from "../../common/Button";
+import Container from "../../common/Container"; 
 
 interface AuthFormProps {
   isLogin: boolean;
@@ -35,7 +36,7 @@ export const AuthForm = ({
   };
 
   return (
-    <div className="auth-container w-full max-w-md mx-auto p-8 rounded-xl">
+    <Container className="w-full max-w-md mx-auto p-8">
       <div className="mb-8">
         <h2 className="text-3xl font-bold mb-2 text-center text-secondary">
           {isLogin ? "Welcome Back" : "Create Account"}
@@ -111,6 +112,6 @@ export const AuthForm = ({
           {isLogin ? "Create account" : "Sign in"}
         </button>
       </p>
-    </div>
+    </Container>
   );
 };
