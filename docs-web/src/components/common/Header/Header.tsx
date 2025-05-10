@@ -1,23 +1,28 @@
 // components/header/Header.tsx
 import { useState } from 'react';
-import { Github, Moon, Sun, ChevronDown, LogIn, TerminalSquare, Star, GitFork, AlertCircle } from 'lucide-react';
+import { Github, Moon, Sun, ChevronDown, LogIn, Star, GitFork, AlertCircle } from 'lucide-react';
 import NavLinks from './NavLinks';
 import Button from '../Button';
+import logo from '../../../assets/images/logo.svg';
 
 const Header = () => {
   const [isGitHubOpen, setIsGitHubOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   return (
-    <header className="bg-primary py-2 flex items-center justify-center border-b border-accent">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 ">
+    <header className="bg-primary py-2 flex items-center justify-center">
+    <div className="container mx-auto px-5 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Left Section */}
           <div className="flex items-center gap-6">
             {/* Logo & Name */}
-            <div className="flex items-center gap-2">
-              <TerminalSquare className="w-6 h-6 text-accent" />
-              <span className="text-xl font-bold text-accent">Architext</span>
+            <div className="flex items-center">
+            <img 
+                src={logo} 
+                alt="Architext Logo" 
+                className="w-30 h-30 object-contain" // Adjust size as needed
+              />
+              <span className="text-xl font-bold text-secondary">Architext</span>
             </div>
 
             {/* GitHub Dropdown */}
@@ -87,6 +92,7 @@ const Header = () => {
             </Button>
           </div>
         </div>
+      <div className="h-px bg-accent w-full mt-2"></div>
       </div>
     </header>
   );

@@ -1,12 +1,94 @@
 import './assets/style/globals.css'
-import { Header } from './components/common/Header/Header'
+import MainLayout from './layouts/MainLayout'
 // import { AuthPage } from './pages/AuthPage'
  
 function App() {
 
   return (
     <>
-      <MainLa
+      <MainLayout>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+        <div>
+          Hi
+        </div>
+      </MainLayout>
     </>
   )
 }
