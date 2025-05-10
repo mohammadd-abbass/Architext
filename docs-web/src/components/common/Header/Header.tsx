@@ -48,11 +48,11 @@ const Header = () => {
             </button>
 
             {/* Logo & Name */}
-            <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="flex items-center flex-shrink-0">
               <img 
                 src={logo} 
                 alt="Architext Logo" 
-                className="w-20 h-20 lg:w-30 lg:h-30 object-contain transition-all"
+                className="w-20 h-20 lg:w-30 lg:h-30 object-contain transition-all  lg:-mx-8 -mx-6"
               />
               <span className="text-xl font-bold text-secondary">Architext</span>
             </div>
