@@ -1,4 +1,3 @@
-// components/header/Header.tsx
 import { useState, useEffect } from 'react';
 import { 
   Github, 
@@ -123,7 +122,7 @@ const Header = () => {
               className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3"
               onClick={() => {/* Add login handler */}}
             >
-              <LogIn className="w-5 h-5" />
+              <LogIn className="w-5 h-5 md:hidden" />
               <span className="hidden sm:inline">Login</span>
             </Button>
           </div>
