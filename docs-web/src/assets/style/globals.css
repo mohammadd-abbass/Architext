@@ -62,4 +62,8 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .bg-secondary-5 {
+    background-color: rgba(254, 249, 242, 0.05);
+  }
 }
