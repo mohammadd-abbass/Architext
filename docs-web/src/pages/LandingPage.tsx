@@ -31,6 +31,23 @@ const LandingPage = () => {
     "    def __init__(self, strict=True):",
     "        self.strict = strict",
     "        self.auto_comment = True",
+    "// @architext-rule: layer-boundary",
+    "function enforceArchitecture() {",
+    "  checkLayerDependencies();",
+    "}",
+    "export const config = {",
+    "  strictMode: true,",
+    "  autoComment: true",
+    "};",
+
+    // Python
+    "# @architext_rule(layer_boundary)",
+    "def analyze_complexity():",
+    "    return cognitive_analysis()",
+    "class ArchitectureConfig:",
+    "    def __init__(self, strict=True):",
+    "        self.strict = strict",
+    "        self.auto_comment = True",
   ];
 
   const copyToClipboard = () => {
@@ -41,7 +58,7 @@ const LandingPage = () => {
 
   return (
     <MainLayout>
-      <section className="bg-primary min-h-[80vh] flex items-center justify-evenly relative overflow-hidden">
+      <section className="bg-primary min-h-[80vh] flex items-center justify-evenly relative overflow-hidden mt-[9vh]">
         {/* Background Elements */}
         <div className="absolute inset-0 z-0 opacity-40">
           {/* Diagonal Logo Pattern */}
