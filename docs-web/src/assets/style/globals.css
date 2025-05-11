@@ -50,7 +50,7 @@
   }
 
   .container {
-    @apply px-4 md:px-6 lg:px-8 max-w-7xl mx-auto;
+    @apply px-1 md:px-3 lg:px-8 max-w-7xl mx-auto;
   }
 
   .auth-container {
