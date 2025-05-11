@@ -46,14 +46,14 @@ const DocsSidebar = () => {
       { name: 'Core Concepts', path: '/docs/core-concepts' }
     ],
     apiReference: [
-      { name: 'Architecture Rules', path: '/docs/api/rules' },
-      { name: 'Validation API', path: '/docs/api/validation' },
-      { name: 'Analysis Tools', path: '/docs/api/analysis' }
+      { name: 'Architecture Rules', path: '/docs/api-rules' },
+      { name: 'Validation API', path: '/docs/validation' },
+      { name: 'Analysis Tools', path: '/docs/analysis' }
     ],
     configuration: [
-      { name: 'Config File', path: '/docs/config/file' },
-      { name: 'Custom Rules', path: '/docs/config/custom-rules' },
-      { name: 'Plugins', path: '/docs/config/plugins' }
+      { name: 'Config File', path: '/docs/config-file' },
+      { name: 'Custom Rules', path: '/docs/custom-rules' },
+      { name: 'Plugins', path: '/docs/plugins' }
     ]
   };
 
