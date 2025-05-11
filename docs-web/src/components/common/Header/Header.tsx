@@ -33,12 +33,12 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="bg-primary py-2 flex items-center justify-center relative">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-primary">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16">
+        <div className="flex items-center justify-between h-full">
           {/* Left Section */}
           <div className="flex items-center gap-4 lg:gap-6">
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Button - Now toggles sidebar */}
             <button
               className="lg:hidden text-secondary hover:text-accent transition"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -48,11 +48,11 @@ const Header = () => {
             </button>
 
             {/* Logo & Name */}
-            <div className="flex items-center gap-2 flex-shrink-0">
+            <div className="flex items-center flex-shrink-0">
               <img 
                 src={logo} 
                 alt="Architext Logo" 
-                className="w-20 h-20 lg:w-30 lg:h-30 object-contain transition-all"
+                className="w-20 h-20 lg:w-30 lg:h-30 object-contain transition-all  lg:-mx-8 -mx-6"
               />
               <span className="text-xl font-bold text-secondary">Architext</span>
             </div>
@@ -116,10 +116,9 @@ const Header = () => {
           </nav>
 
           {/* Right Section */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center">
             <Button
               variant="primary"
-              className="flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3"
               onClick={() => {/* Add login handler */}}
             >
               <LogIn className="w-5 h-5 md:hidden" />
