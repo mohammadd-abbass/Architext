@@ -8,6 +8,7 @@ import LandingPage from './pages/LandingPage'
 import { AuthPage } from './pages/AuthPage'
 import PlaygroundPage from './pages/PlaygroundPage';
 import BlogPage from './pages/BlogPage';
+import ConfigGenPage from './pages/ConfigGenPage';
  
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/docs/quick-start" element={<DocsPage />} />
         <Route path="/playground" element={<PlaygroundPage />} />
+        <Route path="/config-generator" element={<ConfigGenPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/docs/:page" element={<DocsPage />} />
       </Routes>
