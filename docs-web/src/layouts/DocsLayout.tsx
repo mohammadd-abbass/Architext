@@ -7,7 +7,7 @@ const DocsLayout = ({ children }: { children: ReactNode }) => (
     <Header />
     <DocsSideBar />
     
-    <main className="mt-16 p-6">
+    <main className="mt-12 p-2">
       <div className="max-w-4xl mx-auto">
         {children}
       </div>
