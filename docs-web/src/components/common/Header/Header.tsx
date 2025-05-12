@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import {
   Github,
-  Moon,
-  Sun,
   ChevronDown,
   LogIn,
   Star,
@@ -18,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   const [isGitHubOpen, setIsGitHubOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMediumScreen, setIsMediumScreen] = useState(false);
 
@@ -99,19 +96,6 @@ const Header = () => {
                 </div>
               )}
             </div>
-
-            {/* Theme Toggle (Desktop) */}
-            <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="text-secondary hover:text-accent transition hidden lg:block"
-              aria-label={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
-            >
-              {isDarkMode ? (
-                <Moon className="w-5 h-5" />
-              ) : (
-                <Sun className="w-5 h-5" />
-              )}
-            </button>
           </div>
 
           {/* Center Navigation (Desktop) */}
@@ -190,26 +174,6 @@ const Header = () => {
                     </a>
                   </div>
                 )}
-              </div>
-
-              {/* Mobile Theme Toggle */}
-              <div className="border-t border-accent/20 pt-4">
-                <button
-                  onClick={() => setIsDarkMode(!isDarkMode)}
-                  className="w-full flex items-center gap-2 text-secondary hover:text-accent transition px-4 py-2"
-                >
-                  {isDarkMode ? (
-                    <>
-                      <Moon className="w-5 h-5" />
-                      <span className="text-sm">Light Theme</span>
-                    </>
-                  ) : (
-                    <>
-                      <Sun className="w-5 h-5" />
-                      <span className="text-sm">Dark Theme</span>
-                    </>
-                  )}
-                </button>
               </div>
             </div>
           </div>
