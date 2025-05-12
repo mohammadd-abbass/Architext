@@ -32,7 +32,7 @@ const Footer = () => {
               <FooterLink to="/playground" icon={<Code2 className="w-4 h-4" />}>
                 Playground
               </FooterLink>
-              <FooterLink to="/docs" icon={<BookText className="w-4 h-4" />}>
+              <FooterLink to="/docs/installation" icon={<BookText className="w-4 h-4" />}>
                 Documentation
               </FooterLink>
               <FooterLink to="/config-generator" icon={<Settings2 className="w-4 h-4" />}>
