@@ -3,10 +3,16 @@ import { ReactNode } from "react";
 import DocsSideBar from "../components/features/docs/DocsSideBar";
 
 const DocsLayout = ({ children }: { children: ReactNode }) => (
-  <div>
-    <Header/>
-    <DocsSideBar/>
-    {children}
+  <div className="relative">
+    <Header />
+    <DocsSideBar />
+    
+    <main className="mt-12 p-2">
+      <div className="max-w-4xl mx-auto">
+        {children}
+      </div>
+    </main>
+    
   </div>
 );
 
