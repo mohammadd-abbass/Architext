@@ -1,51 +1,59 @@
-📦 Installation
-Welcome to Architext, your AI-powered VS Code extension that brings architectural clarity and intelligence to your codebase!
-Follow the steps below to install and set up Architext in your development environment.
+## Installation Guide
 
-🔧 Requirements
-Before installing Architext, make sure you have the following prerequisites installed:
+Welcome to **Architext**, the AI-powered Visual Studio Code extension designed to enhance your project’s architectural clarity and intelligence.  
+Follow the steps below to install and configure Architext in your development environment.
 
-Visual Studio Code (version 1.70 or above)
+---
 
-Node.js (only required for advanced usage like .arch.json validation or troubleshooting)
+### System Requirements
 
-Internet connection (for accessing OpenAI model capabilities)
+Ensure the following tools are installed on your system before proceeding:
 
-🧩 Installing from the VS Code Marketplace
-Open Visual Studio Code
+- **Visual Studio Code** (version 1.70 or above)
+- **Node.js** (required only for advanced usage such as `.arch.json` validation or troubleshooting)
+- **Stable Internet Connection** (needed to access OpenAI capabilities)
 
-Go to the Extensions tab (Ctrl + Shift + X)
+---
 
-Search for Architext
+### Installation via Visual Studio Code Marketplace
 
-Click Install on the Architext extension
+To install Architext:
 
-Alternatively, you can install it directly from the Visual Studio Code Marketplace (replace with link if published).
+1. Launch **Visual Studio Code**
+2. Navigate to the **Extensions** panel (`Ctrl + Shift + X`)
+3. Search for **Architext**
+4. Click the **Install** button next to the extension
 
-📁 Project Setup
-Architext works out of the box, but here’s how you can optimize your setup:
+Alternatively, you can install it directly from the [Visual Studio Code Marketplace](#) (update with actual link when available).
 
-Your project folder should have a clear directory structure. Architext will automatically validate it against the default reference architecture.
+---
 
-To define a custom architecture, create a file named your-architecture.arch.json at the root of your project.
+### Project Setup
 
-🧪 Test It Out
-After installation:
+Architext is designed to work immediately after installation. However, for optimal results:
 
-Open a folder in VS Code.
+- Organize your project with a clear directory structure. Architext will validate this structure against a predefined reference architecture.
 
-Press Ctrl + Alt + A to analyze the currently opened file.
+To customize this behavior, create a file named `your-architecture.arch.json` at the root of your project and define your architecture rules.
 
-You should see inline comments or status updates based on the folder structure and code analysis.
+---
 
-⚙️ Settings (Optional)
-Architext supports basic configuration via a .arch.json file for defining custom architecture rules.
+### Running an Analysis
 
-Example:
+Once installed, you can test the extension:
 
-json
-Copy
-Edit
+1. Open a project folder in Visual Studio Code.
+2. Press `Ctrl + Alt + A` to initiate analysis on the currently active file.
+
+Architext will provide inline architectural feedback or status messages based on your code and folder layout.
+
+---
+
+### Optional Settings Configuration
+
+Architext supports configuration via a `.arch.json` file for defining custom architecture rules. Below is an example configuration:
+
+```json
 {
   "layers": ["controllers", "services", "models"],
   "rules": {
@@ -54,17 +62,3 @@ Edit
     "models": []
   }
 }
-You can find more about the .arch.json file in the Configuration section.
-
-🤖 AI-Powered Capabilities
-Once installed, Architext lets you:
-
-Validate project structure (Ctrl + Alt + R)
-
-Analyze code style and conventions (Ctrl + Alt + A)
-
-Generate comments using OpenAI’s GPT-4o model
-
-Calculate Big O complexity for functions
-
-Explore each in detail in the Quick Start guide.
