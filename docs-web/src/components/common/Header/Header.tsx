@@ -124,8 +124,9 @@ const Header = () => {
           </nav>
 
           {/* Right Section */}
-          <div className="flex items-center">
+          <div className=" ">
             <Button
+            className="px-4 py-2"
               variant="primary"
               onClick={() => {
                 navigate('/auth');
