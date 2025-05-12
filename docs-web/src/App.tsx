@@ -9,6 +9,7 @@ import { AuthPage } from './pages/AuthPage'
 import PlaygroundPage from './pages/PlaygroundPage';
 import BlogPage from './pages/BlogPage';
 import ConfigGenPage from './pages/ConfigGenPage';
+import Page404 from './pages/404Page';
  
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/config-generator" element={<ConfigGenPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/docs/:page" element={<DocsPage />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
   );
 };
