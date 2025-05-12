@@ -34,6 +34,29 @@
   a {
     @apply text-accent underline-offset-4 hover:underline transition;
   }
+
+  html {
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) var(--color-primary);
+  }
+
+  /* WebKit browsers */
+  ::-webkit-scrollbar {
+    @apply w-3;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-primary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent/40 rounded-full border-4 border-solid border-primary;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent/60;
+  }
 }
 
 @layer components {
@@ -56,6 +79,8 @@
   .auth-container {
     @apply bg-secondary/5 backdrop-blur-sm border border-secondary/50;
   }
+
+  
 }
 
 @layer utilities {  
