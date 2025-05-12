@@ -8,26 +8,25 @@ interface CodeEditorProps {
 const CodeEditor = ({ code, onChange }: CodeEditorProps) => {
   return (
     <Editor
-      height="100%"
-      defaultLanguage="typescript"
-      defaultValue={code}
-      onChange={(value) => onChange(value || '')}
-      theme="vs-dark"
-      options={{
-        minimap: { enabled: true },
-        fontSize: 14,
-        lineNumbers: 'on',
-        roundedSelection: false,
-        scrollBeyondLastLine: false,
-        readOnly: false,
-        automaticLayout: true,
-        scrollbar: {
-          verticalSliderSize: 6,
-          horizontalSliderSize: 6,
-        },
-        glyphMargin: true,
-      }}
-    />
+  height="100%"
+  language="typescript"
+  value={code}
+  onChange={(value) => onChange(value || '')}
+  theme="vs-light"
+  options={{
+    minimap: { enabled: false },
+    fontSize: 14,
+    lineNumbers: 'on',
+    automaticLayout: true,
+    scrollBeyondLastLine: false,
+    glyphMargin: false,
+    scrollbar: {
+      verticalSliderSize: 6,
+      horizontalSliderSize: 6,
+    },
+  }}
+/>
+
   );
 }
 
