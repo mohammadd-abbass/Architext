@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import ChatMessage from '../components/features/configGen/ChatMessages';
 import ChatInput from '../components/features/configGen/ChatInput';
+import Header from '../components/common/Header/Header';
 
 interface Message {
   id: string;
@@ -94,7 +95,8 @@ const ConfigGenPage = () => {
   }, [input, messages]);
 
   return (
-    <div className="flex flex-col h-screen bg-primary text-secondary">
+    <div className="flex flex-col h-screen bg-primary text-secondary pt-16">
+        <Header/>
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg) => (
           <ChatMessage
