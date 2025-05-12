@@ -44,7 +44,19 @@ Get Big O complexity estimates for your functions.
 
 ---
 
-### 4. Use Custom Architecture File (`.arch.json`)
+### 4. Generate Function-Level Comments
+
+Use targeted AI analysis to document specific functions quickly.
+
+- **Shortcut:** `Ctrl + Alt + C`  
+- **Action:** Runs AI analysis only on the selected function and generates a descriptive comment.  
+- **Output:** Inserts or previews a comment above the function block.
+
+**Use case:** Great for documenting key logic without analyzing the whole file.
+
+--- 
+
+### 5. Use Custom Architecture File (`.arch.json`)
 
 To define your own rules, use the following JSON structure:
 
