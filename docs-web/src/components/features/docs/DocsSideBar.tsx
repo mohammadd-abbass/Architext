@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ChevronDown, ChevronRight, Code, Settings, BookOpen, X } from 'lucide-react';
+import { ChevronDown, ChevronRight, Code, Settings, BookOpen } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 
 const DocsSidebar = () => {
@@ -10,7 +10,6 @@ const DocsSidebar = () => {
     configuration: false
   });
 
-  // Close sidebar on mobile when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (window.innerWidth < 1024 && isOpen) {
@@ -84,13 +83,6 @@ const DocsSidebar = () => {
       <aside className={`docs-sidebar bg-primary w-64 border-r border-accent/20 fixed left-0 top-16 h-[calc(100vh-4rem)] overflow-y-auto z-50 transform transition-transform duration-300
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
 
-        {/* Close Button inside Sidebar for Mobile */}
-        <button
-          className="lg:hidden absolute top-2 right-2 p-2 text-secondary hover:text-accent"
-          onClick={() => setIsOpen(false)}
-        >
-          <X className="w-6 h-6" />
-        </button>
 
         <div className="p-4 space-y-6">
           {/* Search Bar */}
