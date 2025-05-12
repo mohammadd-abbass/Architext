@@ -65,7 +65,7 @@ const Playground = () => {
   }, [code]);
 
   return (
-    <main className="section-padding min-h-screen bg-primary text-secondary flex flex-col items-center">
+    <main className="section-padding min-h-screen bg-primary text-secondary flex flex-col items-center justify-center">
       <Header />
       <Container className="space-y-6 w-[90vw]">
         <header className="flex justify-between items-center">
