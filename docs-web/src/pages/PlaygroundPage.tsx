@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';
 import CodeEditor from '../components/features/playground/CodeEditor';
 
-export default function Playground() {
+const PlaygroundPage = () => {
   const [code, setCode] = useState<string>(
     '// Welcome to the VS Code Extension Playground!\n// Write your code here...\n'
   );
@@ -67,3 +67,5 @@ export default function Playground() {
     </PanelGroup>
   );
 }
+
+export default PlaygroundPage;
