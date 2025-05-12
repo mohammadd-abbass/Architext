@@ -50,7 +50,7 @@ const Header = () => {
             </button>
 
             {/* Logo & Name */}
-            <div className="flex items-center flex-shrink-0">
+            <div className="flex items-center flex-shrink-0 cursor-pointer" onClick={() => navigate("/")}>
               <img
                 src={logo}
                 alt="Architext Logo"
