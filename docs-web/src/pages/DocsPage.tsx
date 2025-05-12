@@ -73,7 +73,7 @@ const DocsPage = () => {
 
   return (
     <DocsLayout>
-      <div className="prose max-w-4xl mx-auto px-4">
+      <div className="prose max-w-4xl mx-auto">
         <ReactMarkdown components={components}>
           {content}
         </ReactMarkdown>
