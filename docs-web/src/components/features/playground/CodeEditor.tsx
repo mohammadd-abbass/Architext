@@ -5,7 +5,7 @@ interface CodeEditorProps {
   onChange: (value: string) => void;
 }
 
-export default function CodeEditor({ code, onChange }: CodeEditorProps) {
+const CodeEditor = ({ code, onChange }: CodeEditorProps) => {
   return (
     <Editor
       height="100%"
@@ -30,3 +30,5 @@ export default function CodeEditor({ code, onChange }: CodeEditorProps) {
     />
   );
 }
+
+export default CodeEditor;
