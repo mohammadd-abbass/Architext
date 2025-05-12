@@ -1,20 +1,22 @@
-import { useState, useEffect } from 'react';
-import { 
-  Github, 
-  Moon, 
-  Sun, 
-  ChevronDown, 
-  LogIn, 
-  Star, 
-  GitFork, 
-  AlertCircle, 
-  Menu 
-} from 'lucide-react';
-import NavLinks from './NavLinks';
-import Button from '../Button';
-import logo from '../../../assets/images/logo.svg';
+import { useState, useEffect } from "react";
+import {
+  Github,
+  Moon,
+  Sun,
+  ChevronDown,
+  LogIn,
+  Star,
+  GitFork,
+  AlertCircle,
+  Menu,
+} from "lucide-react";
+import NavLinks from "./NavLinks";
+import Button from "../Button";
+import logo from "../../../assets/images/logo.svg";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isGitHubOpen, setIsGitHubOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,8 +30,8 @@ const Header = () => {
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -49,12 +51,14 @@ const Header = () => {
 
             {/* Logo & Name */}
             <div className="flex items-center flex-shrink-0">
-              <img 
-                src={logo} 
-                alt="Architext Logo" 
+              <img
+                src={logo}
+                alt="Architext Logo"
                 className="w-20 h-20 lg:w-30 lg:h-30 object-contain transition-all  lg:-mx-8 -mx-6"
               />
-              <span className="text-xl font-bold text-secondary">Architext</span>
+              <span className="text-xl font-bold text-secondary">
+                Architext
+              </span>
             </div>
 
             {/* GitHub Dropdown (Desktop) */}
@@ -100,7 +104,7 @@ const Header = () => {
             <button
               onClick={() => setIsDarkMode(!isDarkMode)}
               className="text-secondary hover:text-accent transition hidden lg:block"
-              aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+              aria-label={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
             >
               {isDarkMode ? (
                 <Moon className="w-5 h-5" />
@@ -111,7 +115,11 @@ const Header = () => {
           </div>
 
           {/* Center Navigation (Desktop) */}
-          <nav className={`hidden lg:flex items-center ${isMediumScreen ? 'gap-4' : 'gap-15'}`}>
+          <nav
+            className={`hidden lg:flex items-center ${
+              isMediumScreen ? "gap-4" : "gap-15"
+            }`}
+          >
             <NavLinks />
           </nav>
 
@@ -119,7 +127,9 @@ const Header = () => {
           <div className="flex items-center">
             <Button
               variant="primary"
-              onClick={() => {/* Add login handler */}}
+              onClick={() => {
+                navigate('/auth');
+              }}
             >
               <LogIn className="w-5 h-5 md:hidden" />
               <span className="hidden sm:inline">Login</span>
@@ -147,7 +157,11 @@ const Header = () => {
                     <Github className="w-5 h-5" />
                     <span className="text-sm">GitHub</span>
                   </div>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isGitHubOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      isGitHubOpen ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
 
                 {isGitHubOpen && (

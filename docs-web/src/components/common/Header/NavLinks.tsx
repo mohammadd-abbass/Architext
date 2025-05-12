@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function NavLinks() {
   const links = [
-    { name: 'Docs', path: '/docs' },
+    { name: 'Docs', path: '/docs/installation' },
     { name: 'Playground', path: '/playground' },
     { name: 'Config Generator', path: '/config-generator' },
     { name: 'Blog', path: '/blog' },
