@@ -1,3 +1,5 @@
+import Button from "../../common/Button";
+
 interface Message {
   content: string;
   isUser: boolean;
@@ -27,18 +29,20 @@ const ChatMessage = ({ message, onCopy, onDownload }: ChatMessageProps) => {
             <code>{message.json}</code>
           </pre>
           <div className="absolute top-2 right-2 flex gap-2">
-            <button
+            <Button
+              variant="outline"
+              className="text-sm px-3 py-1 hover:bg-accent hover:text-primary"
               onClick={() => onCopy?.(message.json!)}
-              className="btn-outline text-sm px-3 py-1 hover:bg-accent hover:text-primary"
             >
               Copy
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="primary"
+              className="text-sm px-3 py-1"
               onClick={() => onDownload?.(message.json!)}
-              className="btn-primary text-sm px-3 py-1"
             >
               Download
-            </button>
+            </Button>
           </div>
         </div>
       )}
