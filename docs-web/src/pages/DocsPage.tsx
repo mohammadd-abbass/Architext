@@ -10,8 +10,9 @@ const DocsPage = () => {
     useEffect(() => {
       const fetchMarkdownContent = async () => {
         try {
-          const response = await import(`../content/${page}.md`);
-          const content = await response.default;
+          const response = await import(`../content/docs/${page}.md`);
+          console.log('Markdown file loaded:', response);
+          const content = await response.markdown;
           setContent(content);
         } catch (error) {
           console.error('Error loading markdown file', error);
@@ -32,5 +33,5 @@ const DocsPage = () => {
       </DocsLayout>
     );
   };
-  
+    
   export default DocsPage;
