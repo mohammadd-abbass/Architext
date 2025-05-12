@@ -1,4 +1,3 @@
-// components/docs/DocsSidebar.tsx
 import { useState, useEffect } from 'react';
 import { ChevronDown, ChevronRight, Code, Settings, BookOpen, X } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
@@ -16,7 +15,11 @@ const DocsSidebar = () => {
     const handleClickOutside = (e: MouseEvent) => {
       if (window.innerWidth < 1024 && isOpen) {
         const sidebar = document.querySelector('.docs-sidebar');
-        if (sidebar && !sidebar.contains(e.target as Node)) {
+        const toggleBtn = document.querySelector('#sidebar-toggle-btn');
+        if (
+          sidebar && !sidebar.contains(e.target as Node) &&
+          toggleBtn && !toggleBtn.contains(e.target as Node)
+        ) {
           setIsOpen(false);
         }
       }
@@ -59,10 +62,21 @@ const DocsSidebar = () => {
 
   return (
     <>
+      {/* Mobile Toggle Button (new addition) */}
+      {!isOpen && (
+        <button
+          className="fixed lg:hidden bottom-4 right-4 p-2 bg-accent text-primary rounded-full shadow-lg z-40 hover:scale-105 transition-transform"
+          onClick={() => setIsOpen(true)}
+          aria-label="Open documentation menu"
+        >
+          <BookOpen className="w-6 h-6" />
+        </button>
+      )}
+
       {/* Mobile Backdrop */}
       {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden" 
+        <div
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -70,7 +84,7 @@ const DocsSidebar = () => {
       <aside className={`docs-sidebar bg-primary w-64 border-r border-accent/20 fixed left-0 top-16 h-[calc(100vh-4rem)] overflow-y-auto z-50 transform transition-transform duration-300
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
 
-        {/* Mobile Close Button */}
+        {/* Close Button inside Sidebar for Mobile */}
         <button
           className="lg:hidden absolute top-2 right-2 p-2 text-secondary hover:text-accent"
           onClick={() => setIsOpen(false)}
