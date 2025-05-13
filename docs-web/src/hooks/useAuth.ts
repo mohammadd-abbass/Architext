@@ -1,76 +1,58 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../store/store';
 import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import authService, { AuthResponse } from '../features/auth/authService';
-import { setLoading, setUser, setError, logoutUser } from '../features/auth/authSlice';
+import authService from '../features/auth/authService';
+import {
+  setLoading,
+  setUser,
+  setError,
+  logoutUser,
+} from '../features/auth/authSlice';
 
 const useAuth = () => {
   const dispatch = useDispatch();
-
-  const handleAuthResponse = (response: AuthResponse) => {
-    localStorage.setItem('token', response.token);
-    dispatch(setUser(response.user));
-  };
+  const { user, loading, error } = useSelector((state: RootState) => state.auth);
 
   const login = useCallback(async (email: string, password: string) => {
+    dispatch(setLoading());
     try {
-      dispatch(setLoading());
-      const response = await authService.login(email, password);
-      handleAuthResponse(response);
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        dispatch(setError(error.message));
-      } else {
-        dispatch(setError('An unknown error occurred.'));
-      }
+      const { user, token } = await authService.login(email, password);
+      console.log('Login successful:', user);
+      localStorage.setItem('token', token);
+      dispatch(setUser(user));
+    } catch (err: any) {
+      dispatch(setError(err.response?.data?.message || 'Login failed'));
     }
   }, [dispatch]);
 
-  const register = useCallback(async (username: string, email: string, password: string) => {
+  const register = useCallback(async (name: string, email: string, password: string) => {
+    dispatch(setLoading());
     try {
-      dispatch(setLoading());
-      const response = await authService.register(username, email, password);
-      handleAuthResponse(response);
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        dispatch(setError(error.message));
-      } else {
-        dispatch(setError('An unknown error occurred.'));
-      }
+      const { user, token } = await authService.register(name, email, password);
+      localStorage.setItem('token', token);
+      dispatch(setUser(user));
+    } catch (err: any) {
+      dispatch(setError(err.response?.data?.message || 'Registration failed'));
     }
   }, [dispatch]);
 
   const logout = useCallback(async () => {
     try {
       await authService.logout();
-      dispatch(logoutUser());
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        dispatch(setError(error.message));
-      } else {
-        dispatch(setError('An unknown error occurred.'));
-      }
+    } catch (err) {
+      console.warn('Logout error (ignored):', err);
     }
-  }, [dispatch]);
-
-  const loadUser = useCallback(async () => {
-    try {
-      dispatch(setLoading());
-      const user = await authService.getMe();
-      dispatch(setUser(user));
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        dispatch(setError(error.message));
-      } else {
-        dispatch(setError('An unknown error occurred.'));
-      }
-    }
+    dispatch(logoutUser());
   }, [dispatch]);
 
   return {
+    user,
+    loading,
+    error,
     login,
     register,
     logout,
-    loadUser
+    isAuthenticated: !!user,
   };
 };
 

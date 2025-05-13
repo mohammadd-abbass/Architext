@@ -1,36 +1,28 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
 import { AuthForm } from '../components/features/auth/AuthForm';
 import useAuth from '../hooks/useAuth';
 
 export const AuthPage = () => {
   const [isLoginForm, setIsLoginForm] = useState(true);
   const navigate = useNavigate();
-  const { user, loading, error } = useSelector((state: RootState) => state.auth);
-  const { login, register, loadUser } = useAuth();
 
-  // Check for existing user on initial load
-  useEffect(() => {
-    loadUser();
-  }, [loadUser]);
+  const { login, register, user, error, loading } = useAuth();
 
-  // Redirect if user exists
+  const handleSubmit = (formData: { email: string; password: string; name?: string }) => {
+    if (isLoginForm) {
+      login(formData.email, formData.password);
+    } else {
+      if (!formData.name) return;
+      register(formData.name, formData.email, formData.password);
+    }
+  };
+
   useEffect(() => {
     if (user) {
       navigate('/');
     }
   }, [user, navigate]);
-
-  const handleSubmit = (data: { email: string; password: string; name?: string }) => {
-    if (isLoginForm) {
-      login(data.email, data.password);
-    } else {
-      if (!data.name) return;
-      register(data.name, data.email, data.password);
-    }
-  };
 
   return (
     <div className="auth-page flex flex-col justify-center items-center min-h-screen relative px-6 md:px-6">
