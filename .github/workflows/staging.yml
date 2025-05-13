@@ -57,6 +57,9 @@ jobs:
 
       - name: Stop and Remove Old Containers
         run: docker compose -f docker-compose-delivery.yml down
+        
+      - name: Cleanup Docker resources
+        run: docker system prune -f
 
       - name: Start Services
         run: |
