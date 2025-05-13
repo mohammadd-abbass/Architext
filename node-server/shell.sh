@@ -1,14 +1,12 @@
 #!/bin/sh
+set -e  # Exit immediately if any command fails
 
-echo "Installing dependencies..."
-npm install
-
+# These now run at container startup, not build time
 echo "Running Prisma migrations..."
 npx prisma migrate deploy
 
-echo "Running Prisma Sedder..."
-npx prisma generate
-# npx prisma db seed
+echo "Running Prisma Seeder..."
+# npx prisma db seed  # Uncomment when ready
 
 echo "Starting server..."
-npm start
+exec npm start
