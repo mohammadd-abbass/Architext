@@ -1,27 +1,35 @@
-import request from '../services/axios';
+import apiClient from "../services/axios";
 
-export const login = async (email: string, password: string) =>
-  request({
-    method: 'POST',
-    route: '/auth/login',
-    body: { email, password },
-  });
+export interface User {
+  id: string;
+  email: string;
+  username: string;
+}
 
-export const register = async (userData: { name: string; email: string; password: string }) =>
-  request({
-    method: 'POST',
-    route: '/auth/register',
-    body: userData,
-  });
+export interface AuthResponse {
+  user: User;
+  token: string;
+}
 
-export const logout = async () =>
-  request({
-    method: 'POST',
-    route: '/auth/logout',
-  });
+const authService = {
+  login: async (email: string, password: string): Promise<AuthResponse> => {
+    const response = await apiClient.post('/auth/login', { email, password });
+    return response.data;
+  },
 
-export const getCurrentUser = async () =>
-  request({
-    method: 'GET',
-    route: '/auth/me',
-  });
+  register: async (username: string, email: string, password: string): Promise<AuthResponse> => {
+    const response = await apiClient.post('/auth/register', { username, email, password });
+    return response.data;
+  },
+
+  logout: async (): Promise<void> => {
+    await apiClient.post('/auth/logout');
+  },
+
+  getMe: async (): Promise<User> => {
+    const response = await apiClient.get('/auth/me');
+    return response.data;
+  }
+};
+
+export default authService;
