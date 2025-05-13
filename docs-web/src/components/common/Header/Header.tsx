@@ -23,6 +23,8 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMediumScreen, setIsMediumScreen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { LINKS } = GITHUB_CONFIG;
+
 
   useEffect(() => {
     const token = localStorage.getItem('token');
