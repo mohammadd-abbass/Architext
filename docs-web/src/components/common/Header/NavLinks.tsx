@@ -5,7 +5,6 @@ export default function NavLinks() {
     { name: 'Docs', path: '/docs/installation' },
     { name: 'Playground', path: '/playground' },
     { name: 'Config Generator', path: '/config-generator' },
-    { name: 'Blog', path: '/blog' },
   ];
 
   return (
