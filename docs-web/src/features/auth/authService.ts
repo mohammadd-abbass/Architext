@@ -3,7 +3,7 @@ import apiClient from "../../services/axios";
 export interface User {
   id: string;
   email: string;
-  username: string;
+  name: string;
 }
 
 export interface AuthResponse {
@@ -24,11 +24,6 @@ const authService = {
 
   logout: async (): Promise<void> => {
     await apiClient.post('/auth/logout');
-  },
-
-  getMe: async (): Promise<User> => {
-    const response = await apiClient.get('/auth/me');
-    return response.data;
   }
 };
 
