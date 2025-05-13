@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import * as authService from '../services/auth.service.js';
 import { successResponse, errorResponse } from '../traits/response.trait.js';
+import jwt from 'jsonwebtoken';
 
 export const signupHandler = async (req: Request, res: Response) => {
     try {
@@ -17,5 +18,20 @@ export const loginHandler = async (req: Request, res: Response) => {
         successResponse(res, 'Login successful', { user, token });
     } catch (err: any) {
         errorResponse(res, err.message, 401);
+    }
+};
+
+export const validateTokenHandler = async (req: Request, res: Response) => {
+    try {
+        const authHeader = req.headers.authorization;
+        if (!authHeader || !authHeader.startsWith('Bearer '))
+            return errorResponse(res, 'Token missing', 401);
+
+        const token = authHeader.split(' ')[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'supersecret');
+
+        successResponse(res, 'Token is valid', decoded);
+    } catch (err: any) {
+        errorResponse(res, 'Invalid or expired token', 401);
     }
 };
