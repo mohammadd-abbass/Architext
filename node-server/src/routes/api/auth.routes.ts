@@ -7,8 +7,7 @@ const router = Router();
 
 router.post('/signup', registerValidator, validate, auth.signupHandler);
 router.post('/login', loginValidator, validate, auth.loginHandler);
-router.get('/', (req, res)=> {
-    res.json("Hello")
-});
+router.get('/validate-token', auth.validateTokenHandler);   
+
 
 export default router;

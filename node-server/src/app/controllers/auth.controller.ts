@@ -22,16 +22,18 @@ export const loginHandler = async (req: Request, res: Response) => {
 };
 
 export const validateTokenHandler = async (req: Request, res: Response) => {
-    try {
-        const authHeader = req.headers.authorization;
-        if (!authHeader || !authHeader.startsWith('Bearer '))
-            return errorResponse(res, 'Token missing', 401);
-
-        const token = authHeader.split(' ')[1];
-        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'supersecret');
-
-        successResponse(res, 'Token is valid', decoded);
-    } catch (err: any) {
-        errorResponse(res, 'Invalid or expired token', 401);
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      errorResponse(res, 'Token missing', 401);
+      return;
     }
+
+    const token = authHeader.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'supersecret');
+    
+    successResponse(res, 'Token is valid', decoded);
+  } catch (err: any) {
+    errorResponse(res, 'Invalid or expired token', 401);
+  }
 };
