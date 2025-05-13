@@ -192,6 +192,7 @@ const Header = () => {
                   <div className="mt-2 space-y-2 pl-8">
                     <a
                       href={LINKS.STAR}
+                      target="_blank"
                       className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50 rounded-lg"
                     >
                       <Star className="w-4 h-4" />
@@ -199,6 +200,7 @@ const Header = () => {
                     </a>
                     <a
                       href={LINKS.FORK}
+                      target="_blank"
                       className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50 rounded-lg"
                     >
                       <GitFork className="w-4 h-4" />
@@ -206,6 +208,7 @@ const Header = () => {
                     </a>
                     <a
                       href={LINKS.ISSUES}
+                      target="_blank"
                       className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50 rounded-lg"
                     >
                       <AlertCircle className="w-4 h-4" />
