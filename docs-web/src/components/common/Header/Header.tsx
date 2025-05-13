@@ -99,14 +99,14 @@ const Header = () => {
                     Star on GitHub
                   </a>
                   <a
-                    href="#"
+                    href={LINKS.FORK}
                     className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50"
                   >
                     <GitFork className="w-4 h-4" />
                     Fork Repository
                   </a>
                   <a
-                    href="#"
+                    href={LINKS.ISSUES}
                     className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50"
                   >
                     <AlertCircle className="w-4 h-4" />
@@ -191,21 +191,21 @@ const Header = () => {
                 {isGitHubOpen && (
                   <div className="mt-2 space-y-2 pl-8">
                     <a
-                      href="#"
+                      href={LINKS.STAR}
                       className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50 rounded-lg"
                     >
                       <Star className="w-4 h-4" />
                       Star Repository
                     </a>
                     <a
-                      href="#"
+                      href={LINKS.FORK}
                       className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50 rounded-lg"
                     >
                       <GitFork className="w-4 h-4" />
                       Fork Project
                     </a>
                     <a
-                      href="#"
+                      href={LINKS.ISSUES}
                       className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50 rounded-lg"
                     >
                       <AlertCircle className="w-4 h-4" />
