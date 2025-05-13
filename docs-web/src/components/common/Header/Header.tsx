@@ -92,7 +92,7 @@ const Header = () => {
               {isGitHubOpen && (
                 <div className="absolute top-full left-0 mt-2 w-48 bg-primary border border-accent/20 rounded-lg shadow-lg py-2 z-50">
                   <a
-                    href="#"
+                    href={LINKS.STAR}
                     className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50"
                   >
                     <Star className="w-4 h-4" />
