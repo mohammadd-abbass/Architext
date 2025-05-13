@@ -93,6 +93,7 @@ const Header = () => {
                 <div className="absolute top-full left-0 mt-2 w-48 bg-primary border border-accent/20 rounded-lg shadow-lg py-2 z-50">
                   <a
                     href={LINKS.STAR}
+                    target="_blank"
                     className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50"
                   >
                     <Star className="w-4 h-4" />
@@ -100,6 +101,7 @@ const Header = () => {
                   </a>
                   <a
                     href={LINKS.FORK}
+                    target="_blank"
                     className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50"
                   >
                     <GitFork className="w-4 h-4" />
@@ -107,6 +109,7 @@ const Header = () => {
                   </a>
                   <a
                     href={LINKS.ISSUES}
+                    target="_blank"
                     className="flex items-center gap-2 px-4 py-2 text-sm text-secondary hover:bg-primary/50"
                   >
                     <AlertCircle className="w-4 h-4" />
