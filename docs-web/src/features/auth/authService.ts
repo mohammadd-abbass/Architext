@@ -27,7 +27,8 @@ const authService = {
   validateToken: async (): Promise<boolean> => {
     try {
       const response = await apiClient.get('/auth/validate-token');
-      return response.data.success;
+      console.log('Token validation response:', response);
+      return response.data.status === 'success';
     } catch {
       return false;
     }

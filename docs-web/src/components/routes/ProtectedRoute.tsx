@@ -10,6 +10,7 @@ const ProtectedRoute = () => {
   useEffect(() => {
     const checkToken = async () => {
       const isValid = await authService.validateToken();
+      console.log('Token validation response:', isValid);
       setIsAuth(isValid);
       if (!isValid) localStorage.clear();
       setLoading(false);
