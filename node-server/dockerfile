@@ -14,18 +14,21 @@ RUN npm install
 # 5. Copy the rest of the application code
 COPY . .
 
-# 6. Copy the shell script into the container (make sure the script has execution permissions)
+# 6. Set the DATABASE_URL environment variable
+ENV DATABASE_URL=postgresql://myuser:secret@postgres:5432/architext_db
+
+# 7. Copy the shell script into the container (make sure the script has execution permissions)
 COPY ./shell.sh /app/shell.sh
 RUN chmod +x /app/shell.sh
 
-# 7. Run the setup script to handle migrations, seeding, etc.
+# 8. Run the setup script to handle migrations, seeding, etc.
 RUN ./shell.sh
 
-# 8. For production
+# 9. For production
 RUN npm run build
 
-# 9. Expose the port the app runs on
+# 10. Expose the port the app runs on
 EXPOSE 3000
 
-# 10. Command to run the app
+# 11. Command to run the app
 CMD ["npm", "start"]
