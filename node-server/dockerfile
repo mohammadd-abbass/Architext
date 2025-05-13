@@ -1,34 +1,31 @@
 # 1. An official Node.js runtime as a parent image
 FROM node:22.15-alpine3.21
 
-# 2. Set the working directory inside the container
+# 2. Set the working directory
 WORKDIR /app
 
-# 3. Copy package.json and package-lock.json first
-# (this allows Docker to cache npm install unless these files change)
+# 3. Copy package files first
 COPY package*.json ./
 
 # 4. Install dependencies
 RUN npm install
 
-# 5. Copy the rest of the application code
+# 5. Generate Prisma client (must happen before build)
+RUN npx prisma generate
+
+# 6. Copy the rest of the application code
 COPY . .
 
-# 6. Set the DATABASE_URL environment variable
-ENV DATABASE_URL=postgresql://myuser:secret@postgres:5432/architext_db
-
-# 7. Copy the shell script into the container (make sure the script has execution permissions)
-COPY ./shell.sh /app/shell.sh
-RUN chmod +x /app/shell.sh
-
-# 8. Run the setup script to handle migrations, seeding, etc.
-RUN ./shell.sh
-
-# 9. For production
+# 7. Build the application
 RUN npm run build
 
-# 10. Expose the port the app runs on
+# 8. Copy and prepare the entrypoint script
+COPY shell.sh /app/shell.sh
+RUN chmod +x /app/shell.sh
+
+# 9. Remove the DATABASE_URL from here (set at runtime)
+# 10. Expose the port
 EXPOSE 3000
 
-# 11. Command to run the app
-CMD ["npm", "start"]
+# 11. Use the shell script as entrypoint
+ENTRYPOINT ["./shell.sh"]
