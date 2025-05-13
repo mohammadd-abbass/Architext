@@ -14,11 +14,18 @@ RUN npm install
 # 5. Copy the rest of the application code
 COPY . .
 
-# 6. For production
+# 6. Copy the shell script into the container (make sure the script has execution permissions)
+COPY ./shell.sh /app/shell.sh
+RUN chmod +x /app/shell.sh
+
+# 7. Run the setup script to handle migrations, seeding, etc.
+RUN ./shell.sh
+
+# 8. For production
 RUN npm run build
 
-# 7. Expose the port the app runs on
+# 9. Expose the port the app runs on
 EXPOSE 3000
 
-# 8. Command to run the app
+# 10. Command to run the app
 CMD ["npm", "start"]
