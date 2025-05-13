@@ -20,9 +20,15 @@ const useAuth = () => {
       console.log('Login successful:', user);
       localStorage.setItem('token', token);
       dispatch(setUser(user));
-    } catch (err: any) {
-      dispatch(setError(err.response?.data?.message || 'Login failed'));
+    } catch (err: unknown) {
+      if (err && typeof err === 'object' && 'response' in err) {
+        const response = (err as { response?: { data?: { message?: string } } }).response;
+        dispatch(setError(response?.data?.message || 'Login failed'));
+      } else {
+        dispatch(setError('Login failed'));
+      }
     }
+  
   }, [dispatch]);
 
   const register = useCallback(async (name: string, email: string, password: string) => {
@@ -31,9 +37,15 @@ const useAuth = () => {
       const { user, token } = await authService.register(name, email, password);
       localStorage.setItem('token', token);
       dispatch(setUser(user));
-    } catch (err: any) {
-      dispatch(setError(err.response?.data?.message || 'Registration failed'));
+    } catch (err: unknown) {
+      if (err && typeof err === 'object' && 'response' in err) {
+        const response = (err as { response?: { data?: { message?: string } } }).response;
+        dispatch(setError(response?.data?.message || 'Login failed'));
+      } else {
+        dispatch(setError('Login failed'));
+      }
     }
+  
   }, [dispatch]);
 
   const logout = useCallback(async () => {
