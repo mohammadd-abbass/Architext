@@ -24,6 +24,15 @@ const authService = {
     return { user, token };
   },
 
+  validateToken: async (): Promise<boolean> => {
+    try {
+      const response = await apiClient.get('/auth/validate-token');
+      return response.data.success;
+    } catch {
+      return false;
+    }
+  },
+
   logout: async (): Promise<void> => {
     await apiClient.post('/auth/logout');
   }
