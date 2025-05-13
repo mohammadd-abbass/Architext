@@ -1,14 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 import './assets/style/globals.css'
-// import DocsLayout from './layouts/DocsLayout'
 import DocsPage from './pages/DocsPage';
-// import LandingPage from './pages/LandingPage'
-// import MainLayout from './layouts/MainLayout'
 import LandingPage from './pages/LandingPage'
 import { AuthPage } from './pages/AuthPage'
 import PlaygroundPage from './pages/PlaygroundPage';
 import BlogPage from './pages/BlogPage';
 import ConfigGenPage from './pages/ConfigGenPage';
+import Page404 from './pages/404Page';
+import ProtectedRoute from './components/routes/ProtectedRoute';
  
 const App = () => {
   return (
@@ -16,10 +15,13 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/docs/quick-start" element={<DocsPage />} />
-        <Route path="/playground" element={<PlaygroundPage />} />
-        <Route path="/config-generator" element={<ConfigGenPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/docs/:page" element={<DocsPage />} />
+        <Route path="*" element={<Page404 />} />
+        <Route element={<ProtectedRoute/>}>
+          <Route path="/playground" element={<PlaygroundPage />} />
+          <Route path="/config-generator" element={<ConfigGenPage />} />
+        </Route>
       </Routes>
   );
 };

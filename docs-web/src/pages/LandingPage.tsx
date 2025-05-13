@@ -10,8 +10,10 @@ import DemoSection from "../components/features/Landing/Demo";
 import AvailableSection from "../components/features/Landing/Available";
 import FaqsSection from "../components/features/Landing/Faqs";
 import TestimonialSection from "../components/features/Landing/Testimonial";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
+    const navigate = useNavigate();
   const [isCopied, setIsCopied] = React.useState(false);
   const codeSnippets = [
     "// @architext-rule: layer-boundary",
@@ -136,6 +138,7 @@ const LandingPage = () => {
                 <Button
                   variant="outline"
                   className="w-full md:w-auto justify-center gap-2 flex items-center"
+                  onClick={() => { navigate("playground") }}
                 >
                   <Code className="w-5 h-5" />
                   Live Playground
