@@ -7,6 +7,8 @@ import {
   GitFork,
   AlertCircle,
   Menu,
+  User,
+  LogOut,
 } from "lucide-react";
 import NavLinks from "./NavLinks";
 import Button from "../Button";
@@ -16,8 +18,15 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   const [isGitHubOpen, setIsGitHubOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMediumScreen, setIsMediumScreen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,13 +40,19 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    setIsProfileOpen(false);
+    navigate('/');
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-primary">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16">
         <div className="flex items-center justify-between h-full">
           {/* Left Section */}
           <div className="flex items-center gap-4 lg:gap-6">
-            {/* Mobile Menu Button - Now toggles sidebar */}
             <button
               className="lg:hidden text-secondary hover:text-accent transition"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -46,19 +61,20 @@ const Header = () => {
               <Menu className="w-6 h-6" />
             </button>
 
-            {/* Logo & Name */}
-            <div className="flex items-center flex-shrink-0 cursor-pointer" onClick={() => navigate("/")}>
+            <div 
+              className="flex items-center flex-shrink-0 cursor-pointer" 
+              onClick={() => navigate("/")}
+            >
               <img
                 src={logo}
                 alt="Architext Logo"
-                className="w-20 h-20 lg:w-30 lg:h-30 object-contain transition-all  lg:-mx-8 -mx-6"
+                className="w-20 h-20 lg:w-30 lg:h-30 object-contain transition-all lg:-mx-8 -mx-6"
               />
               <span className="text-xl font-bold text-secondary">
                 Architext
               </span>
             </div>
 
-            {/* GitHub Dropdown (Desktop) */}
             <div className="relative hidden lg:block">
               <button
                 onClick={() => setIsGitHubOpen(!isGitHubOpen)}
@@ -98,7 +114,6 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Center Navigation (Desktop) */}
           <nav
             className={`hidden lg:flex items-center ${
               isMediumScreen ? "gap-4" : "gap-15"
@@ -107,31 +122,52 @@ const Header = () => {
             <NavLinks />
           </nav>
 
-          {/* Right Section */}
-          <div className=" ">
-            <Button
-            className="px-4 py-2"
-              variant="primary"
-              onClick={() => {
-                navigate('/auth');
-              }}
-            >
-              <LogIn className="w-5 h-5 md:hidden" />
-              <span className="hidden sm:inline">Login</span>
-            </Button>
+          <div className="flex items-center gap-4">
+            {isLoggedIn ? (
+              <div className="relative">
+                <button
+                  onClick={() => setIsProfileOpen(!isProfileOpen)}
+                  className="flex items-center gap-1 text-secondary hover:text-accent transition"
+                  aria-haspopup="true"
+                  aria-expanded={isProfileOpen}
+                >
+                  <User className="w-5 h-5" />
+                  <ChevronDown className="w-4 h-4 transition-transform duration-200" />
+                </button>
+
+                {isProfileOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-48    rounded-lg shadow-lg py-2 z-50">
+                    <Button
+                    variant="outline"
+                      onClick={handleLogout}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2 text-sm"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Logout
+                    </Button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Button
+                className="px-4 py-2"
+                variant="primary"
+                onClick={() => navigate('/auth')}
+              >
+                <LogIn className="w-5 h-5 md:hidden" />
+                <span className="hidden sm:inline">Login</span>
+              </Button>
+            )}
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute left-0 right-0 bg-primary border-t border-accent/20 z-50">
             <div className="px-4 sm:px-6 py-4 space-y-6">
-              {/* Mobile Navigation Links */}
               <nav className="flex flex-col gap-3">
                 <NavLinks />
               </nav>
 
-              {/* Mobile GitHub Dropdown */}
               <div className="border-t border-accent/20 pt-4">
                 <button
                   onClick={() => setIsGitHubOpen(!isGitHubOpen)}
@@ -179,8 +215,7 @@ const Header = () => {
           </div>
         )}
 
-        {/* Bottom Border */}
-        <div className="h-px bg-accent w-full " />
+        <div className="h-px bg-accent w-full" />
       </div>
     </header>
   );
