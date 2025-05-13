@@ -1,41 +1,41 @@
-// pages/AuthPage.tsx
-import {  useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthForm } from '../components/features/auth/AuthForm';
-// import { useNavigate } from 'react-router-dom';
-// import useAuth from './useAuth';
+import useAuth from '../hooks/useAuth';
+import Loader from '../components/common/Loader';
 
 export const AuthPage = () => {
-//   const { user, login, signUp, isLoading, error, token } = useAuth();
   const [isLoginForm, setIsLoginForm] = useState(true);
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-//   const handleAuthSubmit = (formData: { email: string; password: string; name?: string }) => {
-//     if (isLoginForm) {
-//       login(formData.email, formData.password);
-//     } else {
-//       if (formData.name) {
-//         signUp(formData.name, formData.email, formData.password);
-//       }
-//     }
-//   };
+  const { login, register, user, error, loading } = useAuth();
 
-//   useEffect(() => {
-//     if (user && token) {
-//       navigate('/home');
-//     }
-//   }, [user, token, navigate]);
+  const handleSubmit = (formData: { email: string; password: string; name?: string }) => {
+    if (isLoginForm) {
+      login(formData.email, formData.password);
+    } else {
+      if (!formData.name) return;
+      register(formData.name, formData.email, formData.password);
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   return (
+    loading? <Loader/> :
     <div className="auth-page flex flex-col justify-center items-center min-h-screen relative px-6 md:px-6">
-        <h1 className="title absolute left-8 top-8 text-4xl font-bold text-accent">Architext</h1>
-        <AuthForm
-            isLogin={isLoginForm}
-            toggleAuthMode={() => setIsLoginForm((prev) => !prev)}
-            // onSubmit={(handleAuthSubmit)}
-            onSubmit={()=>{}}
-            // error={error}
-            // isLoading={isLoading}
-        />
+      <h1 className="title absolute left-8 top-8 text-4xl font-bold text-accent">Architext</h1>
+      <AuthForm
+        isLogin={isLoginForm}
+        toggleAuthMode={() => setIsLoginForm((prev) => !prev)}
+        onSubmit={handleSubmit}
+        error={error}
+        isLoading={loading}
+      />
     </div>
   );
 };
