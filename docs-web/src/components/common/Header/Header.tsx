@@ -14,6 +14,7 @@ import NavLinks from "./NavLinks";
 import Button from "../Button";
 import logo from "../../../assets/images/logo.svg";
 import { useNavigate } from "react-router-dom";
+import { GITHUB_CONFIG } from "../../../constants/constants";
 
 const Header = () => {
   const navigate = useNavigate();
