@@ -145,6 +145,18 @@ exports.Prisma.ArchitectureMessageScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.LogScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  ipAddress: 'ipAddress',
+  city: 'city',
+  country: 'country',
+  userAgent: 'userAgent',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -175,7 +187,8 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   User: 'User',
   ArchitectureSession: 'ArchitectureSession',
-  ArchitectureMessage: 'ArchitectureMessage'
+  ArchitectureMessage: 'ArchitectureMessage',
+  Log: 'Log'
 };
 
 /**

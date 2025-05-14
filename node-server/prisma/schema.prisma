@@ -51,14 +51,14 @@ model ArchitectureMessage {
 
 model Log {
   id         BigInt   @id @default(autoincrement())
-  userId     BigInt   
+  userId     Int   
   ipAddress  String   
   city       String?  
   country    String? 
   userAgent  String?   @db.Text
   latitude   Decimal?  @db.Decimal(10, 7)
   longitude  Decimal?  @db.Decimal(10, 7)
-  createdAt  DateTime @default(now()) @updatedAt d_at")
+  createdAt  DateTime @default(now()) @updatedAt
 
   user       User     @relation(fields: [userId], references: [id])
 
