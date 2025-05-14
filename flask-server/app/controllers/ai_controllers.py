@@ -114,3 +114,4 @@ def generate_config():
         import traceback
         traceback.print_exc()
         return jsonify({"error": f"Internal Server Error: {str(e)}"}), 500
+    
