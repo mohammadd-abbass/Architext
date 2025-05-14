@@ -93,3 +93,24 @@ def analyze_file_architecture():
         import traceback
         traceback.print_exc()
         return jsonify({"error": f"Internal Server Error: {str(e)}"}), 500
+    
+
+@ai.route("/generateConfig", methods=["POST"])
+def generate_config():
+    try:
+        data = request.get_json()
+        config = data.get("config")
+    except ValidationError as e:
+        return jsonify({"error": str(e)}), 400
+
+    if not config:
+        return jsonify({"error": "No config provided"}), 400
+
+    try:
+        from services.ai_controller_service import generate_config
+        result = generate_config(config)
+        return jsonify({"result": result})
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return jsonify({"error": f"Internal Server Error: {str(e)}"}), 500
