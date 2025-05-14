@@ -9,3 +9,17 @@ export const createArchitectureSession = async (userId: number) => {
   });
 };
 
+export const createArchitectureMessage = async (
+  sessionId: string,
+  role: string,
+  content: string
+) => {
+  return prisma.architectureMessage.create({
+    data: {
+      sessionId,
+      role,
+      content,
+    },
+  });
+};
+
