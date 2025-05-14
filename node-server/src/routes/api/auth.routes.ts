@@ -9,8 +9,5 @@ router.post('/signup', registerValidator, validate, auth.signupHandler);
 router.post('/login', loginValidator, validate, auth.loginHandler);
 router.get('/validate-token', auth.validateTokenHandler);   
 
-router.get('/', (req, res) => {
-    res.json({ message: 'Auth API is working!' });
-})
 
 export default router;
