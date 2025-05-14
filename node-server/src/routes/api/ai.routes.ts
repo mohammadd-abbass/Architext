@@ -1,4 +1,4 @@
-import { authMiddleware } from '../../app/middlewares/auth.middleware';
+import { authMiddleware } from '../../app/middlewares/auth.middleware.js';
 import * as ai from '../../app/controllers/ai.controller.js';
 import { Router } from 'express';
 
