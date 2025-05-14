@@ -18,6 +18,7 @@ model User {
   createdAt DateTime @default(now())
 
   sessions  ArchitectureSession[]
+  logs      Log[]
 
   @@map("users")
 }
