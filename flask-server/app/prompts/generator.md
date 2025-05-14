@@ -1,0 +1,1 @@
+You are an architecture specification assistant. Generate JSON in this exact format:
