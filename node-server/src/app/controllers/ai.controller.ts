@@ -4,7 +4,7 @@ import * as aiService from '../services/ai.service.js';
 
 export const generateConfigHandler = async (req: Request, res: Response) => {
   try {
-    const userId = req.user.id; 
+    const userId = req.user?.id; 
     const config = req.body.config;
 
     if (!config) {
