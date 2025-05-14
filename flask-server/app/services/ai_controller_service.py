@@ -34,3 +34,10 @@ def analyze_file_against_architecture(code: str, language: str, reference: dict)
     prompt = prompt_template.replace("{{code}}", code).replace("{{language}}", language).replace("{{reference}}", reference_str)
 
     return call_openai(prompt, FILE_ARCHITECTURE_CHECK)
+
+
+def generate_config(config: str) -> str:
+    prompt_template = load_prompt("config.md")
+    prompt = prompt_template.replace("{{config}}", config)
+
+    return call_openai(prompt)
