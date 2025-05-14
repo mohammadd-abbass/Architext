@@ -23,3 +23,16 @@ export const createArchitectureMessage = async (
   });
 };
 
+export const updateSessionStatus = async (
+  sessionId: string,
+  status: string,
+  result?: any
+) => {
+  return prisma.architectureSession.update({
+    where: { id: sessionId },
+    data: {
+      status,
+      result,
+    },
+  });
+};
