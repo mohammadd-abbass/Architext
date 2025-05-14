@@ -21,3 +21,6 @@ class AnalyzeFileArchitectureRequestModel(BaseModel):
     code: StrictStr = Field(..., min_length=1)
     language : StrictStr = Field(..., min_length=1)
     referenceArchitecture: Dict[str, Any]
+
+class ConfigGeneratorModel(BaseModel):
+    config: StrictStr = Field(..., min_length=1)
