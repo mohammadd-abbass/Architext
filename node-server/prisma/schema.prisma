@@ -30,5 +30,18 @@ model ArchitectureSession {
   messages  ArchitectureMessage[]
   user      User      @relation(fields: [userId], references: [id])
 
-    @@map("architecture_sessions")
+  @@map("architecture_sessions")
+}
+
+model ArchitectureMessage {
+  id          String   @id @default(cuid())
+  sessionId   String
+  role        String   // "user" or "assistant"
+  content     String
+  createdAt   DateTime @default(now())
+
+  session     ArchitectureSession @relation(fields: [sessionId], references: [id])
+
+  @@map("architecture_messages")
+
 }
