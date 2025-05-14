@@ -5,3 +5,5 @@ import { Router } from 'express';
 const router = Router();
 
 router.post('/generate-config', authMiddleware, ai.generateConfigHandler);
+
+export default router;
