@@ -44,3 +44,4 @@ export const validateTokenHandler = async (req: Request, res: Response) => {
     errorResponse(res, 'Invalid or expired token', 401);
   }
 };
+
