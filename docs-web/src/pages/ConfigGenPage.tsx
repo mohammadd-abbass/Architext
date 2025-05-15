@@ -3,6 +3,8 @@ import ChatMessage from '../components/features/configGen/ChatMessages';
 import ChatInput from '../components/features/configGen/ChatInput';
 import Header from '../components/common/Header/Header';
 import useAssistant from '../hooks/useAssistant';
+import { v4 as uuidv4 } from 'uuid';
+
 
 interface Message {
   id: string;
@@ -16,7 +18,7 @@ const ConfigGenPage = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([
     {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       content: 'Hello! Describe your project structure and I\'ll generate the .arch.json file for you.\nExamples:\n• "Next.js project with components in src/components"\n• "Python project with tests directory and no __pycache__"',
       isUser: false,
       createdAt: new Date()
@@ -31,14 +33,14 @@ const ConfigGenPage = () => {
     if (!input.trim()) return;
 
     const userMessage: Message = {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       content: input,
       isUser: true,
       createdAt: new Date()
     };
 
     const generatingMessage: Message = {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       content: 'Generating...',
       isUser: false,
       createdAt: new Date()
