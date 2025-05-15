@@ -7,7 +7,9 @@ const router = Router();
 
 router.post('/signup', registerValidator, validate, auth.signupHandler);
 router.post('/login', loginValidator, validate, auth.loginHandler);
-router.get('/validate-token', auth.validateTokenHandler);   
+router.get('/validate-token', auth.validateTokenHandler);
+router.get('/github', auth.initiateGitHubAuth);
+router.get('/github/callback', auth.githubAuthHandler);
 
 
 export default router;
