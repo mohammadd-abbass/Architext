@@ -6,7 +6,7 @@ export interface GenerateConfigResponse {
 
 const assistantService = {
   generateConfig: async (config: string): Promise<GenerateConfigResponse> => {
-    const response = await apiClient.post('/api/ai/generate-config', { config });
+    const response = await apiClient.post('/ai/generate-config', { config });
     return response.data.data;
   },
 };

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import ChatMessage from '../components/features/configGen/ChatMessages';
 import ChatInput from '../components/features/configGen/ChatInput';
 import Header from '../components/common/Header/Header';
+import useAssistant from '../hooks/useAssistant';
 
 interface Message {
   id: string;
@@ -22,27 +23,9 @@ const ConfigGenPage = () => {
     }
   ]);
 
+  const { generateConfig } = useAssistant();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-  const mockAIResponse = (prompt: string): Message => ({
-    id: crypto.randomUUID(),
-    content: '',
-    isUser: false,
-    json: `{
-  "rules": [
-    {
-      "path": "${prompt.toLowerCase().includes('react') ? 'src/components/**/*.tsx' : 'src/**/*'}",
-      "description": "Auto-generated structure",
-      "required": true,
-      "constraints": {
-        ${prompt.toLowerCase().includes('test') ? '"testFiles": { "coverageThreshold": 80 }' : '"allowedExtensions": [".ts", ".tsx"]'}
-      }
-    }
-  ]
-}`,
-    createdAt: new Date()
-  });
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -54,22 +37,32 @@ const ConfigGenPage = () => {
       createdAt: new Date()
     };
 
-    setMessages(prev => [...prev, userMessage]);
-    setInput('');
-
-    setMessages(prev => [...prev, {
+    const generatingMessage: Message = {
       id: crypto.randomUUID(),
       content: 'Generating...',
       isUser: false,
       createdAt: new Date()
-    }]);
+    };
 
-    setTimeout(() => {
-      setMessages(prev => [
-        ...prev.slice(0, -1),
-        mockAIResponse(userMessage.content)
-      ]);
-    }, 1000);
+    try {
+      setMessages(prev => [...prev, userMessage, generatingMessage]);
+      setInput('');
+
+      const response = await generateConfig(input);
+      const result = response?.result || '';
+      
+      setMessages(prev => prev.map(msg => 
+        msg.id === generatingMessage.id 
+          ? { ...msg, content: '', json: result }
+          : msg
+      ));
+    } catch (error) {
+      setMessages(prev => prev.map(msg => 
+        msg.id === generatingMessage.id 
+          ? { ...msg, content: error as string, json: undefined }
+          : msg
+      ));
+    }
   };
 
   const copyJson = (json: string) => {
@@ -96,7 +89,7 @@ const ConfigGenPage = () => {
 
   return (
     <div className="flex flex-col h-screen bg-primary text-secondary pt-16">
-        <Header/>
+      <Header/>
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg) => (
           <ChatMessage
