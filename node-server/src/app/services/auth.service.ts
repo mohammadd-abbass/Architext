@@ -20,7 +20,7 @@ export const signup = async ({ name, email, password, req }: any) => {
   return { user, token }; 
 };
 
-export const login = async ({ email, password, req }: any) => {
+export const login = async ({ email, password }: any) => {
   const user = await findUserByEmail(email);
   if (!user) throw new Error("User not found");
   const match = await bcrypt.compare(password, user.password);
@@ -29,8 +29,6 @@ export const login = async ({ email, password, req }: any) => {
   const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
     expiresIn: "1d",
   });
-
-  await createLog(user.id, req.ip, req.headers['user-agent']);
 
   return {
     user: {

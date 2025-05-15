@@ -16,7 +16,7 @@ export const createLog = async (userId: number, ipAddress: string, userAgent?: s
 
   return log;
 };
-
+    
 export const getUserLogs = async (userId: number) => {
   const logs = await getLogsByUserId(userId);
   return logs;
