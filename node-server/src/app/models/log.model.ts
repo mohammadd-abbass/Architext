@@ -14,3 +14,9 @@ export const createLogEntry = async (log: {
   });
 };
 
+export const getLogsByUserId = async (userId: number) => {
+  return await prisma.log.findMany({
+    where: { userId },
+    orderBy: { createdAt: 'desc' },
+  });
+};
