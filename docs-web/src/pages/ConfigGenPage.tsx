@@ -4,7 +4,7 @@ import ChatInput from '../components/features/configGen/ChatInput';
 import Header from '../components/common/Header/Header';
 import useAssistant from '../hooks/useAssistant';
 import { v4 as uuidv4 } from 'uuid';
-import { downloadJson } from '../utils/jsonUtils';
+import { downloadJson, copyJson } from '../utils/jsonUtils';
 
 
 interface Message {
@@ -68,10 +68,7 @@ const ConfigGenPage = () => {
     }
   };
 
-  const copyJson = (json: string) => {
-    navigator.clipboard.writeText(json);
-  };
-
+  
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
