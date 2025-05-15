@@ -1,6 +1,6 @@
 import passport from 'passport';
 import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
-import { Strategy as GitHubStrategy } from 'passport-github2';
+import { Strategy as GitHubStrategy, Profile as GitHubProfile } from 'passport-github2';
 import { prisma } from '../config/db.js';
 import { findOrCreateGitHubUser } from '../app/models/user.model.js';
 
@@ -26,7 +26,7 @@ passport.use(new GitHubStrategy({
   clientSecret: process.env.GITHUB_CLIENT_SECRET!,
   callbackURL: process.env.GITHUB_CALLBACK_URL!,
   scope: ['user:email']
-}, async (accessToken, refreshToken, profile, done) => {
+}, async (_accessToken: any, _refreshToken: any, profile: GitHubProfile, done: (error: any, user?: any) => void) => {
   try {
     const user = await findOrCreateGitHubUser(profile);
     done(null, user);
