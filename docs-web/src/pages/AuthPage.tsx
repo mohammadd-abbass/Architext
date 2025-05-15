@@ -8,7 +8,9 @@ export const AuthPage = () => {
   const [isLoginForm, setIsLoginForm] = useState(true);
   const navigate = useNavigate();
 
-  const { login, register, user, error, loading } = useAuth();
+  const { login, register, loginWithGitHub, user, error, loading } = useAuth();
+
+
 
   const handleSubmit = (formData: { email: string; password: string; name?: string }) => {
     if (isLoginForm) {
@@ -34,6 +36,7 @@ export const AuthPage = () => {
         toggleAuthMode={() => setIsLoginForm((prev) => !prev)}
         onSubmit={handleSubmit}
         error={error}
+        onGitHubLogin={loginWithGitHub}
         isLoading={loading}
       />
     </div>
