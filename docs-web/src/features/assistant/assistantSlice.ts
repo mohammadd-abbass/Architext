@@ -12,3 +12,17 @@ const initialState: AssistantState = {
   error: null,
 };
 
+const assistantSlice = createSlice({
+  name: 'assistant',
+  initialState,
+  reducers: {
+    setLoading: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+
+  }
+});
+
+export const { setLoading, setConfig, setError, resetConfig } = assistantSlice.actions;
+export default assistantSlice.reducer;
