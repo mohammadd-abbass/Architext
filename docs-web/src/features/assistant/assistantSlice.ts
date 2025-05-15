@@ -20,6 +20,10 @@ const assistantSlice = createSlice({
       state.loading = true;
       state.error = null;
     },
+    setConfig: (state, action) => {
+      state.config = action.payload;
+      state.loading = false;
+    },
 
   }
 });
