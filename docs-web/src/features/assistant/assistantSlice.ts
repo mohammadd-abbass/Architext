@@ -24,7 +24,14 @@ const assistantSlice = createSlice({
       state.config = action.payload;
       state.loading = false;
     },
-
+    setError: (state, action) => {
+      state.error = action.payload;
+      state.loading = false;
+    },
+    resetConfig: (state) => {
+      state.config = null;
+      state.error = null;
+    }
   }
 });
 
