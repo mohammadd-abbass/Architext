@@ -4,7 +4,7 @@ import ChatInput from '../components/features/configGen/ChatInput';
 import Header from '../components/common/Header/Header';
 import useAssistant from '../hooks/useAssistant';
 import { v4 as uuidv4 } from 'uuid';
-import { downloadJson } from '../utils/downloadJson';
+import { downloadJson } from '../utils/jsonUtils';
 
 
 interface Message {
