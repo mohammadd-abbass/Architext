@@ -8,7 +8,7 @@ export const signupHandler = async (req: Request, res: Response) => {
     try {
       const user = await authService.signup(req.body);
 
-      await createLog(user.user.id, req.ip  || 'unknown', req.headers["user-agent"]);
+      await createLog(user.user.id, req.ip || 'unknown', req.headers["user-agent"]);
 
       successResponse(res, 'User created successfully', user, 201);
     } catch (err: any) {
