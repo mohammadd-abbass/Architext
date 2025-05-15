@@ -20,3 +20,4 @@ export const getLogsByUserId = async (userId: number) => {
     orderBy: { createdAt: 'desc' },
   });
 };
+
