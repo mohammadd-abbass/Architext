@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 import { createUser, findUserByEmail } from "../models/user.model.js";
 import { sendWelcomeEmail } from "../../providers/mail.provider.js";
 import bcrypt from "bcrypt";
+import { createLog } from "./log.service.js";
 
 const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
 
