@@ -60,3 +60,7 @@ export const githubAuthHandler = async (req: Request, res: Response) => {
   })(req, res);
 };
 
+export const initiateGitHubAuth = (req: Request, res: Response) => {
+  passport.authenticate('github')(req, res);
+};
+
