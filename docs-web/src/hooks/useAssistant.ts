@@ -18,6 +18,7 @@ const useAssistant = () => {
     try {
       const { result } = await assistantService.generateConfig(configInput);
       dispatch(setConfig(result));
+      return { result };
     } catch (err: unknown) {
       let errorMessage = 'Failed to generate config';
       if (err && typeof err === 'object' && 'response' in err) {
