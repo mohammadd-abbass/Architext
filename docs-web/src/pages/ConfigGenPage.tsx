@@ -4,6 +4,7 @@ import ChatInput from '../components/features/configGen/ChatInput';
 import Header from '../components/common/Header/Header';
 import useAssistant from '../hooks/useAssistant';
 import { v4 as uuidv4 } from 'uuid';
+import { downloadJson } from '../utils/downloadJson';
 
 
 interface Message {
@@ -69,16 +70,6 @@ const ConfigGenPage = () => {
 
   const copyJson = (json: string) => {
     navigator.clipboard.writeText(json);
-  };
-
-  const downloadJson = (json: string) => {
-    const blob = new Blob([json], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'architecture.arch.json';
-    a.click();
-    URL.revokeObjectURL(url);
   };
 
   useEffect(() => {
