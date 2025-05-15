@@ -6,7 +6,7 @@ import { createLog } from "./log.service.js";
 
 const JWT_SECRET = process.env.JWT_SECRET || "supersecret";
 
-export const signup = async ({ name, email, password, req }: any) => {
+export const signup = async ({ name, email, password }: any) => {
   const hashedPassword = await bcrypt.hash(password, 10);
   const user = await createUser({ name, email, password: hashedPassword });
   sendWelcomeEmail(user.email, user.name);
@@ -14,8 +14,6 @@ export const signup = async ({ name, email, password, req }: any) => {
   const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { 
       expiresIn: '1d' 
   });
-
-  await createLog(user.id, req.ip, req.headers['user-agent']);
 
   return { user, token }; 
 };
