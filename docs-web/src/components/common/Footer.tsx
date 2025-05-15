@@ -3,8 +3,8 @@ import { Github, Twitter, Code2, TerminalSquare, BookText, Settings2 } from 'luc
 
 const Footer = () => {
   return (
-    <footer className="bg-primary border-t-2 border-accent mt-24">
-      <div className="container py-12">
+    <footer className="bg-primary border-t-2 border-accent mt-24 ">
+      <div className="container py-12 px-5">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
 
           <div className="space-y-4">
