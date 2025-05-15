@@ -8,6 +8,7 @@ import BlogPage from './pages/BlogPage';
 import ConfigGenPage from './pages/ConfigGenPage';
 import Page404 from './pages/404Page';
 import ProtectedRoute from './components/routes/ProtectedRoute';
+import CallbackPage from './pages/CallbackPage';
  
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/docs/quick-start" element={<DocsPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/docs/:page" element={<DocsPage />} />
+        <Route path="/auth/callback" element={<CallbackPage />} />
         <Route path="*" element={<Page404 />} />
         <Route element={<ProtectedRoute/>}>
           <Route path="/playground" element={<PlaygroundPage />} />

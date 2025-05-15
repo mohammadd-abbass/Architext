@@ -36,6 +36,10 @@ const authService = {
 
   logout: async (): Promise<void> => {
     await apiClient.post('/auth/logout');
+  },
+
+  loginWithGitHub: async (): Promise<void> => {
+    window.location.href = `http://localhost:3000/api/auth/github`;
   }
 };
 

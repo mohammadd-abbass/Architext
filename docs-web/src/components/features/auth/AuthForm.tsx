@@ -8,6 +8,7 @@ interface AuthFormProps {
   isLogin: boolean;
   toggleAuthMode: () => void;
   onSubmit: (data: { email: string; password: string; name?: string }) => void;
+  onGitHubLogin: () => void;
   error: string | null;
   isLoading: boolean;
 }
@@ -21,6 +22,7 @@ type AuthFormData = {
 export const AuthForm = ({
   isLogin,
   toggleAuthMode,
+  onGitHubLogin,
   onSubmit,
   error,
 }: AuthFormProps) => {
@@ -97,7 +99,7 @@ export const AuthForm = ({
           </div>
         </div>
 
-        <Button type="button" variant="outline" className="w-full flex items-center justify-center gap-2">
+        <Button type="button" variant="outline" className="w-full flex items-center justify-center gap-2" onClick={() => onGitHubLogin()}>
           <Github className="w-5 h-5" />
           Continue with GitHub
         </Button>

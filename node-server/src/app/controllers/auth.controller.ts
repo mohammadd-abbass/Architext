@@ -3,6 +3,7 @@ import * as authService from '../services/auth.service.js';
 import { successResponse, errorResponse } from '../traits/response.trait.js';
 import jwt from 'jsonwebtoken';
 import { createLog } from '../services/log.service.js';
+import passport from 'passport';
 
 export const signupHandler = async (req: Request, res: Response) => {
     try {
@@ -44,3 +45,22 @@ export const validateTokenHandler = async (req: Request, res: Response) => {
     errorResponse(res, 'Invalid or expired token', 401);
   }
 };
+
+export const githubAuthHandler = async (req: Request, res: Response) => {
+  passport.authenticate('github', { session: false }, (err: Error, user: { id: string; email: string }) => {
+    if (err || !user) {
+      return errorResponse(res, 'GitHub authentication failed', 401);
+    }
+    
+    const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET || 'supersecret', {
+      expiresIn: '1d'
+    });
+
+    res.redirect(`${process.env.CLIENT_URL}/auth/callback?token=${token}`);
+  })(req, res);
+};
+
+export const initiateGitHubAuth = (req: Request, res: Response) => {
+  passport.authenticate('github')(req, res);
+};
+

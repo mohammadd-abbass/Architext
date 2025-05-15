@@ -57,6 +57,12 @@ const useAuth = () => {
     dispatch(logoutUser());
   }, [dispatch]);
 
+  const loginWithGitHub = useCallback(() => {
+    dispatch(setLoading());
+    authService.loginWithGitHub();
+  }, [dispatch]);
+
+
   return {
     user,
     loading,
@@ -64,6 +70,7 @@ const useAuth = () => {
     login,
     register,
     logout,
+    loginWithGitHub,
     isAuthenticated: !!user,
   };
 };
