@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { createUser, findUserByEmail } from "../models/user.model.js";
+import { createUser, findOrCreateGitHubUser, findUserByEmail } from "../models/user.model.js";
 import { sendWelcomeEmail } from "../../providers/mail.provider.js";
 import bcrypt from "bcrypt";
 import { createLog } from "./log.service.js";
@@ -39,4 +39,10 @@ export const login = async ({ email, password }: any) => {
   };
 };
 
-
+export const githubAuth = async (profile: any) => {
+  const user = await findOrCreateGitHubUser(profile); 
+  const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
+    expiresIn: '1d'
+  });
+  return { user, token };
+};
