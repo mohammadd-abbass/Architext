@@ -5,11 +5,15 @@
 <!-- project overview -->
 <img src="./readme/title2.svg"/>
 
-> Architext is an AI-powered toolkit that enhances code quality and enforces consistency with custom reference architectures. It includes a VS Code extension that checks naming, style, folder structure, and file-level code for architectural compliance. A React-based site provides documentation and a live compiler.
+>Writing clean, maintainable code is no longer a manual effort - it's automated.
+>
+>Architext is your AI-powered architecture enforcer inside VS Code, helping you stick to your rules, your structure, and your standards.
+>
+>Forget the chaos of messy codebases. With Architext, your project architecture is no longer a guideline - it’s the default. 
 
 <br><br>
 
-<!-- System Design -->git 
+<!-- System Design -->
 <img src="./readme/title3.svg"/>
 
 ### Add Title Here
