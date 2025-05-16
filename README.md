@@ -30,6 +30,10 @@
 - Rule-Based Architecture Enforcement <br/>
     Architext reads architectural rules from a default.arch.json or a custom *.arch.json file to validate your code and project structure.
 
+- Folder Structure Validation <br/>
+    Checks your project’s folder layout against the defined architecture rules and shows a visual validation report. <br/>
+    `Ctrl + Alt + R`
+
 
 
 
