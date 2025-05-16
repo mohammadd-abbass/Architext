@@ -38,7 +38,7 @@
     Validates the currently opened file (e.g., controller, service) against the architecture rules - from naming conventions to restricted imports and function styles.
     <br/>
     `Ctrl + Alt + A`
-+
+
 - Auto-Generate Function Comments
     Generate meaningful comments for all functions in a file or selected ones using AI.
     <br/>
