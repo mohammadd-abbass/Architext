@@ -49,7 +49,15 @@
     <br/>
     `Ctrl + Alt + O`
 
+- Documentation & Showcase Website
 
+    - A feature-rich landing page
+
+    - Full documentation
+
+    - Live playground to test the extension
+
+    - Config generator with AI assistance for creating your own .arch.json
 
 
 <br><br>
