@@ -38,7 +38,7 @@
     Validates the currently opened file (e.g., controller, service) against the architecture rules - from naming conventions to restricted imports and function styles.
     <br/>
     `Ctrl + Alt + A`
-
++
 - Auto-Generate Function Comments
     Generate meaningful comments for all functions in a file or selected ones using AI.
     <br/>
@@ -97,9 +97,35 @@
 <!-- Deployment -->
 <img src="./readme/title7.svg"/>
 
-### Add Title Here
+### Deployment Workflow
 
-- Description here.
+- Architext is deployed through a **fully automated CI/CD pipeline** powered by **GitHub Actions** and **Docker**, ensuring consistent and reliable delivery.
+
+- The deployment process is divided into **two stages**:
+  - **Staging Deployment** (triggered on push to the `stage` branch)
+  - **Production Deployment** (triggered on push to the `main` branch)
+
+- Each core service in the project — **Node.js Server**, **Flask Server**, and **React Docs Website** — has its own `Dockerfile` and is containerized independently.
+
+---
+
+#### Staging Deployment
+
+- When code is pushed to the `stage` branch:
+  - GitHub Actions builds and tags Docker images for all services.
+  - These images are pushed to Docker Hub using the commit SHA as the tag.
+  - A **self-hosted staging server** pulls the latest images and redeploys them using `docker-compose-delivery.yml`.
+  - Old containers and volumes are pruned to ensure a clean environment.
+
+---
+
+#### Production Deployment
+
+- The production pipeline mirrors the staging process and is triggered on push to the `main` branch.
+- It targets a **self-hosted production server**, pulling the final images and deploying the services using Docker Compose for a seamless release.
+
+
+
 
 
 | Postman API 1                            | Postman API 2                       | Postman API 3                        |
