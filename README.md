@@ -34,6 +34,11 @@
     Checks your project’s folder layout against the defined architecture rules and shows a visual validation report. <br/>
     `Ctrl + Alt + R`
 
+- Code Style & Structure Validation <br/>
+    Validates the currently opened file (e.g., controller, service) against the architecture rules - from naming conventions to restricted imports and function styles.
+    <br/>
+    `Ctrl + Alt + A`
+
 
 
 
