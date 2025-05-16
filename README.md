@@ -44,6 +44,11 @@
     <br/>
     `Ctrl + Alt + C`
 
+- Function Complexity Analyzer
+    Instantly calculate and display the complexity of any function or file.
+    <br/>
+    `Ctrl + Alt + O`
+
 
 
 
