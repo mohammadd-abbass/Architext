@@ -37,3 +37,16 @@ class LangChainClient:
             | StrOutputParser()
         )
 
+    def get_assistant_chain(self, task_prompt: str, session_id: str):
+        """For stateful assistant APIs"""
+        if session_id not in self.memory_store:
+            self.memory_store[session_id] = ConversationBufferMemory()
+            
+        return (
+            RunnablePassthrough.assign(
+                history=lambda _: self.memory_store[session_id].load_memory_variables({})
+            )
+            | self._build_base_chain(task_prompt)
+            | StrOutputParser()
+        )
+
