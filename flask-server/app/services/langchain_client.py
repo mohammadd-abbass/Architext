@@ -30,3 +30,10 @@ class LangChainClient:
             | parser
         )
 
+    def get_text_chain(self, task_prompt: str):
+        """For simple text output APIs"""
+        return (
+            self._build_base_chain(task_prompt)
+            | StrOutputParser()
+        )
+
