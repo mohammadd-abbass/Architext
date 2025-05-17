@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from models.classes import generateCommentsRequestModel, calculateComplexityRequestModel, CheckArchitectureRequestModel, AnalyzeFileArchitectureRequestModel
-from services.ai_controller_service import generate_function_comments, calculate_function_complexity, check_project_architecture
+from app.services.ai_controller_services.ai_controller_service import generate_function_comments, calculate_function_complexity, check_project_architecture
 from pydantic import ValidationError
 
 ai = Blueprint("ai", __name__)
@@ -86,7 +86,7 @@ def analyze_file_architecture():
     print(reference)
 
     try:
-        from services.ai_controller_service import analyze_file_against_architecture
+        from app.services.ai_controller_services.ai_controller_service import analyze_file_against_architecture
         result = analyze_file_against_architecture(code, language, reference)
         return jsonify({"result": result})
     except Exception as e:
@@ -107,7 +107,7 @@ def generate_config():
         return jsonify({"error": "No config provided"}), 400
 
     try:
-        from services.ai_controller_service import generate_config
+        from app.services.ai_controller_services.ai_controller_service import generate_config
         result = generate_config(config)
         return jsonify({"result": result})
     except Exception as e:
