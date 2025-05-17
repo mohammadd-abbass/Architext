@@ -22,4 +22,11 @@ class LangChainClient:
             | self.llm
         )
 
- 
+    def get_structured_chain(self, task_prompt: str, output_model: BaseModel):
+        """For APIs needing structured output"""
+        parser = JsonOutputParser(pydantic_object=output_model)
+        return (
+            self._build_base_chain(task_prompt)
+            | parser
+        )
+
