@@ -9,6 +9,7 @@ def generate_function_comments(code: str, language: str) -> str:
     return chain.invoke({"language": language, "code": code})
 
 def calculate_function_complexit(code: str, language: str) -> str:
-    task_prompt = load_prompt("complexity.md").replace("{{code}}", code)
-    chain = langchain_client.get_text_chain(task_prompt)
-    return chain.invoke({"language": language})
+    raw_prompt = load_prompt("complexity.md")
+    chain = langchain_client.get_text_chain(raw_prompt)
+    return chain.invoke({"language": language, "code": code})
+
