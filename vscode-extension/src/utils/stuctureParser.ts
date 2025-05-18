@@ -23,3 +23,24 @@ export const getIssueIcon = (issueType: 'missing-folder' | 'misplaced-file' | 'e
     };
     return icons[issueType] || 'info';
 };
+
+export const transformRecommendedStructure = (data: any) => {
+    const structure: { [key: string]: any } = {};
+    
+    Object.entries(data.recommendedStructure).forEach(([_, paths]) => {
+        (paths as string[]).forEach(path => {
+            const parts = path.split('/');
+            let currentLevel = structure;
+            
+            parts.forEach(part => {
+                if (!currentLevel[part]) {
+                    currentLevel[part] = {};
+                }
+                currentLevel = currentLevel[part];
+            });
+        });
+    });
+
+    return structure;
+};
+
