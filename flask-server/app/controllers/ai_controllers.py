@@ -16,9 +16,6 @@ def generate_comments():
     code = body.code
     language = body.language
 
-    print(code)
-    print(language)
-
     if not code:
         return jsonify({"error": "No code provided"}), 400
     
