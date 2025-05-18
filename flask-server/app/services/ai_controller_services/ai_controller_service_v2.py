@@ -30,18 +30,13 @@ def check_project_architecture(files, reference) -> ArchitectureAnalysisResult:
     return chain.invoke({"files": files_str, "reference": json.dumps(reference, indent=2)})
 
 def analyze_file_against_architecture(code: str, language: str, reference: dict) -> FileArchitectureResult:
-    task_prompt = (
-        load_prompt("analyze.md")   
-        .replace("{{code}}", code)
-        .replace("{{language}}", language)
-        .replace("{{reference_architecture}}", json.dumps(reference, indent=2))
-    )
+    raw_prompt = load_prompt("analyze.md")
 
     chain = langchain_client.get_structured_chain(
-        task_prompt, FileArchitectureResult
+        raw_prompt, FileArchitectureResult
     )
 
-    return chain.invoke({})
+    return chain.invoke({"code": code, "language": language, "reference": json.dumps(reference, indent=2)})
 
 
 def generate_config(config: str, session_id: str) -> str:
