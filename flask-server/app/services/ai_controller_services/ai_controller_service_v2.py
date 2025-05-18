@@ -44,3 +44,9 @@ def analyze_file_against_architecture(code: str, language: str, reference: dict)
     )
 
     return chain.invoke({})
+
+
+def generate_config(config: str, session_id: str) -> str:
+    task_prompt = load_prompt("config.md").replace("{{config}}", config)
+    chain = langchain_client.get_assistant_chain(task_prompt, session_id)
+    return chain.invoke({"input": config})
