@@ -84,12 +84,12 @@ def analyze_file_architecture():
         return jsonify({"error": str(e)}), 400
 
     code = data.code
+    print("the code is", code)
     language = data.language
+    print("the language is", language)
     reference = data.referenceArchitecture
+    print("the reference is", reference)
 
-    print(code)
-    print(language)
-    print(reference)
 
     try:
         from services.ai_controller_services.ai_controller_service_v2 import analyze_file_against_architecture
