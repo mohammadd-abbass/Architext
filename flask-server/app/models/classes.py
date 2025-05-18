@@ -24,3 +24,17 @@ class AnalyzeFileArchitectureRequestModel(BaseModel):
 
 class ConfigGeneratorModel(BaseModel):
     config: StrictStr = Field(..., min_length=1)
+
+
+class IssueItem(BaseModel):
+    type: str
+    expectedPath: Optional[str]
+    filePath: Optional[str]
+    folderPath: Optional[str]
+    message: str
+    suggestion: str
+
+class ArchitectureAnalysisResult(BaseModel):
+    summary: str
+    issues: List[IssueItem]
+    recommendedStructure: dict
