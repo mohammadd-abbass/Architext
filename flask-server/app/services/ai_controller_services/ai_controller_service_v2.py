@@ -40,6 +40,6 @@ def analyze_file_against_architecture(code: str, language: str, reference: dict)
 
 
 def generate_config(config: str, session_id: str) -> str:
-    task_prompt = load_prompt("config.md").replace("{{config}}", config)
-    chain = langchain_client.get_assistant_chain(task_prompt, session_id)
-    return chain.invoke({"input": config})
+    raw_prompt = load_prompt("config.md")
+    chain = langchain_client.get_assistant_chain(raw_prompt, session_id)
+    return chain.invoke({"config": config})
