@@ -5,12 +5,9 @@ from services.langchain_client import langchain_client
 
 
 def generate_function_comments(code: str, language: str) -> str:
-    print("entered generate function comments")
     raw_prompt = load_prompt("comment.md")
     chain = langchain_client.get_text_chain(raw_prompt)
 
-    print(f"Code: {code}")
-    print(f"Language: {language}")
     return chain.invoke({"language": language, "code": code})
 
 
