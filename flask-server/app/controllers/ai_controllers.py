@@ -104,6 +104,7 @@ def generate_config():
     try:
         data = request.get_json()
         config = data.get("config")
+        session_id = 1
     except ValidationError as e:
         return jsonify({"error": str(e)}), 400
 
@@ -112,7 +113,7 @@ def generate_config():
 
     try:
         from services.ai_controller_services.ai_controller_service_v2 import generate_config
-        result = generate_config(config)
+        result = generate_config(config, session_id)
         return jsonify({"result": result})
     except Exception as e:
         import traceback
