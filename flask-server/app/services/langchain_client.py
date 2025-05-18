@@ -23,7 +23,16 @@ class LangChainClient:
     def get_structured_chain(self, task_prompt: str, output_model: BaseModel):
         """For APIs needing structured output"""
         parser = JsonOutputParser(pydantic_object=output_model)
-        return self._build_base_chain(task_prompt) | parser
+        prompt_template = ChatPromptTemplate.from_messages([
+            ("system", self.system_prompt),
+            ("human", task_prompt),
+            ("human", "Respond ONLY with valid JSON matching this schema:\n{format_instructions}")
+        ])
+        return (
+            prompt_template.partial(format_instructions=parser.get_format_instructions())
+            | self.llm
+            | parser
+        )
 
     def get_text_chain(self, task_prompt: str):
         """For simple text output APIs"""
