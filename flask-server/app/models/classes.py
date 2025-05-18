@@ -27,18 +27,21 @@ class ConfigGeneratorModel(BaseModel):
 
 
 class IssueItem(BaseModel):
-    type: str
-    expectedPath: Optional[str]
-    filePath: Optional[str]
-    folderPath: Optional[str]
-    message: str
-    suggestion: str
+    type: str = Field(..., description="Type of the issue")
+    expectedPath: Optional[str] = Field(None, description="Expected path")
+    filePath: Optional[str] = Field(None, description="Actual file path")
+    folderPath: Optional[str] = Field(None, description="Actual folder path")
+    message: str = Field(..., description="Issue description")
+    suggestion: str = Field(..., description="Resolution suggestion")
 
 class ArchitectureAnalysisResult(BaseModel):
-    summary: str
-    issues: List[IssueItem]
-    recommendedStructure: dict
-
+    summary: str = Field(..., description="Analysis summary")
+    issues: List[IssueItem] = Field(..., description="List of issues")
+    recommendedStructure: Dict[str, List[str]] = Field(
+        ...,
+        description="Recommended folder paths per layer",
+        example={"controllers": ["app/Http/Controllers"]}
+    )
 
 class DiagnosticRange(BaseModel):
     start: dict  
