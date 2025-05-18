@@ -7,12 +7,12 @@ Ensure that any issues reported are accurate and helpful. Do not make assumption
 ---
 
 Reference Architecture:
-{reference_architecture}
+{{reference_architecture}}
 
 ---
 
 Code:
-{code}
+{{code}}
 
 Language:
-php
+{{language}}

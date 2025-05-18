@@ -39,7 +39,7 @@ def analyze_file_against_architecture(code: str, language: str, reference: dict)
         load_prompt("analyze.md")
         .replace("{{code}}", code)
         .replace("{{language}}", language)
-        .replace("{{reference}}", json.dumps(reference))
+        .replace("{{reference_architecture}}", json.dumps(reference, indent=2))
     )
 
     chain = langchain_client.get_structured_chain(
