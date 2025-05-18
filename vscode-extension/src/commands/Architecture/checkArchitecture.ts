@@ -32,7 +32,9 @@ export const checkArchitecture = async (context: vscode.ExtensionContext) => {
         }, async () => {
         const response = await checkArchitectureAPI(entries, architecture);
 
-        const parsedResult = JSON.parse(response.result);
+        console.log("the following is the response: ",response);
+
+        const parsedResult = response.result;
         console.log(parsedResult);
         const dataForWebview = {
             summary: parsedResult.summary || "Check completed",
