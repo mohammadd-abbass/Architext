@@ -55,7 +55,6 @@ def calculate_complexity():
 def check_architecture():
     try:
         data = CheckArchitectureRequestModel(**request.get_json())
-        print(data)
     except ValidationError as e:
         return  jsonify({'error': str(e)}), 400
 
