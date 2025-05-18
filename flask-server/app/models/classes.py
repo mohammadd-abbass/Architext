@@ -38,3 +38,17 @@ class ArchitectureAnalysisResult(BaseModel):
     summary: str
     issues: List[IssueItem]
     recommendedStructure: dict
+
+
+class DiagnosticRange(BaseModel):
+    start: dict  
+    end: dict
+
+class DiagnosticItem(BaseModel):
+    message: str
+    severity: Literal["info", "warning", "error"]
+    line: int
+    range: DiagnosticRange
+
+class FileArchitectureResult(BaseModel):
+    diagnostics: List[DiagnosticItem]
