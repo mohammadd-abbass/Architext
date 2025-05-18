@@ -3,6 +3,7 @@ from models.classes import generateCommentsRequestModel, calculateComplexityRequ
 from app.services.ai_controller_services.ai_controller_service_v1 import generate_function_comments, calculate_function_complexity, check_project_architecture
 from pydantic import ValidationError
 
+
 ai = Blueprint("ai", __name__)
 
 @ai.route("/generateComments", methods=["POST"])
