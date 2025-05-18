@@ -19,21 +19,19 @@ def calculate_function_complexity(code: str, language: str) -> str:
 
 
 def check_project_architecture(files, reference) -> ArchitectureAnalysisResult:
-    task_prompt = (
-        load_prompt("refArchitecture.md")
-        .replace("{{files}}", json.dumps(files))
-        .replace("{{reference}}", json.dumps(reference))
-    )
+    raw_prompt = load_prompt("refArchitecture.md")
+
+    files_str = json.dumps([file.__dict__ for file in files], indent=2)  
 
     chain = langchain_client.get_structured_chain(
-        task_prompt, ArchitectureAnalysisResult
+        raw_prompt, ArchitectureAnalysisResult
     )
 
-    return chain.invoke({})
+    return chain.invoke({"files": files_str, "reference": json.dumps(reference, indent=2)})
 
 def analyze_file_against_architecture(code: str, language: str, reference: dict) -> FileArchitectureResult:
     task_prompt = (
-        load_prompt("analyze.md")
+        load_prompt("analyze.md")   
         .replace("{{code}}", code)
         .replace("{{language}}", language)
         .replace("{{reference_architecture}}", json.dumps(reference, indent=2))
