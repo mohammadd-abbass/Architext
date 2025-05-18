@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import { getNonce } from '../utils/getNonce'; 
-import { renderFolderStructure, getIssueIcon } from '../utils/stuctureParser';
+import { renderFolderStructure, getIssueIcon, transformRecommendedStructure } from '../utils/stuctureParser';
 
 export const getWebviewContent =  (
     context: vscode.ExtensionContext,
@@ -35,7 +35,7 @@ export const getWebviewContent =  (
         .replace(/\${stylesIssuesUri}/g, stylesIssuesUri.toString())
         .replace(/\${data\.summary}/g, data.summary)
         .replace(/\${data\.issues\.length}/g, data.issues.length.toString())
-        .replace('${renderFolderStructure(data.recommendedStructure)}', renderFolderStructure(data.recommendedStructure));
+        .replace('${renderFolderStructure(data.recommendedStructure)}', renderFolderStructure(transformRecommendedStructure(data)));
 
     // Dynamically inject issue cards
     const issueCardsHtml = data.issues.map((issue: any) => `
