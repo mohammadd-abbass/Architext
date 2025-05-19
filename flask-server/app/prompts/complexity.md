@@ -44,5 +44,5 @@ Do NOT remove or replace any existing comments.
 MAKE SURE NOT TO REMOVE ANY PREVIOUS COMMENTS IF FOUND JUST ADD THE COMPLEXITY COMMENT IN THE DETERMINED PLACE 
 
 If a function already has a Time Complexity comment, skip it.
-{{language}}
-{{code}}
+{language}
+{code}
