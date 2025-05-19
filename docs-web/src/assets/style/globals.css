@@ -13,6 +13,17 @@
 
   body {
     @apply bg-primary text-secondary font-sans antialiased;
+    font-family: 'SpaceGroteskRegular', sans-serif;
+  }
+
+  @font-face {
+    font-family: 'SpaceGroteskRegular';
+    src: url('../fonts/SpaceGrotesk-Regular.ttf');
+  }
+
+  @font-face {
+    font-family: 'SpaceGroteskBold';
+    src: url('../fonts/SpaceGrotesk-Bold.ttf');
   }
 
   h1, h2, h3, h4, h5, h6 {

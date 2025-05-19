@@ -19,7 +19,7 @@ const TestimonialSection = () => {
             </p>
             <div className="text-lg">
               <p className="font-bold text-accent">Mohammad Abbass</p>
-              <p className="text-secondary/80">Creator of Architext</p>
+              <p className="text-secondary/80">Founder of Architext</p>
             </div>
           </blockquote>
         </Container>
