@@ -2,7 +2,7 @@ import request from 'supertest';
 import { faker } from '@faker-js/faker';
 import app from '../../bootstrap/server'
 
-export async function createTestUser() {
+export const createTestUser = async () => {
   const fakeUser = {
     name: faker.person.firstName(),
     email: faker.internet.email(),
