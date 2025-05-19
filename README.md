@@ -28,6 +28,9 @@
 
 ### Power of Architext
 
+![Highlight](./readme/images/Component%201.png)
+
+
 - Rule-Based Architecture Enforcement <br/>
     Architext reads architectural rules from a default.arch.json or a custom *.arch.json file to validate your code and project structure.
 
