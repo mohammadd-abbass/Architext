@@ -8,25 +8,25 @@ const features = [
     icon: Folder,
     title: "Folder Architecture",
     description: "Checks folder structure across the app and enforces architectural patterns in real-time.",
-    shortcut: "Ctrl + Alt + R"
+    shortcut: "Ctrl + Alt + R / ⌘ + ⌥ + R"
   },
   {
     icon: BrainCircuit,
     title: "AI Powered Analysis",
     description: "Get intelligent code reviews with context-aware suggestions for improvements and optimizations.",
-    shortcut: "Ctrl + Alt + A"
+    shortcut: "Ctrl + Alt + A / ⌘ + ⌥ + A"
   },
   {
     icon: HeartPulse,
     title: "Complexity Insights",
     description: "Automatic Big O notation calculation with performance optimization recommendations.",
-    shortcut: "Ctrl + Alt + O"
+    shortcut: "Ctrl + Alt + O / ⌘ + ⌥ + O"
   },
   {
     icon: FileText,
     title: "Auto-Documentation",
     description: "Automatically generate comprehensive comments and architecture diagrams.",
-    shortcut: "Ctrl + Alt + C"
+    shortcut: "Ctrl + Alt + C / ⌘ + ⌥ + C"
   }
 ];
 
