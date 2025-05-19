@@ -29,7 +29,7 @@ const OverviewSection = () => {
         <div className="font-mono text-sm md:text-base">
           <pre className="text-secondary">
             <code>
-              <span className="text-accent">// architext.config.js</span>{'\n'}
+              <span className="text-accent">// architext.arch.json</span>{'\n'}
               <span className="text-accent">&#123;</span>{'\n'}
               <span className="ml-4">  architecture: </span>
               <span className="text-green-500">'feature-first'</span>,{'\n'}
