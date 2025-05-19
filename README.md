@@ -16,8 +16,8 @@
 <!-- System Design -->
 <img src="./readme/title3.svg"/>
 
-### Add Title Here
-
+### System workflow
+![fsdaf](./readme/images/diagram-export-5-19-2025-4_52_30-PM.png)
 - To be decided on later on.
 
 <br><br>
