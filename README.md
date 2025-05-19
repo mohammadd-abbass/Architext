@@ -17,10 +17,10 @@
 <img src="./readme/title3.svg"/>
 
 ### System workflow
-![fsdaf](./readme/images/diagram-export-5-19-2025-4_52_30-PM.png)
+![System](./readme/images/diagram-export-5-19-2025-4_52_30-PM.png)
 
 ### Database ERD
-
+![Database](./readme/images/drawSQL-image-export-2025-05-19.png)
 <br><br>
 
 <!-- Project Highlights -->
