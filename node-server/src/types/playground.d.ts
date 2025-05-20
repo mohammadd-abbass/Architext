@@ -5,3 +5,9 @@ export interface CodeComment {
   comment: string;
 }
 
+export interface ComplexityResult {
+  complexityScore: number;
+  cognitiveComplexity: number;
+  cyclomaticComplexity: number;
+}
+
