@@ -82,9 +82,9 @@
 | --------------------------------------- | ------------------------------------- |
 | <img src="./readme/images/Screenshot 2025-05-20 121827.png" /> | <img src="./readme/images/Screenshot 2025-05-20 122007.png"/> |
 
-| Playground Page                           | Docs Page                       |
+| Playground Page                           | Testimonial Section                    |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/Screenshot 2025-05-20 134735.png" /> | <img src="./readme/images/Screenshot 2025-05-20 122007.png"/> |
+| <img src="./readme/images/Screenshot 2025-05-20 134735.png" /> | <img src="./readme/images/Screenshot 2025-05-20 121857.png"/> |
 
 
 <br><br>
