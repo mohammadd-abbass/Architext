@@ -3,7 +3,8 @@ import CodeEditor from '../components/features/playground/CodeEditor';
 import Container from '../components/common/Container';
 import Header from '../components/common/Header/Header';
 
-const initialCode = `function greet(name: string): string {
+const initialCode = `
+function greet(name: string): string {
   return \`Hello, \${name}!\`;
 }
 
