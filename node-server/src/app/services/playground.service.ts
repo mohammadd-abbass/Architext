@@ -45,3 +45,21 @@ export const commentCode = async (userId: number, code: string) => {
     throw new Error("Code commenting failed: " + error.message);
   }
 };
+
+export const checkComplexity = async (userId: number, code: string) => {
+  try {
+    const response = await axios.post<ComplexityResult>(
+      `${FLASK_API_URL}/complexity`,
+      { code }
+    );
+
+    await createPlaygroundRecord(userId, "COMPLEXITY", code, response.data);
+    return response.data;
+  } catch (error: any) {
+    await createPlaygroundRecord(userId, "COMPLEXITY", code, {
+      error: "Complexity check failed",
+      message: error.message,
+    });
+    throw new Error("Complexity analysis failed: " + error.message);
+  }
+};
