@@ -69,12 +69,6 @@
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
 
-### User Screens (Mobile)
-
-| Login screen                            | Register screen                       | Register screen                       |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
 
 ### Docs Website
 <!-- 1440x1024.png -->
@@ -86,6 +80,10 @@
 | --------------------------------------- | ------------------------------------- |
 | <img src="./readme/images/Screenshot 2025-05-20 134735.png" /> | <img src="./readme/images/Screenshot 2025-05-20 121857.png"/> |
 
+### Mobile View 
+| Login screen                            | Register screen                       | Register screen                       |
+| --------------------------------------- | ------------------------------------- | ------------------------------------- |
+| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
 <br><br>
 
