@@ -21,3 +21,22 @@ const initialState: PlaygroundState = {
   isCheckingComplexity: false
 };
 
+const playgroundSlice = createSlice({
+  name: 'playground',
+  initialState,
+  reducers: {
+    setLoading: (state, action: { payload: 'analyze' | 'comment' | 'complexity' }) => {
+      state.loading = true;
+      state.error = null;
+      switch(action.payload) {
+        case 'analyze': state.isAnalyzing = true; break;
+        case 'comment': state.isCommenting = true; break;
+        case 'complexity': state.isCheckingComplexity = true; break;
+      }
+    },
+
+  }
+});
+
+
+export default playgroundSlice.reducer;
