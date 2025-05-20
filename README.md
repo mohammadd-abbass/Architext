@@ -95,7 +95,7 @@
 <!-- Development & Testing -->
 <img src="./readme/title6.svg"/>
 
-### Add Title Here
+### Development & Testing
 
 
 | Architext Configuration                            | Architext Commands                   | 
