@@ -19,7 +19,7 @@
 ### System workflow
 ![System](./readme/images/diagram-export-5-19-2025-4_52_30-PM.png)
 
-### Database ERD
+### Database ER Diagram
 ![Database](./readme/images/drawSQL-image-export-2025-05-19.png)
 <br><br>
 
@@ -28,7 +28,7 @@
 
 ### Power of Architext
 
-![Highlight](./readme/images/Component%201.png)
+![Highlight](./readme/images/Slice%202.png)
 
 
 - Rule-Based Architecture Enforcement <br/>
@@ -69,19 +69,26 @@
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
 
-### User Screens (Mobile)
 
+### VS-Code Extension
+<!-- 1440x1024.png -->
+| Landing Page                           | Docs Page                       |
+| --------------------------------------- | ------------------------------------- |
+| <img src="" /> | <img src=""/> |
+### Docs Website
+<!-- 1440x1024.png -->
+| Landing Page                           | Docs Page                       |
+| --------------------------------------- | ------------------------------------- |
+| <img src="./readme/images/Screenshot 2025-05-20 121827.png" /> | <img src="./readme/images/Screenshot 2025-05-20 122007.png"/> |
+
+| Playground Page                           | Testimonial Section                    |
+| --------------------------------------- | ------------------------------------- |
+| <img src="./readme/images/Screenshot 2025-05-20 134735.png" /> | <img src="./readme/images/Screenshot 2025-05-20 121857.png"/> |
+
+### Mobile View 
 | Login screen                            | Register screen                       | Register screen                       |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
-
-### Admin Screens (Web)
-
-| Login screen                            | Register screen                       |
-| --------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
-
 
 <br><br>
 
@@ -98,8 +105,25 @@
 
 <br><br>
 
-<!-- Deployment -->
+<!-- AI Powered App -->
 <img src="./readme/title7.svg"/>
+
+### Openai Integration
+<!-- 1440x1024.png -->
+| Langchain Client                           | Langchain Client                       |
+| --------------------------------------- | ------------------------------------- |
+| <img src="./readme/images/Screenshot 2025-05-20 140335.png" /> | <img src="./readme/images/Screenshot 2025-05-20 140353.png"/> |
+
+| Developer prompt                          | Comments Prompt                       |
+| --------------------------------------- | ------------------------------------- |
+| <img src="./readme/images/Screenshot 2025-05-20 140502.png" /> | <img src="./readme/images/Screenshot 2025-05-20 140449.png"/> |
+
+
+
+<br><br>
+
+<!-- Deployment -->
+<img src="./readme/title8.svg"/>
 
 ### Deployment Workflow
 
