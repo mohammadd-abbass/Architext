@@ -31,7 +31,7 @@ export const analyzeCode = async (userId: number, code: string) => {
 export const commentCode = async (userId: number, code: string) => {
   try {
     const response = await axios.post<{ comments: CodeComment[] }>(
-      `${FLASK_API_URL}comment`,
+      `${FLASK_API_URL}/generateComments`,
       { code }
     );
 
