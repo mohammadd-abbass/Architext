@@ -31,7 +31,9 @@ jobs:
           docker push mohammaddabbas/architext-flask:${{ github.sha }}
 
       - name: Build and Push React Image
-        working-directory: ./docs-web  
+        working-directory: ./docs-web 
+        env:
+          API_BASE_URL: ${{ secrets.STAGE_API_URL }}
         run: |
           docker build -t mohammaddabbas/architext-react:${{ github.sha }} .
           docker push mohammaddabbas/architext-react:${{ github.sha }}
