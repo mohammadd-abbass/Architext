@@ -1,32 +1,33 @@
-# 1. An official Node.js runtime as a parent image
 FROM node:22.15-alpine3.21
 
-# 2. Set the working directory
 WORKDIR /app
 
-# 3. Copy package files first
+# 1. Copy package files first
 COPY package*.json ./
+COPY prisma ./prisma/
 
-# 4. Install dependencies
-RUN npm install
-COPY prisma ./prisma
+# 2. Install dependencies including devDependencies
+RUN npm install --include=dev
 
-# 6. Generate Prisma client (must happen before build)
+# 3. Generate Prisma client to src/generated
 RUN npx prisma generate
 
-# 5. Copy the rest of the application code
+# 4. Copy source code AFTER generation
 COPY . .
 
-# 7. Build the application
+# 5. Build TypeScript project
 RUN npm run build
 
-# 8. Copy and prepare the entrypoint script
+# 6. Critical: Re-copy generated client to dist (preserve structure)
+RUN mkdir -p dist/generated/prisma && \
+    cp -r src/generated/prisma/client dist/generated/prisma/client
+
+# 7. Verify file structure
+RUN ls -la dist/generated/prisma/client
+
+# 8. Entrypoint remains the same
 COPY shell.sh /app/shell.sh
 RUN chmod +x /app/shell.sh
 
-# 9. Remove the DATABASE_URL from here (set at runtime)
-# 10. Expose the port
 EXPOSE 3000
-
-# 11. Use the shell script as entrypoint
 ENTRYPOINT ["./shell.sh"]
