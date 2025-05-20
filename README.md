@@ -78,7 +78,7 @@
 
 ### Docs Website
 
-| Login screen                            | Register screen                       |
+| Landing Page                           | Register screen                       |
 | --------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
