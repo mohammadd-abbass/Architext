@@ -28,7 +28,7 @@
 
 ### Power of Architext
 
-![Highlight](./readme/images/Component%201.png)
+![Highlight](./readme/images/Slice%202.png)
 
 
 - Rule-Based Architecture Enforcement <br/>
