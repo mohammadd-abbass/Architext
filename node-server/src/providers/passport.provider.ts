@@ -22,9 +22,9 @@ passport.use(new JWTStrategy(options, async (payload, done) => {
 }));
 
 passport.use(new GitHubStrategy({
-  clientID: process.env.GITHUB_CLIENT_ID!,
-  clientSecret: process.env.GITHUB_CLIENT_SECRET!,
-  callbackURL: process.env.GITHUB_CALLBACK_URL!,
+  clientID: process.env.GITHUB_CLIENT_ID || '',
+  clientSecret: process.env.GITHUB_CLIENT_SECRET || '',
+  callbackURL: process.env.GITHUB_CALLBACK_URL || '',
   scope: ['user:email'],
 }, async (_accessToken: any, _refreshToken: any, profile: GitHubProfile, done: (error: any, user?: any) => void) => {
   try {
