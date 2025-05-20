@@ -116,7 +116,7 @@
 
 | Developer prompt                          | Langchain Client                       |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/Screenshot 2025-05-20 140335.png" /> | <img src="./readme/images/Screenshot 2025-05-20 140353.png"/> |
+| <img src="./readme/images/Screenshot 2025-05-20 140502.png" /> | <img src="./readme/images/Screenshot 2025-05-20 140353.png"/> |
 
 
 
