@@ -25,6 +25,11 @@ const playgroundService = {
     return response.data.data.comments;
   },
 
+  checkComplexity: async (code: string): Promise<number> => {
+    const response = await apiClient.post('/playground/complexity', { code });
+    return response.data.data.complexity;
+  },
+
 
 };
 
