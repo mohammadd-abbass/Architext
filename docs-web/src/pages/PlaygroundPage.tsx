@@ -4,11 +4,10 @@ import Container from '../components/common/Container';
 import Header from '../components/common/Header/Header';
 import usePlayground from '../hooks/usePlayground';
 
-
 const shortcutHints = [
   { keys: ['Ctrl', 'Alt', 'C'], description: 'Comment code function' },
   { keys: ['Ctrl', 'Alt', 'O'], description: 'Calculate complexity' },
-  { keys: ['Ctrl', 'Alt', 'A'], description: 'Analyze code' },
+  // { keys: ['Ctrl', 'Alt', 'A'], description: 'Analyze code' },
 ];
 
 const languageOptions = [
@@ -21,11 +20,11 @@ const languageOptions = [
 const Playground = () => {
   const { 
     currentCode,
-    analyzeCode,
+    // analyzeCode,
     commentCode,
     checkComplexity,
     updateCode,
-    isAnalyzing,
+    // isAnalyzing,
     isCommenting,
     isCheckingComplexity,
     error
@@ -51,15 +50,19 @@ const Playground = () => {
         case 'complexity':
           modifiedCode = await checkComplexity(code, language);
           break;
-        case 'analyze':
-          modifiedCode = await analyzeCode(code, language);
-          break;
+        // case 'analyze':
+        //   modifiedCode = await analyzeCode(code, language);
+        //   break;
       }
-      updateCode(modifiedCode);
+      if (modifiedCode !== undefined) {
+        updateCode(modifiedCode);
+      } else {
+        console.error('Modified code is undefined');
+      }
     } catch (error) {
       console.error('Error during analysis:', error);
     }
-  }, [code, language, commentCode, checkComplexity, analyzeCode, updateCode]);
+  }, [code, language, commentCode, checkComplexity, updateCode]);
 
   const handleExtensionShortcut = (action: string) => {
     setActiveHint(action);
@@ -84,7 +87,7 @@ const Playground = () => {
         const actionMap: Record<string, 'comment' | 'complexity' | 'analyze'> = {
           'c': 'comment',
           'o': 'complexity',
-          'a': 'analyze'
+          // 'a': 'analyze'
         };
         const action = actionMap[e.key.toLowerCase()];
         if (action) {
@@ -108,7 +111,7 @@ const Playground = () => {
     };
   }, [code, language, handleAnalysis]);
 
-  const loading = isAnalyzing || isCommenting || isCheckingComplexity;
+  const loading = isCommenting || isCheckingComplexity;
 
   return (
     <main className="section-padding min-h-screen bg-primary text-secondary flex flex-col items-center justify-center">
@@ -204,7 +207,7 @@ const Playground = () => {
               <span className="text-sm">
                 {activeHint === 'comment' && 'Code commented 🔗'}
                 {activeHint === 'complexity' && 'Complexity calculated ⚡'}
-                {activeHint === 'analyze' && 'Code analyzed 🔍'}
+                {/* {activeHint === 'analyze' && 'Code analyzed 🔍'} */}
               </span>
             </div>
           )}
