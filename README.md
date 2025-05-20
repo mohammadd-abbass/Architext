@@ -80,7 +80,11 @@
 <!-- 1440x1024.png -->
 | Landing Page                           | Docs Page                       |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/Screenshot 2025-05-20 121827.png" width="1440" height="1024"/> | <img src="./readme/images/Screenshot 2025-05-20 122007.png" width="1440" height="1024"/> |
+| <img src="./readme/images/Screenshot 2025-05-20 121827.png" /> | <img src="./readme/images/Screenshot 2025-05-20 122007.png"/> |
+
+| Playground Page                           | Docs Page                       |
+| --------------------------------------- | ------------------------------------- |
+| <img src="./readme/images/Screenshot 2025-05-20 134735.png" /> | <img src="./readme/images/Screenshot 2025-05-20 122007.png"/> |
 
 
 <br><br>
