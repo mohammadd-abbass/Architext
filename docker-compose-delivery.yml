@@ -26,7 +26,8 @@ services:
     ports:
       - "5000:5000"
     image: mohammaddabbas/architext-flask:${TAG}
-
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
   react-app:
     image: mohammaddabbas/architext-react:${TAG}
     ports:
