@@ -14,3 +14,8 @@ export interface AnalysisResult {
   issues?: string[];
 }
 
+const playgroundService = {
+
+};
+
+export default playgroundService;
