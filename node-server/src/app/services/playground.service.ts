@@ -9,7 +9,7 @@ import type {
   ComplexityResult,
 } from "../../types/playground.js";
 
-const FLASK_API_URL = process.env.FLASK_API_URL || "http://localhost:5000/ai";
+const FLASK_API_URL = process.env.FLASK_API_URL || "http://localhost:5000/";
 
 export const analyzeCode = async (userId: number, code: string) => {
   try {
@@ -28,23 +28,30 @@ export const analyzeCode = async (userId: number, code: string) => {
   }
 };
 
-export const commentCode = async (userId: number, code: string) => {
-  try {
-    const response = await axios.post<{ comments: CodeComment[] }>(
-      `${FLASK_API_URL}/generateComments`,
-      { code }
-    );
+export const commentCode = async (userId: number, code: string, language: string) => {
+    try {
 
-    await createPlaygroundRecord(userId, "COMMENT", code, response.data);
-    return response.data.comments;
-  } catch (error: any) {
-    await createPlaygroundRecord(userId, "COMMENT", code, {
-      error: "Commenting failed",
-      message: error.message,
-    });
-    throw new Error("Code commenting failed: " + error.message);
-  }
-};
+      const response = await axios.post(
+        `${FLASK_API_URL}/ai/generateComments`,
+        { code, language }
+      );
+  
+    const comments = response.data.code;
+    const resultString = JSON.stringify(response.data);
+  
+      await createPlaygroundRecord(userId, "COMMENT", code, resultString);
+  
+      return comments;
+    } catch (error: any) {
+      const errPayload = JSON.stringify({
+        error: "Commenting failed",
+        message: error.message,
+      });
+  
+      await createPlaygroundRecord(userId, "COMMENT", code, errPayload);
+      throw new Error("Code commenting failed: " + error.message);
+    }
+  };
 
 export const checkComplexity = async (userId: number, code: string) => {
   try {

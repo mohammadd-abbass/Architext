@@ -38,14 +38,17 @@ export const commentCodeHandler = async (req: Request, res: Response) => {
     }
 
     const user = req.user as AuthUser;
-    const { code } = req.body;
+    const code = req.body.code;
+    const language = req.body.language
+
+    console.log(typeof code)
 
     if (!code) {
       errorResponse(res, 'No code provided', 400);
       return;
     }
 
-    const comments = await playgroundService.commentCode(user.id, code);
+    const comments = await playgroundService.commentCode(user.id, code, language);
     successResponse(res, 'Code commented successfully', { comments });
   } catch (err: any) {
     errorResponse(res, err.message, 500);
