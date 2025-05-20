@@ -66,5 +66,13 @@ const playgroundSlice = createSlice({
   }
 });
 
+export const { 
+  setLoading, 
+  setAnalysis, 
+  setComments, 
+  setComplexity, 
+  setError,
+  addResult 
+} = playgroundSlice.actions;
 
 export default playgroundSlice.reducer;
