@@ -19,7 +19,7 @@
 ### System workflow
 ![System](./readme/images/diagram-export-5-19-2025-4_52_30-PM.png)
 
-### Database ERD
+### Database ER Diagram
 ![Database](./readme/images/drawSQL-image-export-2025-05-19.png)
 <br><br>
 
@@ -77,7 +77,7 @@
 
 
 ### Docs Website
-
+<!-- 1440x1024.png -->
 | Landing Page                           | Register screen                       |
 | --------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
