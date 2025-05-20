@@ -67,6 +67,7 @@ jobs:
       - name: Start Services
         env:
           TAG: ${{ github.sha }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_CLIENT_ID: ${{ secrets.PROD_GITHUB_CLIENT_ID }}
           GITHUB_CLIENT_SECRET: ${{ secrets.PROD_GITHUB_CLIENT_SECRET }}
           GITHUB_CALLBACK_URL: ${{ secrets.PROD_GITHUB_CALLBACK }}
