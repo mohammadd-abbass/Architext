@@ -102,7 +102,7 @@
 | --------------------------------------- | ------------------------------------- | 
 | <img src="./readme/images/Screenshot 2025-05-20 183602.png" /> | <img src="./readme/images/Screenshot 2025-05-20 183641.png" /> |
 
-| Services                           | Testing                     |
+| Testing                           | Services                     |
 | --------------------------------------- | ------------------------------------- |
 | <img src="./readme/images/Screenshot 2025-05-20 184150.png" /> | <img src="./readme/images/Screenshot 2025-05-20 184421.png"/> |
 
