@@ -52,3 +52,25 @@ export const commentCodeHandler = async (req: Request, res: Response) => {
   }
 };
 
+export const checkComplexityHandler = async (req: Request, res: Response) => {
+  try {
+    if (!req.user) {
+      errorResponse(res, 'Unauthorized - No user found', 401);
+      return;
+    }
+
+    const user = req.user as AuthUser;
+    const { code } = req.body;
+
+    if (!code) {
+      errorResponse(res, 'No code provided', 400);
+      return;
+    }
+
+    const complexity = await playgroundService.checkComplexity(user.id, code);
+    successResponse(res, 'Complexity checked successfully', { complexity });
+  } catch (err: any) {
+    errorResponse(res, err.message, 500);
+  }
+};
+
