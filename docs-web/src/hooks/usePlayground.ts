@@ -4,9 +4,7 @@ import { useCallback } from 'react';
 import playgroundService from '../features/playground/playgroundService';
 import {
   setLoading,
-  setAnalysis,
-  setComments,
-  setComplexity,
+  updateCode,
   setError,
   addResult
 } from '../features/playground/playgroundSlice';
@@ -15,7 +13,7 @@ const usePlayground = () => {
   const dispatch = useDispatch();
   const { 
     results,
-    analysis,
+    currentCode,
     loading,
     error,
     isAnalyzing,
@@ -31,60 +29,66 @@ const usePlayground = () => {
     return defaultMessage;
   }, []);
 
-  const analyzeCode = useCallback(async (code: string) => {
+  const analyzeCode = useCallback(async (code: string, language: string) => {
     dispatch(setLoading('analyze'));
     try {
-      const result = await playgroundService.analyzeCode(code);
-      dispatch(setAnalysis(result));
+      const modifiedCode = await playgroundService.analyzeCode(code, language);
       dispatch(addResult({
         id: Date.now().toString(),
         type: 'ANALYZE',
-        code,
-        result,
+        originalCode: code,
+        modifiedCode,
+        language,
         createdAt: new Date().toISOString()
       }));
+      return modifiedCode;
     } catch (err) {
       dispatch(setError(handleError(err, 'Analysis failed')));
+      throw err;
     }
   }, [dispatch, handleError]);
 
-  const commentCode = useCallback(async (code: string) => {
+  const commentCode = useCallback(async (code: string, language: string) => {
     dispatch(setLoading('comment'));
     try {
-      const comments = await playgroundService.commentCode(code);
-      dispatch(setComments(comments));
+      const modifiedCode = await playgroundService.commentCode(code, language);
       dispatch(addResult({
         id: Date.now().toString(),
         type: 'COMMENT',
-        code,
-        result: comments,
+        originalCode: code,
+        modifiedCode,
+        language,
         createdAt: new Date().toISOString()
       }));
+      return modifiedCode;
     } catch (err) {
       dispatch(setError(handleError(err, 'Commenting failed')));
+      throw err;
     }
   }, [dispatch, handleError]);
 
-  const checkComplexity = useCallback(async (code: string) => {
+  const checkComplexity = useCallback(async (code: string, language: string) => {
     dispatch(setLoading('complexity'));
     try {
-      const complexity = await playgroundService.checkComplexity(code);
-      dispatch(setComplexity(complexity));
+      const modifiedCode = await playgroundService.checkComplexity(code, language);
       dispatch(addResult({
         id: Date.now().toString(),
         type: 'COMPLEXITY',
-        code,
-        result: complexity,
+        originalCode: code,
+        modifiedCode,
+        language,
         createdAt: new Date().toISOString()
       }));
+      return modifiedCode;
     } catch (err) {
       dispatch(setError(handleError(err, 'Complexity check failed')));
+      throw err;
     }
   }, [dispatch, handleError]);
 
   return {
     results,
-    analysis,
+    currentCode,
     loading,
     error,
     isAnalyzing,
@@ -92,7 +96,8 @@ const usePlayground = () => {
     isCheckingComplexity,
     analyzeCode,
     commentCode,
-    checkComplexity
+    checkComplexity,
+    updateCode: (code: string) => dispatch(updateCode(code))
   };
 };
 
