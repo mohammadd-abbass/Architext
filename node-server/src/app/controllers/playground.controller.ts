@@ -63,14 +63,15 @@ export const checkComplexityHandler = async (req: Request, res: Response) => {
     }
 
     const user = req.user as AuthUser;
-    const { code } = req.body;
+    const code = req.body.code;
+    const language = req.body.language
 
     if (!code) {
       errorResponse(res, 'No code provided', 400);
       return;
     }
 
-    const complexity = await playgroundService.checkComplexity(user.id, code);
+    const complexity = await playgroundService.checkComplexity(user.id, code, language);
     successResponse(res, 'Complexity checked successfully', { complexity });
   } catch (err: any) {
     errorResponse(res, err.message, 500);

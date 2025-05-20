@@ -28,45 +28,56 @@ export const analyzeCode = async (userId: number, code: string) => {
   }
 };
 
-export const commentCode = async (userId: number, code: string, language: string) => {
-    try {
+export const commentCode = async (
+  userId: number,
+  code: string,
+  language: string
+) => {
+  try {
+    const response = await axios.post(`${FLASK_API_URL}/ai/generateComments`, {
+      code,
+      language,
+    });
 
-      const response = await axios.post(
-        `${FLASK_API_URL}/ai/generateComments`,
-        { code, language }
-      );
-  
     const resultString = JSON.stringify(response.data);
-  
-      await createPlaygroundRecord(userId, "COMMENT", code, resultString);
-  
-      return response.data;
-    } catch (error: any) {
-      const errPayload = JSON.stringify({
-        error: "Commenting failed",
-        message: error.message,
-      });
-  
-      await createPlaygroundRecord(userId, "COMMENT", code, errPayload);
-      throw new Error("Code commenting failed: " + error.message);
-    }
-  };
 
-export const checkComplexity = async (userId: number, code: string, language: string) => {
+    await createPlaygroundRecord(userId, "COMMENT", code, resultString);
+
+    return response.data;
+  } catch (error: any) {
+    const errPayload = JSON.stringify({
+      error: "Commenting failed",
+      message: error.message,
+    });
+
+    await createPlaygroundRecord(userId, "COMMENT", code, errPayload);
+    throw new Error("Code commenting failed: " + error.message);
+  }
+};
+
+export const checkComplexity = async (
+  userId: number,
+  code: string,
+  language: string
+) => {
   try {
     const response = await axios.post<ComplexityResult>(
       `${FLASK_API_URL}/ai/complexity`,
       { code, language }
     );
 
-    await createPlaygroundRecord(userId, "COMPLEXITY", code, response.data);
+    const resultString = JSON.stringify(response.data);
+
+    await createPlaygroundRecord(userId, "COMPLEXITY", code, resultString);
     return response.data;
   } catch (error: any) {
-    await createPlaygroundRecord(userId, "COMPLEXITY", code, {
-      error: "Complexity check failed",
+    const errPayload = JSON.stringify({
+      error: "Calculate complexity failed",
       message: error.message,
     });
-    throw new Error("Complexity analysis failed: " + error.message);
+
+    await createPlaygroundRecord(userId, "COMPLEXITY", code, errPayload);
+    throw new Error("Code complexity failed: " + error.message);
   }
 };
 
