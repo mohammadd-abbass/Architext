@@ -63,3 +63,11 @@ export const checkComplexity = async (userId: number, code: string) => {
     throw new Error("Complexity analysis failed: " + error.message);
   }
 };
+
+export const getHistory = async (userId: number) => {
+  try {
+    return await getPlaygroundHistory(userId);
+  } catch (error: any) {
+    throw new Error("Failed to get history: " + error.message);
+  }
+};
