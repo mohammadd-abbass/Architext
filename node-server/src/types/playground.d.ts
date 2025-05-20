@@ -11,3 +11,9 @@ export interface ComplexityResult {
   cyclomaticComplexity: number;
 }
 
+export interface AnalysisResult {
+  qualityScore: number;
+  issues: string[];
+  suggestions: string[];
+}
+
