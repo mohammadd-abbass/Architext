@@ -80,7 +80,7 @@
 <!-- 1440x1024.png -->
 | Landing Page                           | Register screen                       |
 | --------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| <img src="./readme/images/Screenshot 2025-05-20 121827.png" width="1440" height="1024"/> | ![fsdaf](./readme/demo/1440x1024.png) |
 
 
 <br><br>
