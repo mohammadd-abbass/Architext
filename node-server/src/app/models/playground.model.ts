@@ -49,3 +49,8 @@ export const getRecordById = async (recordId: string) => {
   });
 };
 
+export const deletePlaygroundRecord = async (recordId: string) => {
+  return prisma.playgroundRecord.delete({
+    where: { id: recordId }
+  });
+};
