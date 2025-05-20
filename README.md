@@ -70,6 +70,11 @@
 <img src="./readme/title5.svg"/>
 
 
+### VS-Code Extension
+<!-- 1440x1024.png -->
+| Landing Page                           | Docs Page                       |
+| --------------------------------------- | ------------------------------------- |
+| <img src="" /> | <img src=""/> |
 ### Docs Website
 <!-- 1440x1024.png -->
 | Landing Page                           | Docs Page                       |
