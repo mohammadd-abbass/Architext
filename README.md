@@ -110,9 +110,9 @@
 
 ### Openai Integration
 <!-- 1440x1024.png -->
-| Langchain Client                           | Docs Page                       |
+| Langchain Client                           | Langchain Client                       |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/Screenshot 2025-05-20 140335.png" /> | <img src="./readme/images/Screenshot 2025-05-20 122007.png"/> |
+| <img src="./readme/images/Screenshot 2025-05-20 140335.png" /> | <img src="./readme/images/Screenshot 2025-05-20 140353.png"/> |
 
 
 
