@@ -3,31 +3,35 @@ import apiClient from "../../services/axios";
 export interface PlaygroundResult {
   id: string;
   type: 'COMMENT' | 'COMPLEXITY' | 'ANALYZE';
-  code: string;
-  result: string;
+  originalCode: string;
+  modifiedCode: string;
+  language: string;
   createdAt: string;
 }
 
-export interface AnalysisResult {
-  complexity?: number;
-  comments?: string[];
-  issues?: string[];
-}
-
 const playgroundService = {
-  analyzeCode: async (code: string): Promise<AnalysisResult> => {
-    const response = await apiClient.post('/playground/analyze', { code });
-    return response.data.data.result;
+  analyzeCode: async (code: string, language: string): Promise<string> => {
+    const response = await apiClient.post('/playground/analyze', { 
+      code,
+      language 
+    });
+    return response.data.data.modifiedCode;
   },
 
-  commentCode: async (code: string): Promise<string[]> => {
-    const response = await apiClient.post('/playground/comment', { code });
-    return response.data.data.comments;
+  commentCode: async (code: string, language: string): Promise<string> => {
+    const response = await apiClient.post('/playground/comment', { 
+      code,
+      language 
+    });
+    return response.data.data.modifiedCode;
   },
 
-  checkComplexity: async (code: string): Promise<number> => {
-    const response = await apiClient.post('/playground/complexity', { code });
-    return response.data.data.complexity;
+  checkComplexity: async (code: string, language: string): Promise<string> => {
+    const response = await apiClient.post('/playground/complexity', { 
+      code,
+      language 
+    });
+    return response.data.data.modifiedCode;
   },
 
   getHistory: async (): Promise<PlaygroundResult[]> => {
