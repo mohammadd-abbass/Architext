@@ -53,6 +53,13 @@ const playgroundSlice = createSlice({
       state.loading = false;
       state.isCheckingComplexity = false;
     },
+    setError: (state, action: { payload: string }) => {
+      state.error = action.payload;
+      state.loading = false;
+      state.isAnalyzing = false;
+      state.isCommenting = false;
+      state.isCheckingComplexity = false;
+    },
 
   }
 });
