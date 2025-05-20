@@ -65,5 +65,11 @@ jobs:
         run: docker compose -f docker-compose-delivery.yml down
 
       - name: Start Services
+        env:
+          TAG: ${{ github.sha }}
+          GITHUB_CLIENT_ID: ${{ secrets.STAGE_GITHUB_CLIENT_ID }}
+          GITHUB_CLIENT_SECRET: ${{ secrets.STAGE_GITHUB_CLIENT_SECRET }}
+          GITHUB_CALLBACK_URL: ${{ secrets.STAGE_GITHUB_CALLBACK }}
+          DATABASE_URL: postgresql://myuser:secret@postgres:5432/architext_db
         run: |
           TAG=${{ github.sha }} docker compose -f docker-compose-delivery.yml up -d
