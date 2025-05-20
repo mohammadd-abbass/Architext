@@ -99,7 +99,7 @@
 <br><br>
 
 <!-- Deployment -->
-<img src="./readme/title7.svg"/>
+<img src="./readme/title8.svg"/>
 
 ### Deployment Workflow
 
