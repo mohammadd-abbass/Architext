@@ -15,6 +15,9 @@ services:
     ports:
       - "3000:3000"
     environment:
+      - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
+      - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
+      - GITHUB_CALLBACK_URL=${GITHUB_CALLBACK_URL}
       - DATABASE_URL=postgresql://myuser:secret@postgres:5432/architext_db
     depends_on:
       - postgres
