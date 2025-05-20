@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import CodeEditor from '../components/features/playground/CodeEditor';
 import Container from '../components/common/Container';
 import Header from '../components/common/Header/Header';
+import usePlayground from '../hooks/usePlayground';
 
 const initialCode = `
 function greet(name: string): string {
@@ -17,6 +18,16 @@ const shortcutHints = [
 ];
 
 const Playground = () => {
+  const { 
+    currentCode,
+    analyzeCode,
+    commentCode,
+    checkComplexity,
+    updateCode,
+    isAnalyzing,
+    isCommenting,
+    isCheckingComplexity
+  } = usePlayground();
   const [code, setCode] = useState(initialCode);
   const [activeHint, setActiveHint] = useState<string | null>(null);
   const [showShortcuts, setShowShortcuts] = useState(false);
