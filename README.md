@@ -98,6 +98,14 @@
 
 <br><br>
 
+<!-- AI Powered App -->
+<img src="./readme/title7.svg"/>
+
+### Add Title Here
+
+
+<br><br>
+
 <!-- Deployment -->
 <img src="./readme/title8.svg"/>
 
