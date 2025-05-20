@@ -1,3 +1,4 @@
+import { Copy, FileDown } from "lucide-react";
 import Button from "../../common/Button";
 
 interface Message {
@@ -34,14 +35,14 @@ const ChatMessage = ({ message, onCopy, onDownload }: ChatMessageProps) => {
               className="text-sm px-3 py-1 hover:bg-accent hover:text-primary"
               onClick={() => onCopy?.(message.json!)}
             >
-              Copy
+              <Copy/>
             </Button>
             <Button
               variant="primary"
               className="text-sm px-3 py-1"
               onClick={() => onDownload?.(message.json!)}
             >
-              Download
+              <FileDown/>
             </Button>
           </div>
         </div>
