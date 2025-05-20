@@ -22,3 +22,17 @@ export const createPlaygroundRecord = async (
   });
 };
 
+export const getPlaygroundHistory = async (userId: number, limit = 20) => {
+  return prisma.playgroundRecord.findMany({
+    where: { userId },
+    orderBy: { createdAt: 'desc' },
+    take: limit,
+    select: {
+      id: true,
+      type: true,
+      createdAt: true,
+      code: true
+    }
+  });
+};
+
