@@ -62,7 +62,7 @@ export const checkComplexity = async (
 ) => {
   try {
     const response = await axios.post<ComplexityResult>(
-      `${FLASK_API_URL}/ai/complexity`,
+      `${FLASK_API_URL}/ai/calculateComplexity`,
       { code, language }
     );
 
