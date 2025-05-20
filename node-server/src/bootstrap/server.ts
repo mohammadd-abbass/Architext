@@ -6,6 +6,7 @@ import cors from 'cors';
 
 import authRoutes from '../routes/api/auth.routes.js';
 import aiRoutes from '../routes/api/ai.routes.js';
+import playgroundRoutes from '../routes/api/playground.routes.js';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/playground', playgroundRoutes);
 
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

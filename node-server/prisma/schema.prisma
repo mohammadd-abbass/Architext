@@ -20,6 +20,7 @@ model User {
 
   sessions  ArchitectureSession[]
   logs      Log[]
+  playgroundRecords PlaygroundRecord[]
 
   @@map("users")
 }
@@ -65,4 +66,28 @@ model Log {
 
   @@index([userId])
   @@map("logs")
+}
+
+model PlaygroundRecord {
+  id          String   @id @default(uuid())
+  userId      Int
+  type        ApiType 
+  code        String
+  result      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+  @@index([type])
+  
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@map("playground_records")
+
+}
+
+enum ApiType {
+  COMMENT
+  COMPLEXITY
+  ANALYZE
 }

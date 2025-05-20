@@ -33,6 +33,29 @@ export type ArchitectureMessage = $Result.DefaultSelection<Prisma.$ArchitectureM
  * 
  */
 export type Log = $Result.DefaultSelection<Prisma.$LogPayload>
+/**
+ * Model PlaygroundRecord
+ * 
+ */
+export type PlaygroundRecord = $Result.DefaultSelection<Prisma.$PlaygroundRecordPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const ApiType: {
+  COMMENT: 'COMMENT',
+  COMPLEXITY: 'COMPLEXITY',
+  ANALYZE: 'ANALYZE'
+};
+
+export type ApiType = (typeof ApiType)[keyof typeof ApiType]
+
+}
+
+export type ApiType = $Enums.ApiType
+
+export const ApiType: typeof $Enums.ApiType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +221,16 @@ export class PrismaClient<
     * ```
     */
   get log(): Prisma.LogDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.playgroundRecord`: Exposes CRUD operations for the **PlaygroundRecord** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PlaygroundRecords
+    * const playgroundRecords = await prisma.playgroundRecord.findMany()
+    * ```
+    */
+  get playgroundRecord(): Prisma.PlaygroundRecordDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -641,7 +674,8 @@ export namespace Prisma {
     User: 'User',
     ArchitectureSession: 'ArchitectureSession',
     ArchitectureMessage: 'ArchitectureMessage',
-    Log: 'Log'
+    Log: 'Log',
+    PlaygroundRecord: 'PlaygroundRecord'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +694,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "architectureSession" | "architectureMessage" | "log"
+      modelProps: "user" | "architectureSession" | "architectureMessage" | "log" | "playgroundRecord"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +994,80 @@ export namespace Prisma {
           }
         }
       }
+      PlaygroundRecord: {
+        payload: Prisma.$PlaygroundRecordPayload<ExtArgs>
+        fields: Prisma.PlaygroundRecordFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PlaygroundRecordFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlaygroundRecordPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PlaygroundRecordFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlaygroundRecordPayload>
+          }
+          findFirst: {
+            args: Prisma.PlaygroundRecordFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlaygroundRecordPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PlaygroundRecordFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlaygroundRecordPayload>
+          }
+          findMany: {
+            args: Prisma.PlaygroundRecordFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlaygroundRecordPayload>[]
+          }
+          create: {
+            args: Prisma.PlaygroundRecordCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlaygroundRecordPayload>
+          }
+          createMany: {
+            args: Prisma.PlaygroundRecordCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PlaygroundRecordCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlaygroundRecordPayload>[]
+          }
+          delete: {
+            args: Prisma.PlaygroundRecordDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlaygroundRecordPayload>
+          }
+          update: {
+            args: Prisma.PlaygroundRecordUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlaygroundRecordPayload>
+          }
+          deleteMany: {
+            args: Prisma.PlaygroundRecordDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PlaygroundRecordUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PlaygroundRecordUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlaygroundRecordPayload>[]
+          }
+          upsert: {
+            args: Prisma.PlaygroundRecordUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PlaygroundRecordPayload>
+          }
+          aggregate: {
+            args: Prisma.PlaygroundRecordAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePlaygroundRecord>
+          }
+          groupBy: {
+            args: Prisma.PlaygroundRecordGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PlaygroundRecordGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PlaygroundRecordCountArgs<ExtArgs>
+            result: $Utils.Optional<PlaygroundRecordCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1156,7 @@ export namespace Prisma {
     architectureSession?: ArchitectureSessionOmit
     architectureMessage?: ArchitectureMessageOmit
     log?: LogOmit
+    playgroundRecord?: PlaygroundRecordOmit
   }
 
   /* Types for Logging */
@@ -1144,11 +1253,13 @@ export namespace Prisma {
   export type UserCountOutputType = {
     sessions: number
     logs: number
+    playgroundRecords: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
     logs?: boolean | UserCountOutputTypeCountLogsArgs
+    playgroundRecords?: boolean | UserCountOutputTypeCountPlaygroundRecordsArgs
   }
 
   // Custom InputTypes
@@ -1174,6 +1285,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: LogWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountPlaygroundRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PlaygroundRecordWhereInput
   }
 
 
@@ -1420,6 +1538,7 @@ export namespace Prisma {
     githubId?: boolean
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     logs?: boolean | User$logsArgs<ExtArgs>
+    playgroundRecords?: boolean | User$playgroundRecordsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1454,6 +1573,7 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     logs?: boolean | User$logsArgs<ExtArgs>
+    playgroundRecords?: boolean | User$playgroundRecordsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1464,6 +1584,7 @@ export namespace Prisma {
     objects: {
       sessions: Prisma.$ArchitectureSessionPayload<ExtArgs>[]
       logs: Prisma.$LogPayload<ExtArgs>[]
+      playgroundRecords: Prisma.$PlaygroundRecordPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1868,6 +1989,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArchitectureSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     logs<T extends User$logsArgs<ExtArgs> = {}>(args?: Subset<T, User$logsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    playgroundRecords<T extends User$playgroundRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$playgroundRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2336,6 +2458,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: LogScalarFieldEnum | LogScalarFieldEnum[]
+  }
+
+  /**
+   * User.playgroundRecords
+   */
+  export type User$playgroundRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordInclude<ExtArgs> | null
+    where?: PlaygroundRecordWhereInput
+    orderBy?: PlaygroundRecordOrderByWithRelationInput | PlaygroundRecordOrderByWithRelationInput[]
+    cursor?: PlaygroundRecordWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PlaygroundRecordScalarFieldEnum | PlaygroundRecordScalarFieldEnum[]
   }
 
   /**
@@ -5703,6 +5849,1124 @@ export namespace Prisma {
 
 
   /**
+   * Model PlaygroundRecord
+   */
+
+  export type AggregatePlaygroundRecord = {
+    _count: PlaygroundRecordCountAggregateOutputType | null
+    _avg: PlaygroundRecordAvgAggregateOutputType | null
+    _sum: PlaygroundRecordSumAggregateOutputType | null
+    _min: PlaygroundRecordMinAggregateOutputType | null
+    _max: PlaygroundRecordMaxAggregateOutputType | null
+  }
+
+  export type PlaygroundRecordAvgAggregateOutputType = {
+    userId: number | null
+  }
+
+  export type PlaygroundRecordSumAggregateOutputType = {
+    userId: number | null
+  }
+
+  export type PlaygroundRecordMinAggregateOutputType = {
+    id: string | null
+    userId: number | null
+    type: $Enums.ApiType | null
+    code: string | null
+    result: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PlaygroundRecordMaxAggregateOutputType = {
+    id: string | null
+    userId: number | null
+    type: $Enums.ApiType | null
+    code: string | null
+    result: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PlaygroundRecordCountAggregateOutputType = {
+    id: number
+    userId: number
+    type: number
+    code: number
+    result: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PlaygroundRecordAvgAggregateInputType = {
+    userId?: true
+  }
+
+  export type PlaygroundRecordSumAggregateInputType = {
+    userId?: true
+  }
+
+  export type PlaygroundRecordMinAggregateInputType = {
+    id?: true
+    userId?: true
+    type?: true
+    code?: true
+    result?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PlaygroundRecordMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    type?: true
+    code?: true
+    result?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PlaygroundRecordCountAggregateInputType = {
+    id?: true
+    userId?: true
+    type?: true
+    code?: true
+    result?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PlaygroundRecordAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PlaygroundRecord to aggregate.
+     */
+    where?: PlaygroundRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PlaygroundRecords to fetch.
+     */
+    orderBy?: PlaygroundRecordOrderByWithRelationInput | PlaygroundRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PlaygroundRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PlaygroundRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PlaygroundRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PlaygroundRecords
+    **/
+    _count?: true | PlaygroundRecordCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PlaygroundRecordAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PlaygroundRecordSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PlaygroundRecordMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PlaygroundRecordMaxAggregateInputType
+  }
+
+  export type GetPlaygroundRecordAggregateType<T extends PlaygroundRecordAggregateArgs> = {
+        [P in keyof T & keyof AggregatePlaygroundRecord]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePlaygroundRecord[P]>
+      : GetScalarType<T[P], AggregatePlaygroundRecord[P]>
+  }
+
+
+
+
+  export type PlaygroundRecordGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PlaygroundRecordWhereInput
+    orderBy?: PlaygroundRecordOrderByWithAggregationInput | PlaygroundRecordOrderByWithAggregationInput[]
+    by: PlaygroundRecordScalarFieldEnum[] | PlaygroundRecordScalarFieldEnum
+    having?: PlaygroundRecordScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PlaygroundRecordCountAggregateInputType | true
+    _avg?: PlaygroundRecordAvgAggregateInputType
+    _sum?: PlaygroundRecordSumAggregateInputType
+    _min?: PlaygroundRecordMinAggregateInputType
+    _max?: PlaygroundRecordMaxAggregateInputType
+  }
+
+  export type PlaygroundRecordGroupByOutputType = {
+    id: string
+    userId: number
+    type: $Enums.ApiType
+    code: string
+    result: string
+    createdAt: Date
+    updatedAt: Date
+    _count: PlaygroundRecordCountAggregateOutputType | null
+    _avg: PlaygroundRecordAvgAggregateOutputType | null
+    _sum: PlaygroundRecordSumAggregateOutputType | null
+    _min: PlaygroundRecordMinAggregateOutputType | null
+    _max: PlaygroundRecordMaxAggregateOutputType | null
+  }
+
+  type GetPlaygroundRecordGroupByPayload<T extends PlaygroundRecordGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PlaygroundRecordGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PlaygroundRecordGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PlaygroundRecordGroupByOutputType[P]>
+            : GetScalarType<T[P], PlaygroundRecordGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PlaygroundRecordSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    code?: boolean
+    result?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["playgroundRecord"]>
+
+  export type PlaygroundRecordSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    code?: boolean
+    result?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["playgroundRecord"]>
+
+  export type PlaygroundRecordSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    code?: boolean
+    result?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["playgroundRecord"]>
+
+  export type PlaygroundRecordSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    code?: boolean
+    result?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type PlaygroundRecordOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "code" | "result" | "createdAt" | "updatedAt", ExtArgs["result"]["playgroundRecord"]>
+  export type PlaygroundRecordInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type PlaygroundRecordIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type PlaygroundRecordIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $PlaygroundRecordPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PlaygroundRecord"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: number
+      type: $Enums.ApiType
+      code: string
+      result: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["playgroundRecord"]>
+    composites: {}
+  }
+
+  type PlaygroundRecordGetPayload<S extends boolean | null | undefined | PlaygroundRecordDefaultArgs> = $Result.GetResult<Prisma.$PlaygroundRecordPayload, S>
+
+  type PlaygroundRecordCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PlaygroundRecordFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PlaygroundRecordCountAggregateInputType | true
+    }
+
+  export interface PlaygroundRecordDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PlaygroundRecord'], meta: { name: 'PlaygroundRecord' } }
+    /**
+     * Find zero or one PlaygroundRecord that matches the filter.
+     * @param {PlaygroundRecordFindUniqueArgs} args - Arguments to find a PlaygroundRecord
+     * @example
+     * // Get one PlaygroundRecord
+     * const playgroundRecord = await prisma.playgroundRecord.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PlaygroundRecordFindUniqueArgs>(args: SelectSubset<T, PlaygroundRecordFindUniqueArgs<ExtArgs>>): Prisma__PlaygroundRecordClient<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PlaygroundRecord that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PlaygroundRecordFindUniqueOrThrowArgs} args - Arguments to find a PlaygroundRecord
+     * @example
+     * // Get one PlaygroundRecord
+     * const playgroundRecord = await prisma.playgroundRecord.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PlaygroundRecordFindUniqueOrThrowArgs>(args: SelectSubset<T, PlaygroundRecordFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PlaygroundRecordClient<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PlaygroundRecord that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlaygroundRecordFindFirstArgs} args - Arguments to find a PlaygroundRecord
+     * @example
+     * // Get one PlaygroundRecord
+     * const playgroundRecord = await prisma.playgroundRecord.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PlaygroundRecordFindFirstArgs>(args?: SelectSubset<T, PlaygroundRecordFindFirstArgs<ExtArgs>>): Prisma__PlaygroundRecordClient<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PlaygroundRecord that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlaygroundRecordFindFirstOrThrowArgs} args - Arguments to find a PlaygroundRecord
+     * @example
+     * // Get one PlaygroundRecord
+     * const playgroundRecord = await prisma.playgroundRecord.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PlaygroundRecordFindFirstOrThrowArgs>(args?: SelectSubset<T, PlaygroundRecordFindFirstOrThrowArgs<ExtArgs>>): Prisma__PlaygroundRecordClient<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PlaygroundRecords that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlaygroundRecordFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PlaygroundRecords
+     * const playgroundRecords = await prisma.playgroundRecord.findMany()
+     * 
+     * // Get first 10 PlaygroundRecords
+     * const playgroundRecords = await prisma.playgroundRecord.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const playgroundRecordWithIdOnly = await prisma.playgroundRecord.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PlaygroundRecordFindManyArgs>(args?: SelectSubset<T, PlaygroundRecordFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PlaygroundRecord.
+     * @param {PlaygroundRecordCreateArgs} args - Arguments to create a PlaygroundRecord.
+     * @example
+     * // Create one PlaygroundRecord
+     * const PlaygroundRecord = await prisma.playgroundRecord.create({
+     *   data: {
+     *     // ... data to create a PlaygroundRecord
+     *   }
+     * })
+     * 
+     */
+    create<T extends PlaygroundRecordCreateArgs>(args: SelectSubset<T, PlaygroundRecordCreateArgs<ExtArgs>>): Prisma__PlaygroundRecordClient<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PlaygroundRecords.
+     * @param {PlaygroundRecordCreateManyArgs} args - Arguments to create many PlaygroundRecords.
+     * @example
+     * // Create many PlaygroundRecords
+     * const playgroundRecord = await prisma.playgroundRecord.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PlaygroundRecordCreateManyArgs>(args?: SelectSubset<T, PlaygroundRecordCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PlaygroundRecords and returns the data saved in the database.
+     * @param {PlaygroundRecordCreateManyAndReturnArgs} args - Arguments to create many PlaygroundRecords.
+     * @example
+     * // Create many PlaygroundRecords
+     * const playgroundRecord = await prisma.playgroundRecord.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PlaygroundRecords and only return the `id`
+     * const playgroundRecordWithIdOnly = await prisma.playgroundRecord.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PlaygroundRecordCreateManyAndReturnArgs>(args?: SelectSubset<T, PlaygroundRecordCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PlaygroundRecord.
+     * @param {PlaygroundRecordDeleteArgs} args - Arguments to delete one PlaygroundRecord.
+     * @example
+     * // Delete one PlaygroundRecord
+     * const PlaygroundRecord = await prisma.playgroundRecord.delete({
+     *   where: {
+     *     // ... filter to delete one PlaygroundRecord
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PlaygroundRecordDeleteArgs>(args: SelectSubset<T, PlaygroundRecordDeleteArgs<ExtArgs>>): Prisma__PlaygroundRecordClient<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PlaygroundRecord.
+     * @param {PlaygroundRecordUpdateArgs} args - Arguments to update one PlaygroundRecord.
+     * @example
+     * // Update one PlaygroundRecord
+     * const playgroundRecord = await prisma.playgroundRecord.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PlaygroundRecordUpdateArgs>(args: SelectSubset<T, PlaygroundRecordUpdateArgs<ExtArgs>>): Prisma__PlaygroundRecordClient<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PlaygroundRecords.
+     * @param {PlaygroundRecordDeleteManyArgs} args - Arguments to filter PlaygroundRecords to delete.
+     * @example
+     * // Delete a few PlaygroundRecords
+     * const { count } = await prisma.playgroundRecord.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PlaygroundRecordDeleteManyArgs>(args?: SelectSubset<T, PlaygroundRecordDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PlaygroundRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlaygroundRecordUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PlaygroundRecords
+     * const playgroundRecord = await prisma.playgroundRecord.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PlaygroundRecordUpdateManyArgs>(args: SelectSubset<T, PlaygroundRecordUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PlaygroundRecords and returns the data updated in the database.
+     * @param {PlaygroundRecordUpdateManyAndReturnArgs} args - Arguments to update many PlaygroundRecords.
+     * @example
+     * // Update many PlaygroundRecords
+     * const playgroundRecord = await prisma.playgroundRecord.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PlaygroundRecords and only return the `id`
+     * const playgroundRecordWithIdOnly = await prisma.playgroundRecord.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PlaygroundRecordUpdateManyAndReturnArgs>(args: SelectSubset<T, PlaygroundRecordUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PlaygroundRecord.
+     * @param {PlaygroundRecordUpsertArgs} args - Arguments to update or create a PlaygroundRecord.
+     * @example
+     * // Update or create a PlaygroundRecord
+     * const playgroundRecord = await prisma.playgroundRecord.upsert({
+     *   create: {
+     *     // ... data to create a PlaygroundRecord
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PlaygroundRecord we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PlaygroundRecordUpsertArgs>(args: SelectSubset<T, PlaygroundRecordUpsertArgs<ExtArgs>>): Prisma__PlaygroundRecordClient<$Result.GetResult<Prisma.$PlaygroundRecordPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PlaygroundRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlaygroundRecordCountArgs} args - Arguments to filter PlaygroundRecords to count.
+     * @example
+     * // Count the number of PlaygroundRecords
+     * const count = await prisma.playgroundRecord.count({
+     *   where: {
+     *     // ... the filter for the PlaygroundRecords we want to count
+     *   }
+     * })
+    **/
+    count<T extends PlaygroundRecordCountArgs>(
+      args?: Subset<T, PlaygroundRecordCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PlaygroundRecordCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PlaygroundRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlaygroundRecordAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PlaygroundRecordAggregateArgs>(args: Subset<T, PlaygroundRecordAggregateArgs>): Prisma.PrismaPromise<GetPlaygroundRecordAggregateType<T>>
+
+    /**
+     * Group by PlaygroundRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlaygroundRecordGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PlaygroundRecordGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PlaygroundRecordGroupByArgs['orderBy'] }
+        : { orderBy?: PlaygroundRecordGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PlaygroundRecordGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPlaygroundRecordGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PlaygroundRecord model
+   */
+  readonly fields: PlaygroundRecordFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PlaygroundRecord.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PlaygroundRecordClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PlaygroundRecord model
+   */
+  interface PlaygroundRecordFieldRefs {
+    readonly id: FieldRef<"PlaygroundRecord", 'String'>
+    readonly userId: FieldRef<"PlaygroundRecord", 'Int'>
+    readonly type: FieldRef<"PlaygroundRecord", 'ApiType'>
+    readonly code: FieldRef<"PlaygroundRecord", 'String'>
+    readonly result: FieldRef<"PlaygroundRecord", 'String'>
+    readonly createdAt: FieldRef<"PlaygroundRecord", 'DateTime'>
+    readonly updatedAt: FieldRef<"PlaygroundRecord", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PlaygroundRecord findUnique
+   */
+  export type PlaygroundRecordFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which PlaygroundRecord to fetch.
+     */
+    where: PlaygroundRecordWhereUniqueInput
+  }
+
+  /**
+   * PlaygroundRecord findUniqueOrThrow
+   */
+  export type PlaygroundRecordFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which PlaygroundRecord to fetch.
+     */
+    where: PlaygroundRecordWhereUniqueInput
+  }
+
+  /**
+   * PlaygroundRecord findFirst
+   */
+  export type PlaygroundRecordFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which PlaygroundRecord to fetch.
+     */
+    where?: PlaygroundRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PlaygroundRecords to fetch.
+     */
+    orderBy?: PlaygroundRecordOrderByWithRelationInput | PlaygroundRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PlaygroundRecords.
+     */
+    cursor?: PlaygroundRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PlaygroundRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PlaygroundRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PlaygroundRecords.
+     */
+    distinct?: PlaygroundRecordScalarFieldEnum | PlaygroundRecordScalarFieldEnum[]
+  }
+
+  /**
+   * PlaygroundRecord findFirstOrThrow
+   */
+  export type PlaygroundRecordFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which PlaygroundRecord to fetch.
+     */
+    where?: PlaygroundRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PlaygroundRecords to fetch.
+     */
+    orderBy?: PlaygroundRecordOrderByWithRelationInput | PlaygroundRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PlaygroundRecords.
+     */
+    cursor?: PlaygroundRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PlaygroundRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PlaygroundRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PlaygroundRecords.
+     */
+    distinct?: PlaygroundRecordScalarFieldEnum | PlaygroundRecordScalarFieldEnum[]
+  }
+
+  /**
+   * PlaygroundRecord findMany
+   */
+  export type PlaygroundRecordFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordInclude<ExtArgs> | null
+    /**
+     * Filter, which PlaygroundRecords to fetch.
+     */
+    where?: PlaygroundRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PlaygroundRecords to fetch.
+     */
+    orderBy?: PlaygroundRecordOrderByWithRelationInput | PlaygroundRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PlaygroundRecords.
+     */
+    cursor?: PlaygroundRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PlaygroundRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PlaygroundRecords.
+     */
+    skip?: number
+    distinct?: PlaygroundRecordScalarFieldEnum | PlaygroundRecordScalarFieldEnum[]
+  }
+
+  /**
+   * PlaygroundRecord create
+   */
+  export type PlaygroundRecordCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PlaygroundRecord.
+     */
+    data: XOR<PlaygroundRecordCreateInput, PlaygroundRecordUncheckedCreateInput>
+  }
+
+  /**
+   * PlaygroundRecord createMany
+   */
+  export type PlaygroundRecordCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PlaygroundRecords.
+     */
+    data: PlaygroundRecordCreateManyInput | PlaygroundRecordCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PlaygroundRecord createManyAndReturn
+   */
+  export type PlaygroundRecordCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * The data used to create many PlaygroundRecords.
+     */
+    data: PlaygroundRecordCreateManyInput | PlaygroundRecordCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PlaygroundRecord update
+   */
+  export type PlaygroundRecordUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PlaygroundRecord.
+     */
+    data: XOR<PlaygroundRecordUpdateInput, PlaygroundRecordUncheckedUpdateInput>
+    /**
+     * Choose, which PlaygroundRecord to update.
+     */
+    where: PlaygroundRecordWhereUniqueInput
+  }
+
+  /**
+   * PlaygroundRecord updateMany
+   */
+  export type PlaygroundRecordUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PlaygroundRecords.
+     */
+    data: XOR<PlaygroundRecordUpdateManyMutationInput, PlaygroundRecordUncheckedUpdateManyInput>
+    /**
+     * Filter which PlaygroundRecords to update
+     */
+    where?: PlaygroundRecordWhereInput
+    /**
+     * Limit how many PlaygroundRecords to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PlaygroundRecord updateManyAndReturn
+   */
+  export type PlaygroundRecordUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * The data used to update PlaygroundRecords.
+     */
+    data: XOR<PlaygroundRecordUpdateManyMutationInput, PlaygroundRecordUncheckedUpdateManyInput>
+    /**
+     * Filter which PlaygroundRecords to update
+     */
+    where?: PlaygroundRecordWhereInput
+    /**
+     * Limit how many PlaygroundRecords to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PlaygroundRecord upsert
+   */
+  export type PlaygroundRecordUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PlaygroundRecord to update in case it exists.
+     */
+    where: PlaygroundRecordWhereUniqueInput
+    /**
+     * In case the PlaygroundRecord found by the `where` argument doesn't exist, create a new PlaygroundRecord with this data.
+     */
+    create: XOR<PlaygroundRecordCreateInput, PlaygroundRecordUncheckedCreateInput>
+    /**
+     * In case the PlaygroundRecord was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PlaygroundRecordUpdateInput, PlaygroundRecordUncheckedUpdateInput>
+  }
+
+  /**
+   * PlaygroundRecord delete
+   */
+  export type PlaygroundRecordDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordInclude<ExtArgs> | null
+    /**
+     * Filter which PlaygroundRecord to delete.
+     */
+    where: PlaygroundRecordWhereUniqueInput
+  }
+
+  /**
+   * PlaygroundRecord deleteMany
+   */
+  export type PlaygroundRecordDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PlaygroundRecords to delete
+     */
+    where?: PlaygroundRecordWhereInput
+    /**
+     * Limit how many PlaygroundRecords to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PlaygroundRecord without action
+   */
+  export type PlaygroundRecordDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PlaygroundRecord
+     */
+    select?: PlaygroundRecordSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PlaygroundRecord
+     */
+    omit?: PlaygroundRecordOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaygroundRecordInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5764,6 +7028,19 @@ export namespace Prisma {
   };
 
   export type LogScalarFieldEnum = (typeof LogScalarFieldEnum)[keyof typeof LogScalarFieldEnum]
+
+
+  export const PlaygroundRecordScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    type: 'type',
+    code: 'code',
+    result: 'result',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PlaygroundRecordScalarFieldEnum = (typeof PlaygroundRecordScalarFieldEnum)[keyof typeof PlaygroundRecordScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5897,6 +7174,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'ApiType'
+   */
+  export type EnumApiTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApiType'>
+    
+
+
+  /**
+   * Reference to a field of type 'ApiType[]'
+   */
+  export type ListEnumApiTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ApiType[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -5925,6 +7216,7 @@ export namespace Prisma {
     githubId?: StringNullableFilter<"User"> | string | null
     sessions?: ArchitectureSessionListRelationFilter
     logs?: LogListRelationFilter
+    playgroundRecords?: PlaygroundRecordListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -5936,6 +7228,7 @@ export namespace Prisma {
     githubId?: SortOrderInput | SortOrder
     sessions?: ArchitectureSessionOrderByRelationAggregateInput
     logs?: LogOrderByRelationAggregateInput
+    playgroundRecords?: PlaygroundRecordOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -5950,6 +7243,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     sessions?: ArchitectureSessionListRelationFilter
     logs?: LogListRelationFilter
+    playgroundRecords?: PlaygroundRecordListRelationFilter
   }, "id" | "email" | "githubId">
 
   export type UserOrderByWithAggregationInput = {
@@ -6175,6 +7469,73 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Log"> | Date | string
   }
 
+  export type PlaygroundRecordWhereInput = {
+    AND?: PlaygroundRecordWhereInput | PlaygroundRecordWhereInput[]
+    OR?: PlaygroundRecordWhereInput[]
+    NOT?: PlaygroundRecordWhereInput | PlaygroundRecordWhereInput[]
+    id?: StringFilter<"PlaygroundRecord"> | string
+    userId?: IntFilter<"PlaygroundRecord"> | number
+    type?: EnumApiTypeFilter<"PlaygroundRecord"> | $Enums.ApiType
+    code?: StringFilter<"PlaygroundRecord"> | string
+    result?: StringFilter<"PlaygroundRecord"> | string
+    createdAt?: DateTimeFilter<"PlaygroundRecord"> | Date | string
+    updatedAt?: DateTimeFilter<"PlaygroundRecord"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type PlaygroundRecordOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    code?: SortOrder
+    result?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type PlaygroundRecordWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PlaygroundRecordWhereInput | PlaygroundRecordWhereInput[]
+    OR?: PlaygroundRecordWhereInput[]
+    NOT?: PlaygroundRecordWhereInput | PlaygroundRecordWhereInput[]
+    userId?: IntFilter<"PlaygroundRecord"> | number
+    type?: EnumApiTypeFilter<"PlaygroundRecord"> | $Enums.ApiType
+    code?: StringFilter<"PlaygroundRecord"> | string
+    result?: StringFilter<"PlaygroundRecord"> | string
+    createdAt?: DateTimeFilter<"PlaygroundRecord"> | Date | string
+    updatedAt?: DateTimeFilter<"PlaygroundRecord"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type PlaygroundRecordOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    code?: SortOrder
+    result?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: PlaygroundRecordCountOrderByAggregateInput
+    _avg?: PlaygroundRecordAvgOrderByAggregateInput
+    _max?: PlaygroundRecordMaxOrderByAggregateInput
+    _min?: PlaygroundRecordMinOrderByAggregateInput
+    _sum?: PlaygroundRecordSumOrderByAggregateInput
+  }
+
+  export type PlaygroundRecordScalarWhereWithAggregatesInput = {
+    AND?: PlaygroundRecordScalarWhereWithAggregatesInput | PlaygroundRecordScalarWhereWithAggregatesInput[]
+    OR?: PlaygroundRecordScalarWhereWithAggregatesInput[]
+    NOT?: PlaygroundRecordScalarWhereWithAggregatesInput | PlaygroundRecordScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PlaygroundRecord"> | string
+    userId?: IntWithAggregatesFilter<"PlaygroundRecord"> | number
+    type?: EnumApiTypeWithAggregatesFilter<"PlaygroundRecord"> | $Enums.ApiType
+    code?: StringWithAggregatesFilter<"PlaygroundRecord"> | string
+    result?: StringWithAggregatesFilter<"PlaygroundRecord"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"PlaygroundRecord"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"PlaygroundRecord"> | Date | string
+  }
+
   export type UserCreateInput = {
     name: string
     email: string
@@ -6183,6 +7544,7 @@ export namespace Prisma {
     githubId?: string | null
     sessions?: ArchitectureSessionCreateNestedManyWithoutUserInput
     logs?: LogCreateNestedManyWithoutUserInput
+    playgroundRecords?: PlaygroundRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -6194,6 +7556,7 @@ export namespace Prisma {
     githubId?: string | null
     sessions?: ArchitectureSessionUncheckedCreateNestedManyWithoutUserInput
     logs?: LogUncheckedCreateNestedManyWithoutUserInput
+    playgroundRecords?: PlaygroundRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -6204,6 +7567,7 @@ export namespace Prisma {
     githubId?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: ArchitectureSessionUpdateManyWithoutUserNestedInput
     logs?: LogUpdateManyWithoutUserNestedInput
+    playgroundRecords?: PlaygroundRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -6215,6 +7579,7 @@ export namespace Prisma {
     githubId?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: ArchitectureSessionUncheckedUpdateManyWithoutUserNestedInput
     logs?: LogUncheckedUpdateManyWithoutUserNestedInput
+    playgroundRecords?: PlaygroundRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -6447,6 +7812,75 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PlaygroundRecordCreateInput = {
+    id?: string
+    type: $Enums.ApiType
+    code: string
+    result: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutPlaygroundRecordsInput
+  }
+
+  export type PlaygroundRecordUncheckedCreateInput = {
+    id?: string
+    userId: number
+    type: $Enums.ApiType
+    code: string
+    result: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PlaygroundRecordUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumApiTypeFieldUpdateOperationsInput | $Enums.ApiType
+    code?: StringFieldUpdateOperationsInput | string
+    result?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutPlaygroundRecordsNestedInput
+  }
+
+  export type PlaygroundRecordUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    type?: EnumApiTypeFieldUpdateOperationsInput | $Enums.ApiType
+    code?: StringFieldUpdateOperationsInput | string
+    result?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlaygroundRecordCreateManyInput = {
+    id?: string
+    userId: number
+    type: $Enums.ApiType
+    code: string
+    result: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PlaygroundRecordUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumApiTypeFieldUpdateOperationsInput | $Enums.ApiType
+    code?: StringFieldUpdateOperationsInput | string
+    result?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlaygroundRecordUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: IntFieldUpdateOperationsInput | number
+    type?: EnumApiTypeFieldUpdateOperationsInput | $Enums.ApiType
+    code?: StringFieldUpdateOperationsInput | string
+    result?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -6511,6 +7945,12 @@ export namespace Prisma {
     none?: LogWhereInput
   }
 
+  export type PlaygroundRecordListRelationFilter = {
+    every?: PlaygroundRecordWhereInput
+    some?: PlaygroundRecordWhereInput
+    none?: PlaygroundRecordWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -6521,6 +7961,10 @@ export namespace Prisma {
   }
 
   export type LogOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PlaygroundRecordOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6855,6 +8299,61 @@ export namespace Prisma {
     _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
+  export type EnumApiTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApiType | EnumApiTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ApiType[] | ListEnumApiTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApiType[] | ListEnumApiTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumApiTypeFilter<$PrismaModel> | $Enums.ApiType
+  }
+
+  export type PlaygroundRecordCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    code?: SortOrder
+    result?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PlaygroundRecordAvgOrderByAggregateInput = {
+    userId?: SortOrder
+  }
+
+  export type PlaygroundRecordMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    code?: SortOrder
+    result?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PlaygroundRecordMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    type?: SortOrder
+    code?: SortOrder
+    result?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PlaygroundRecordSumOrderByAggregateInput = {
+    userId?: SortOrder
+  }
+
+  export type EnumApiTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApiType | EnumApiTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ApiType[] | ListEnumApiTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApiType[] | ListEnumApiTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumApiTypeWithAggregatesFilter<$PrismaModel> | $Enums.ApiType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumApiTypeFilter<$PrismaModel>
+    _max?: NestedEnumApiTypeFilter<$PrismaModel>
+  }
+
   export type ArchitectureSessionCreateNestedManyWithoutUserInput = {
     create?: XOR<ArchitectureSessionCreateWithoutUserInput, ArchitectureSessionUncheckedCreateWithoutUserInput> | ArchitectureSessionCreateWithoutUserInput[] | ArchitectureSessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ArchitectureSessionCreateOrConnectWithoutUserInput | ArchitectureSessionCreateOrConnectWithoutUserInput[]
@@ -6869,6 +8368,13 @@ export namespace Prisma {
     connect?: LogWhereUniqueInput | LogWhereUniqueInput[]
   }
 
+  export type PlaygroundRecordCreateNestedManyWithoutUserInput = {
+    create?: XOR<PlaygroundRecordCreateWithoutUserInput, PlaygroundRecordUncheckedCreateWithoutUserInput> | PlaygroundRecordCreateWithoutUserInput[] | PlaygroundRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PlaygroundRecordCreateOrConnectWithoutUserInput | PlaygroundRecordCreateOrConnectWithoutUserInput[]
+    createMany?: PlaygroundRecordCreateManyUserInputEnvelope
+    connect?: PlaygroundRecordWhereUniqueInput | PlaygroundRecordWhereUniqueInput[]
+  }
+
   export type ArchitectureSessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<ArchitectureSessionCreateWithoutUserInput, ArchitectureSessionUncheckedCreateWithoutUserInput> | ArchitectureSessionCreateWithoutUserInput[] | ArchitectureSessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ArchitectureSessionCreateOrConnectWithoutUserInput | ArchitectureSessionCreateOrConnectWithoutUserInput[]
@@ -6881,6 +8387,13 @@ export namespace Prisma {
     connectOrCreate?: LogCreateOrConnectWithoutUserInput | LogCreateOrConnectWithoutUserInput[]
     createMany?: LogCreateManyUserInputEnvelope
     connect?: LogWhereUniqueInput | LogWhereUniqueInput[]
+  }
+
+  export type PlaygroundRecordUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<PlaygroundRecordCreateWithoutUserInput, PlaygroundRecordUncheckedCreateWithoutUserInput> | PlaygroundRecordCreateWithoutUserInput[] | PlaygroundRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PlaygroundRecordCreateOrConnectWithoutUserInput | PlaygroundRecordCreateOrConnectWithoutUserInput[]
+    createMany?: PlaygroundRecordCreateManyUserInputEnvelope
+    connect?: PlaygroundRecordWhereUniqueInput | PlaygroundRecordWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6923,6 +8436,20 @@ export namespace Prisma {
     deleteMany?: LogScalarWhereInput | LogScalarWhereInput[]
   }
 
+  export type PlaygroundRecordUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PlaygroundRecordCreateWithoutUserInput, PlaygroundRecordUncheckedCreateWithoutUserInput> | PlaygroundRecordCreateWithoutUserInput[] | PlaygroundRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PlaygroundRecordCreateOrConnectWithoutUserInput | PlaygroundRecordCreateOrConnectWithoutUserInput[]
+    upsert?: PlaygroundRecordUpsertWithWhereUniqueWithoutUserInput | PlaygroundRecordUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PlaygroundRecordCreateManyUserInputEnvelope
+    set?: PlaygroundRecordWhereUniqueInput | PlaygroundRecordWhereUniqueInput[]
+    disconnect?: PlaygroundRecordWhereUniqueInput | PlaygroundRecordWhereUniqueInput[]
+    delete?: PlaygroundRecordWhereUniqueInput | PlaygroundRecordWhereUniqueInput[]
+    connect?: PlaygroundRecordWhereUniqueInput | PlaygroundRecordWhereUniqueInput[]
+    update?: PlaygroundRecordUpdateWithWhereUniqueWithoutUserInput | PlaygroundRecordUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PlaygroundRecordUpdateManyWithWhereWithoutUserInput | PlaygroundRecordUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PlaygroundRecordScalarWhereInput | PlaygroundRecordScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -6957,6 +8484,20 @@ export namespace Prisma {
     update?: LogUpdateWithWhereUniqueWithoutUserInput | LogUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: LogUpdateManyWithWhereWithoutUserInput | LogUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: LogScalarWhereInput | LogScalarWhereInput[]
+  }
+
+  export type PlaygroundRecordUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PlaygroundRecordCreateWithoutUserInput, PlaygroundRecordUncheckedCreateWithoutUserInput> | PlaygroundRecordCreateWithoutUserInput[] | PlaygroundRecordUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PlaygroundRecordCreateOrConnectWithoutUserInput | PlaygroundRecordCreateOrConnectWithoutUserInput[]
+    upsert?: PlaygroundRecordUpsertWithWhereUniqueWithoutUserInput | PlaygroundRecordUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PlaygroundRecordCreateManyUserInputEnvelope
+    set?: PlaygroundRecordWhereUniqueInput | PlaygroundRecordWhereUniqueInput[]
+    disconnect?: PlaygroundRecordWhereUniqueInput | PlaygroundRecordWhereUniqueInput[]
+    delete?: PlaygroundRecordWhereUniqueInput | PlaygroundRecordWhereUniqueInput[]
+    connect?: PlaygroundRecordWhereUniqueInput | PlaygroundRecordWhereUniqueInput[]
+    update?: PlaygroundRecordUpdateWithWhereUniqueWithoutUserInput | PlaygroundRecordUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PlaygroundRecordUpdateManyWithWhereWithoutUserInput | PlaygroundRecordUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PlaygroundRecordScalarWhereInput | PlaygroundRecordScalarWhereInput[]
   }
 
   export type ArchitectureMessageCreateNestedManyWithoutSessionInput = {
@@ -7057,6 +8598,24 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutLogsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLogsInput, UserUpdateWithoutLogsInput>, UserUncheckedUpdateWithoutLogsInput>
+  }
+
+  export type UserCreateNestedOneWithoutPlaygroundRecordsInput = {
+    create?: XOR<UserCreateWithoutPlaygroundRecordsInput, UserUncheckedCreateWithoutPlaygroundRecordsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPlaygroundRecordsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type EnumApiTypeFieldUpdateOperationsInput = {
+    set?: $Enums.ApiType
+  }
+
+  export type UserUpdateOneRequiredWithoutPlaygroundRecordsNestedInput = {
+    create?: XOR<UserCreateWithoutPlaygroundRecordsInput, UserUncheckedCreateWithoutPlaygroundRecordsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPlaygroundRecordsInput
+    upsert?: UserUpsertWithoutPlaygroundRecordsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPlaygroundRecordsInput, UserUpdateWithoutPlaygroundRecordsInput>, UserUncheckedUpdateWithoutPlaygroundRecordsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -7272,6 +8831,23 @@ export namespace Prisma {
     _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumApiTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApiType | EnumApiTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ApiType[] | ListEnumApiTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApiType[] | ListEnumApiTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumApiTypeFilter<$PrismaModel> | $Enums.ApiType
+  }
+
+  export type NestedEnumApiTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ApiType | EnumApiTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ApiType[] | ListEnumApiTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ApiType[] | ListEnumApiTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumApiTypeWithAggregatesFilter<$PrismaModel> | $Enums.ApiType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumApiTypeFilter<$PrismaModel>
+    _max?: NestedEnumApiTypeFilter<$PrismaModel>
+  }
+
   export type ArchitectureSessionCreateWithoutUserInput = {
     id?: string
     status?: string
@@ -7329,6 +8905,34 @@ export namespace Prisma {
 
   export type LogCreateManyUserInputEnvelope = {
     data: LogCreateManyUserInput | LogCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PlaygroundRecordCreateWithoutUserInput = {
+    id?: string
+    type: $Enums.ApiType
+    code: string
+    result: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PlaygroundRecordUncheckedCreateWithoutUserInput = {
+    id?: string
+    type: $Enums.ApiType
+    code: string
+    result: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PlaygroundRecordCreateOrConnectWithoutUserInput = {
+    where: PlaygroundRecordWhereUniqueInput
+    create: XOR<PlaygroundRecordCreateWithoutUserInput, PlaygroundRecordUncheckedCreateWithoutUserInput>
+  }
+
+  export type PlaygroundRecordCreateManyUserInputEnvelope = {
+    data: PlaygroundRecordCreateManyUserInput | PlaygroundRecordCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -7391,6 +8995,35 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Log"> | Date | string
   }
 
+  export type PlaygroundRecordUpsertWithWhereUniqueWithoutUserInput = {
+    where: PlaygroundRecordWhereUniqueInput
+    update: XOR<PlaygroundRecordUpdateWithoutUserInput, PlaygroundRecordUncheckedUpdateWithoutUserInput>
+    create: XOR<PlaygroundRecordCreateWithoutUserInput, PlaygroundRecordUncheckedCreateWithoutUserInput>
+  }
+
+  export type PlaygroundRecordUpdateWithWhereUniqueWithoutUserInput = {
+    where: PlaygroundRecordWhereUniqueInput
+    data: XOR<PlaygroundRecordUpdateWithoutUserInput, PlaygroundRecordUncheckedUpdateWithoutUserInput>
+  }
+
+  export type PlaygroundRecordUpdateManyWithWhereWithoutUserInput = {
+    where: PlaygroundRecordScalarWhereInput
+    data: XOR<PlaygroundRecordUpdateManyMutationInput, PlaygroundRecordUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type PlaygroundRecordScalarWhereInput = {
+    AND?: PlaygroundRecordScalarWhereInput | PlaygroundRecordScalarWhereInput[]
+    OR?: PlaygroundRecordScalarWhereInput[]
+    NOT?: PlaygroundRecordScalarWhereInput | PlaygroundRecordScalarWhereInput[]
+    id?: StringFilter<"PlaygroundRecord"> | string
+    userId?: IntFilter<"PlaygroundRecord"> | number
+    type?: EnumApiTypeFilter<"PlaygroundRecord"> | $Enums.ApiType
+    code?: StringFilter<"PlaygroundRecord"> | string
+    result?: StringFilter<"PlaygroundRecord"> | string
+    createdAt?: DateTimeFilter<"PlaygroundRecord"> | Date | string
+    updatedAt?: DateTimeFilter<"PlaygroundRecord"> | Date | string
+  }
+
   export type ArchitectureMessageCreateWithoutSessionInput = {
     id?: string
     role: string
@@ -7422,6 +9055,7 @@ export namespace Prisma {
     createdAt?: Date | string
     githubId?: string | null
     logs?: LogCreateNestedManyWithoutUserInput
+    playgroundRecords?: PlaygroundRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -7432,6 +9066,7 @@ export namespace Prisma {
     createdAt?: Date | string
     githubId?: string | null
     logs?: LogUncheckedCreateNestedManyWithoutUserInput
+    playgroundRecords?: PlaygroundRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -7484,6 +9119,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     githubId?: NullableStringFieldUpdateOperationsInput | string | null
     logs?: LogUpdateManyWithoutUserNestedInput
+    playgroundRecords?: PlaygroundRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -7494,6 +9130,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     githubId?: NullableStringFieldUpdateOperationsInput | string | null
     logs?: LogUncheckedUpdateManyWithoutUserNestedInput
+    playgroundRecords?: PlaygroundRecordUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ArchitectureSessionCreateWithoutMessagesInput = {
@@ -7555,6 +9192,7 @@ export namespace Prisma {
     createdAt?: Date | string
     githubId?: string | null
     sessions?: ArchitectureSessionCreateNestedManyWithoutUserInput
+    playgroundRecords?: PlaygroundRecordCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutLogsInput = {
@@ -7565,6 +9203,7 @@ export namespace Prisma {
     createdAt?: Date | string
     githubId?: string | null
     sessions?: ArchitectureSessionUncheckedCreateNestedManyWithoutUserInput
+    playgroundRecords?: PlaygroundRecordUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutLogsInput = {
@@ -7590,6 +9229,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     githubId?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: ArchitectureSessionUpdateManyWithoutUserNestedInput
+    playgroundRecords?: PlaygroundRecordUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutLogsInput = {
@@ -7600,6 +9240,65 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     githubId?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: ArchitectureSessionUncheckedUpdateManyWithoutUserNestedInput
+    playgroundRecords?: PlaygroundRecordUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutPlaygroundRecordsInput = {
+    name: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    githubId?: string | null
+    sessions?: ArchitectureSessionCreateNestedManyWithoutUserInput
+    logs?: LogCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutPlaygroundRecordsInput = {
+    id?: number
+    name: string
+    email: string
+    password: string
+    createdAt?: Date | string
+    githubId?: string | null
+    sessions?: ArchitectureSessionUncheckedCreateNestedManyWithoutUserInput
+    logs?: LogUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutPlaygroundRecordsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPlaygroundRecordsInput, UserUncheckedCreateWithoutPlaygroundRecordsInput>
+  }
+
+  export type UserUpsertWithoutPlaygroundRecordsInput = {
+    update: XOR<UserUpdateWithoutPlaygroundRecordsInput, UserUncheckedUpdateWithoutPlaygroundRecordsInput>
+    create: XOR<UserCreateWithoutPlaygroundRecordsInput, UserUncheckedCreateWithoutPlaygroundRecordsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutPlaygroundRecordsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutPlaygroundRecordsInput, UserUncheckedUpdateWithoutPlaygroundRecordsInput>
+  }
+
+  export type UserUpdateWithoutPlaygroundRecordsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    githubId?: NullableStringFieldUpdateOperationsInput | string | null
+    sessions?: ArchitectureSessionUpdateManyWithoutUserNestedInput
+    logs?: LogUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutPlaygroundRecordsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    githubId?: NullableStringFieldUpdateOperationsInput | string | null
+    sessions?: ArchitectureSessionUncheckedUpdateManyWithoutUserNestedInput
+    logs?: LogUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ArchitectureSessionCreateManyUserInput = {
@@ -7619,6 +9318,15 @@ export namespace Prisma {
     latitude?: Decimal | DecimalJsLike | number | string | null
     longitude?: Decimal | DecimalJsLike | number | string | null
     createdAt?: Date | string
+  }
+
+  export type PlaygroundRecordCreateManyUserInput = {
+    id?: string
+    type: $Enums.ApiType
+    code: string
+    result: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ArchitectureSessionUpdateWithoutUserInput = {
@@ -7678,6 +9386,33 @@ export namespace Prisma {
     latitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     longitude?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlaygroundRecordUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumApiTypeFieldUpdateOperationsInput | $Enums.ApiType
+    code?: StringFieldUpdateOperationsInput | string
+    result?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlaygroundRecordUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumApiTypeFieldUpdateOperationsInput | $Enums.ApiType
+    code?: StringFieldUpdateOperationsInput | string
+    result?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PlaygroundRecordUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumApiTypeFieldUpdateOperationsInput | $Enums.ApiType
+    code?: StringFieldUpdateOperationsInput | string
+    result?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ArchitectureMessageCreateManySessionInput = {
