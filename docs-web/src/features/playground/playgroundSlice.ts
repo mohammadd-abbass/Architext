@@ -60,7 +60,9 @@ const playgroundSlice = createSlice({
       state.isCommenting = false;
       state.isCheckingComplexity = false;
     },
-
+    addResult: (state, action: { payload: PlaygroundResult }) => {
+      state.results.unshift(action.payload);
+    }
   }
 });
 
