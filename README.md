@@ -78,9 +78,9 @@
 
 ### Docs Website
 <!-- 1440x1024.png -->
-| Landing Page                           | Register screen                       |
+| Landing Page                           | Docs Page                       |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/Screenshot 2025-05-20 121827.png" width="1440" height="1024"/> | ![fsdaf](./readme/demo/1440x1024.png) |
+| <img src="./readme/images/Screenshot 2025-05-20 121827.png" width="1440" height="1024"/> | <img src="./readme/images/Screenshot 2025-05-20 122007.png" width="1440" height="1024"/> |
 
 
 <br><br>
