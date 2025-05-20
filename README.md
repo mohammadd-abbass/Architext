@@ -81,9 +81,9 @@
 | --------------------------------------- | ------------------------------------- |
 | <img src="./readme/images/Screenshot 2025-05-20 121827.png" /> | <img src="./readme/images/Screenshot 2025-05-20 122007.png"/> |
 
-| Playground Page                           | Testimonial Section                    |
+| Playground Page                           | Config Generator                    |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/Screenshot 2025-05-20 134735.png" /> | <img src="./readme/images/Screenshot 2025-05-20 121857.png"/> |
+| <img src="./readme/images/Screenshot 2025-05-20 134735.png" /> | <img src="./readme/images/Vite + React + TS - Google Chrome 2025-05-20 17-56-34.gif"/> |
 
 <!-- ### Mobile View 
 | Login screen                            | Register screen                       | Register screen                       |
