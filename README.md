@@ -72,9 +72,9 @@
 
 ### VS-Code Extension
 <!-- 1440x1024.png -->
-| Landing Page                           | Docs Page                       |
+| Architexture Validation                           | Auto Commenting                       |
 | --------------------------------------- | ------------------------------------- |
-| <img src="" /> | <img src=""/> |
+| <img src="./readme/images/[Extension Development Host] SnippetController.php - backend - Visual Studio Code 2025-05-20 17-47-48.gif" /> | <img src="./readme/images/[Extension Development Host] SnippetController.php - backend - Visual Studio Code 2025-05-20 17-48-25.gif"/> |
 ### Docs Website
 <!-- 1440x1024.png -->
 | Landing Page                           | Docs Page                       |
