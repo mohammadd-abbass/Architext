@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { PlaygroundResult, AnalysisResult } from './playgroundService';
+import { PlaygroundResult } from './playgroundService';
 
 interface PlaygroundState {
   results: PlaygroundResult[];
-  analysis: AnalysisResult | null;
+  currentCode: string;
   loading: boolean;
   error: string | null;
   isAnalyzing: boolean;
@@ -13,7 +13,7 @@ interface PlaygroundState {
 
 const initialState: PlaygroundState = {
   results: [],
-  analysis: null,
+  currentCode: '',
   loading: false,
   error: null,
   isAnalyzing: false,
@@ -34,24 +34,8 @@ const playgroundSlice = createSlice({
         case 'complexity': state.isCheckingComplexity = true; break;
       }
     },
-    setAnalysis: (state, action: { payload: AnalysisResult }) => {
-      state.analysis = action.payload;
-      state.loading = false;
-      state.isAnalyzing = false;
-    },
-    setComments: (state, action: { payload: string[] }) => {
-      if (state.analysis) {
-        state.analysis.comments = action.payload;
-      }
-      state.loading = false;
-      state.isCommenting = false;
-    },
-    setComplexity: (state, action: { payload: number }) => {
-      if (state.analysis) {
-        state.analysis.complexity = action.payload;
-      }
-      state.loading = false;
-      state.isCheckingComplexity = false;
+    updateCode: (state, action: { payload: string }) => {
+      state.currentCode = action.payload;
     },
     setError: (state, action: { payload: string }) => {
       state.error = action.payload;
@@ -62,15 +46,20 @@ const playgroundSlice = createSlice({
     },
     addResult: (state, action: { payload: PlaygroundResult }) => {
       state.results.unshift(action.payload);
+      state.currentCode = action.payload.modifiedCode;
+      state.loading = false;
+      switch(action.payload.type) {
+        case 'ANALYZE': state.isAnalyzing = false; break;
+        case 'COMMENT': state.isCommenting = false; break;
+        case 'COMPLEXITY': state.isCheckingComplexity = false; break;
+      }
     }
   }
 });
 
 export const { 
   setLoading, 
-  setAnalysis, 
-  setComments, 
-  setComplexity, 
+  updateCode,
   setError,
   addResult 
 } = playgroundSlice.actions;
