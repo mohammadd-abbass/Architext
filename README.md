@@ -95,13 +95,16 @@
 <!-- Development & Testing -->
 <img src="./readme/title6.svg"/>
 
-### Add Title Here
+### Development & Testing
 
 
-| Services                            | Validation                       | Testing                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Architext Configuration                            | Architext Commands                   | 
+| --------------------------------------- | ------------------------------------- | 
+| <img src="./readme/images/Screenshot 2025-05-20 183602.png" /> | <img src="./readme/images/Screenshot 2025-05-20 183641.png" /> |
 
+| Services                           | Testing                     |
+| --------------------------------------- | ------------------------------------- |
+| <img src="./readme/images/Screenshot 2025-05-20 184150.png" /> | <img src="./readme/images/Screenshot 2025-05-20 184421.png"/> |
 
 <br><br>
 
