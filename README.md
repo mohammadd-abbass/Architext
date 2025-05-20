@@ -108,7 +108,8 @@
 <!-- AI Powered App -->
 <img src="./readme/title7.svg"/>
 
-### Add Title Here
+### Openai Integration
+
 
 
 <br><br>
