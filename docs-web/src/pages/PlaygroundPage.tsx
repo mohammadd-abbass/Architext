@@ -35,6 +35,30 @@ const Playground = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const shortcutsRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    setCode(currentCode);
+  }, [currentCode]);
+
+  const handleAnalysis = async (type: 'comment' | 'complexity' | 'analyze') => {
+    try {
+      let modifiedCode;
+      switch(type) {
+        case 'comment':
+          modifiedCode = await commentCode(code, language);
+          break;
+        case 'complexity':
+          modifiedCode = await checkComplexity(code, language);
+          break;
+        case 'analyze':
+          modifiedCode = await analyzeCode(code, language);
+          break;
+      }
+      updateCode(modifiedCode);
+    } catch (error) {
+      console.error('Error during analysis:', error);
+    }
+  };
+
   const handleExtensionShortcut = (action: string) => {
     setActiveHint(action);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
