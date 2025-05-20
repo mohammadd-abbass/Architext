@@ -52,11 +52,11 @@ export const commentCode = async (userId: number, code: string, language: string
     }
   };
 
-export const checkComplexity = async (userId: number, code: string) => {
+export const checkComplexity = async (userId: number, code: string, language: string) => {
   try {
     const response = await axios.post<ComplexityResult>(
-      `${FLASK_API_URL}/complexity`,
-      { code }
+      `${FLASK_API_URL}/ai/complexity`,
+      { code, language }
     );
 
     await createPlaygroundRecord(userId, "COMPLEXITY", code, response.data);
