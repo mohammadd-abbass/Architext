@@ -39,6 +39,13 @@ const playgroundSlice = createSlice({
       state.loading = false;
       state.isAnalyzing = false;
     },
+    setComments: (state, action: { payload: string[] }) => {
+      if (state.analysis) {
+        state.analysis.comments = action.payload;
+      }
+      state.loading = false;
+      state.isCommenting = false;
+    },
 
   }
 });
