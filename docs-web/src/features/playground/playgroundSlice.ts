@@ -11,3 +11,13 @@ interface PlaygroundState {
   isCheckingComplexity: boolean;
 }
 
+const initialState: PlaygroundState = {
+  results: [],
+  analysis: null,
+  loading: false,
+  error: null,
+  isAnalyzing: false,
+  isCommenting: false,
+  isCheckingComplexity: false
+};
+
