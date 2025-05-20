@@ -15,6 +15,11 @@ export interface AnalysisResult {
 }
 
 const playgroundService = {
+  analyzeCode: async (code: string): Promise<AnalysisResult> => {
+    const response = await apiClient.post('/playground/analyze', { code });
+    return response.data.data.result;
+  },
+
 
 };
 
