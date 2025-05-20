@@ -21,6 +21,6 @@ export interface PlaygroundRecord {
   id: string;
   type: ApiType;
   code: string;
-  result: ComplexityResult | AnalysisResult | CodeComment[];
+  result: string;
   createdAt: Date;
 }

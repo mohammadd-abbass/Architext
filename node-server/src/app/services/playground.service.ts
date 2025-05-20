@@ -5,8 +5,6 @@ import {
 } from "../models/playground.model.js";
 import type {
   AnalysisResult,
-  CodeComment,
-  ComplexityResult,
 } from "../../types/playground.js";
 
 const FLASK_API_URL = process.env.FLASK_API_URL || "http://localhost:5000/";
@@ -61,14 +59,18 @@ export const checkComplexity = async (
   language: string
 ) => {
   try {
-    const response = await axios.post<ComplexityResult>(
+    console.log("Hello");
+    const response = await axios.post(
       `${FLASK_API_URL}/ai/calculateComplexity`,
-      { code, language }
-    );
+      { 
+        code, 
+        language 
+    });
 
     const resultString = JSON.stringify(response.data);
 
     await createPlaygroundRecord(userId, "COMPLEXITY", code, resultString);
+
     return response.data;
   } catch (error: any) {
     const errPayload = JSON.stringify({
