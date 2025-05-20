@@ -74,7 +74,7 @@
 <!-- 1440x1024.png -->
 | Architexture Validation                           | Auto Commenting                       |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/[Extension Development Host] SnippetController.php - backend - Visual Studio Code 2025-05-20 17-47-48.gif" /> | <img src="./readme/images/[Extension Development Host] SnippetController.php - backend - Visual Studio Code 2025-05-20 17-48-25.gif"/> |
+| <img src="./readme/images/ezgif.com-optimize.gif" /> | <img src="./readme/images/ezgif.com-optimize (1).gif"/> |
 ### Docs Website
 <!-- 1440x1024.png -->
 | Landing Page                           | Docs Page                       |
