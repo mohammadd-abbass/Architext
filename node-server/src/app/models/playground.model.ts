@@ -36,3 +36,16 @@ export const getPlaygroundHistory = async (userId: number, limit = 20) => {
   });
 };
 
+export const getRecordById = async (recordId: string) => {
+  return prisma.playgroundRecord.findUnique({
+    where: { id: recordId },
+    select: {
+      id: true,
+      type: true,
+      code: true,
+      result: true,
+      createdAt: true
+    }
+  });
+};
+
