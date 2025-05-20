@@ -30,7 +30,10 @@ const playgroundService = {
     return response.data.data.complexity;
   },
 
-
+  getHistory: async (): Promise<PlaygroundResult[]> => {
+    const response = await apiClient.get('/playground/history');
+    return response.data.data.history;
+  }
 };
 
 export default playgroundService;
