@@ -74,3 +74,17 @@ export const checkComplexityHandler = async (req: Request, res: Response) => {
   }
 };
 
+export const getHistoryHandler = async (req: Request, res: Response) => {
+  try {
+    if (!req.user) {
+      errorResponse(res, 'Unauthorized - No user found', 401);
+      return;
+    }
+
+    const user = req.user as AuthUser;
+    const history = await playgroundService.getHistory(user.id);
+    successResponse(res, 'History retrieved successfully', { history });
+  } catch (err: any) {
+    errorResponse(res, err.message, 500);
+  }
+};
