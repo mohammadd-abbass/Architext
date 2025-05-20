@@ -74,16 +74,16 @@
 <!-- 1440x1024.png -->
 | Architexture Validation                           | Auto Commenting                       |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/[Extension Development Host] SnippetController.php - backend - Visual Studio Code 2025-05-20 17-47-48.gif" /> | <img src="./readme/images/[Extension Development Host] SnippetController.php - backend - Visual Studio Code 2025-05-20 17-48-25.gif"/> |
+| <img src="./readme/images/ezgif.com-optimize.gif" /> | <img src="./readme/images/ezgif.com-optimize (1).gif"/> |
 ### Docs Website
 <!-- 1440x1024.png -->
 | Landing Page                           | Docs Page                       |
 | --------------------------------------- | ------------------------------------- |
 | <img src="./readme/images/Screenshot 2025-05-20 121827.png" /> | <img src="./readme/images/Screenshot 2025-05-20 122007.png"/> |
 
-| Playground Page                           | Testimonial Section                    |
+| Playground Page                           | Config Generator                    |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/Screenshot 2025-05-20 134735.png" /> | <img src="./readme/images/Screenshot 2025-05-20 121857.png"/> |
+| <img src="./readme/images/ezgif.com-optimize (2).gif" />| <img src="./readme/images/ezgif.com-optimize (2).gif" /> |
 
 <!-- ### Mobile View 
 | Login screen                            | Register screen                       | Register screen                       |
