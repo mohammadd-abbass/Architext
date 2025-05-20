@@ -30,3 +30,25 @@ export const analyzeCodeHandler = async (req: Request, res: Response) => {
   }
 };
 
+export const commentCodeHandler = async (req: Request, res: Response) => {
+  try {
+    if (!req.user) {
+      errorResponse(res, 'Unauthorized - No user found', 401);
+      return;
+    }
+
+    const user = req.user as AuthUser;
+    const { code } = req.body;
+
+    if (!code) {
+      errorResponse(res, 'No code provided', 400);
+      return;
+    }
+
+    const comments = await playgroundService.commentCode(user.id, code);
+    successResponse(res, 'Code commented successfully', { comments });
+  } catch (err: any) {
+    errorResponse(res, err.message, 500);
+  }
+};
+
