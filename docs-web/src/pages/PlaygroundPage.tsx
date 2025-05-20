@@ -28,7 +28,8 @@ const Playground = () => {
     isCommenting,
     isCheckingComplexity
   } = usePlayground();
-  const [code, setCode] = useState(initialCode);
+  const [language, setLanguage] = useState('typescript');
+  const [code, setCode] = useState(currentCode);
   const [activeHint, setActiveHint] = useState<string | null>(null);
   const [showShortcuts, setShowShortcuts] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
