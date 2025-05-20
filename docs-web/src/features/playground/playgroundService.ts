@@ -20,6 +20,11 @@ const playgroundService = {
     return response.data.data.result;
   },
 
+  commentCode: async (code: string): Promise<string[]> => {
+    const response = await apiClient.post('/playground/comment', { code });
+    return response.data.data.comments;
+  },
+
 
 };
 
