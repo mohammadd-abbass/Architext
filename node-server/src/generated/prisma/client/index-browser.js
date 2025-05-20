@@ -158,6 +158,16 @@ exports.Prisma.LogScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.PlaygroundRecordScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  code: 'code',
+  result: 'result',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -183,13 +193,18 @@ exports.Prisma.JsonNullValueFilter = {
   JsonNull: Prisma.JsonNull,
   AnyNull: Prisma.AnyNull
 };
-
+exports.ApiType = exports.$Enums.ApiType = {
+  COMMENT: 'COMMENT',
+  COMPLEXITY: 'COMPLEXITY',
+  ANALYZE: 'ANALYZE'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',
   ArchitectureSession: 'ArchitectureSession',
   ArchitectureMessage: 'ArchitectureMessage',
-  Log: 'Log'
+  Log: 'Log',
+  PlaygroundRecord: 'PlaygroundRecord'
 };
 
 /**
