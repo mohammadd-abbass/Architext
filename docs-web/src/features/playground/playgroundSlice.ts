@@ -46,6 +46,13 @@ const playgroundSlice = createSlice({
       state.loading = false;
       state.isCommenting = false;
     },
+    setComplexity: (state, action: { payload: number }) => {
+      if (state.analysis) {
+        state.analysis.complexity = action.payload;
+      }
+      state.loading = false;
+      state.isCheckingComplexity = false;
+    },
 
   }
 });
