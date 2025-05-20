@@ -48,8 +48,8 @@ export const commentCodeHandler = async (req: Request, res: Response) => {
       return;
     }
 
-    const comments = await playgroundService.commentCode(user.id, code, language);
-    successResponse(res, 'Code commented successfully', { comments });
+    const result = await playgroundService.commentCode(user.id, code, language);
+    successResponse(res, 'Code commented successfully', { result });
   } catch (err: any) {
     errorResponse(res, err.message, 500);
   }

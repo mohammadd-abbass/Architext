@@ -36,12 +36,11 @@ export const commentCode = async (userId: number, code: string, language: string
         { code, language }
       );
   
-    const comments = response.data.code;
     const resultString = JSON.stringify(response.data);
   
       await createPlaygroundRecord(userId, "COMMENT", code, resultString);
   
-      return comments;
+      return response.data;
     } catch (error: any) {
       const errPayload = JSON.stringify({
         error: "Commenting failed",
