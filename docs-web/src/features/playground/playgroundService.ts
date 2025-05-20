@@ -23,7 +23,8 @@ const playgroundService = {
       code,
       language 
     });
-    return response.data.data.modifiedCode;
+    
+    return response.data.data.result.code;
   },
 
   checkComplexity: async (code: string, language: string): Promise<string> => {
@@ -31,7 +32,8 @@ const playgroundService = {
       code,
       language 
     });
-    return response.data.data.modifiedCode;
+
+    return response.data.data.complexity.code;
   },
 
   getHistory: async (): Promise<PlaygroundResult[]> => {
