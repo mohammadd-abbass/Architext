@@ -17,3 +17,10 @@ export interface AnalysisResult {
   suggestions: string[];
 }
 
+export interface PlaygroundRecord {
+  id: string;
+  type: ApiType;
+  code: string;
+  result: ComplexityResult | AnalysisResult | CodeComment[];
+  createdAt: Date;
+}
