@@ -112,7 +112,7 @@ def generate_config():
         return jsonify({"error": "No config provided"}), 400
 
     try:
-        from app.services.ai_controller_services.ai_service_v2 import generate_config
+        from app.services.ai_services.ai_service_v2 import generate_config
         result = generate_config(config, session_id)
         return jsonify({"result": result})
     except Exception as e:
