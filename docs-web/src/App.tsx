@@ -4,7 +4,6 @@ import DocsPage from './pages/DocsPage';
 import LandingPage from './pages/LandingPage'
 import { AuthPage } from './pages/AuthPage'
 import PlaygroundPage from './pages/PlaygroundPage';
-import BlogPage from './pages/BlogPage';
 import ConfigGenPage from './pages/ConfigGenPage';
 import Page404 from './pages/404Page';
 import ProtectedRoute from './components/routes/ProtectedRoute';
