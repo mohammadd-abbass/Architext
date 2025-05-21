@@ -59,7 +59,7 @@
 
     - Full documentation
 
-    - Live playground to test the extension
+    - Live playground for testing the extension
 
     - Config generator with AI assistance for creating your own .arch.json
 
