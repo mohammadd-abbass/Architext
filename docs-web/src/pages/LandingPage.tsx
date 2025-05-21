@@ -1,16 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Download, Code, Copy } from "lucide-react";
+
 import MainLayout from "../layouts/MainLayout";
 import Button from "../components/common/Button";
 import Container from "../components/common/Container";
-import { Download, Code, Copy } from "lucide-react";
+
 import logo from "../assets/images/logo.svg";
+
 import OverviewSection from "../components/features/Landing/Overview";
 import FeaturesSection from "../components/features/Landing/Features";
 import DemoSection from "../components/features/Landing/Demo";
 import AvailableSection from "../components/features/Landing/Available";
-import FaqsSection from "../components/features/Landing/Faqs";
 import TestimonialSection from "../components/features/Landing/Testimonial";
-import { useNavigate } from "react-router-dom";
+import FaqsSection from "../components/features/Landing/Faqs";
 
 const LandingPage = () => {
     const navigate = useNavigate();
