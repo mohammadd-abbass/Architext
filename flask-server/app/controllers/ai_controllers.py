@@ -20,7 +20,7 @@ def generate_comments():
         return jsonify({"error": "No code provided"}), 400
     
     try:
-        from app.services.ai_controller_services.ai_service_v2 import generate_function_comments
+        from app.services.ai_services.ai_service_v2 import generate_function_comments
         result = generate_function_comments(code, language)
         return jsonify({"code": result})
     except Exception as e:
