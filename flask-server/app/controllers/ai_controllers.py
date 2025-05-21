@@ -43,7 +43,7 @@ def calculate_complexity():
         return jsonify({"error": "No code provided"}), 400
     
     try:
-        from app.services.ai_controller_services.ai_service_v2 import calculate_function_complexity
+        from app.services.ai_services.ai_service_v2 import calculate_function_complexity
         result = calculate_function_complexity(code, language)
         return jsonify({"code": result})
     except Exception as e:
