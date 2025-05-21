@@ -159,8 +159,8 @@
 
 
 
-| Postman API 1                            | Postman API 2                       | Postman API 3                        |
+| Generate Comments API                           | Postman API 2                       | Postman API 3                        |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| <img src="./readme/images/Screenshot 2025-05-21 035609.png" /> | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
 <br><br>
