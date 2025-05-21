@@ -159,9 +159,7 @@
 
 
 
-| Generate Comments API                           | Calculate Complexity API                       | Signup API                       |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/Screenshot 2025-05-21 035609.png" /> | C | <img src="./readme/images/Screenshot 2025-05-21 031222.png" /> |
+
 
 | Generate Comments API                           | Calculate Complexity API                       |
 | --------------------------------------- | ------------------------------------- |
