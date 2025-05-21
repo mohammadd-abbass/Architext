@@ -16,7 +16,6 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/docs/quick-start" element={<DocsPage />} />
-        <Route path="/blog" element={<BlogPage />} />
         <Route path="/docs/:page" element={<DocsPage />} />
         <Route path="/auth/callback" element={<CallbackPage />} />
         <Route path="*" element={<Page404 />} />
