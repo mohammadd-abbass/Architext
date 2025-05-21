@@ -9,7 +9,6 @@ describe('POST /api/playground/complexity', () => {
     const { token: userToken } = await createTestUser();
     token = userToken;
 
-    console.log('Token:', token);
   });
 
   it('should return code complexity for valid Python code', async () => {
