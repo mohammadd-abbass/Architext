@@ -11,7 +11,7 @@ export const GITHUB_CONFIG = {
 
 
 
-  const codeSnippets = [
+export const codeSnippets = [
     "// @architext-rule: layer-boundary",
     "function enforceArchitecture() {",
     "  checkLayerDependencies();",
