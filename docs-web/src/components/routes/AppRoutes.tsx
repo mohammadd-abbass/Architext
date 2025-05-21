@@ -1,10 +1,5 @@
-// src/routes/AppRoutes.jsx
 
 import { Route, Routes } from 'react-router-dom';
-
-
-
-// Components
 import ProtectedRoute from './ProtectedRoute';
 import LandingPage from '../../pages/LandingPage';
 import { AuthPage } from '../../pages/AuthPage';
