@@ -13,7 +13,7 @@ import TestimonialSection from "../components/features/Landing/Testimonial";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [isCopied, setIsCopied] = React.useState(false);
 
   const copyToClipboard = () => {
