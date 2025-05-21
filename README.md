@@ -153,7 +153,7 @@
 
 #### Production Deployment
 
-- **Server URL**:
+- **Server URL**: `http://35.181.172.247/`
 - The production pipeline mirrors the staging process and is triggered on push to the `main` branch.
 - It targets a **self-hosted production server**, pulling the final images and deploying the services using Docker Compose for a seamless release.
 
