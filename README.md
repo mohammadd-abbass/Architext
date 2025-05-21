@@ -163,7 +163,7 @@
 
 | Generate Comments API                           | Calculate Complexity API                       |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/Screenshot 2025-gti05-21 035609.png" /> |<img src="./readme/images/Screenshot 2025-05-21 035410.png" /> |
+| <img src="./readme/images/Screenshot 2025-05-21 035609.png" /> |<img src="./readme/images/Screenshot 2025-05-21 035410.png" /> |
 
 | Signup API                          | Login API |
 | --------------------------------------- | ------------------------------------- |
