@@ -88,7 +88,7 @@ def analyze_file_architecture():
 
 
     try:
-        from app.services.ai_controller_services.ai_service_v2 import analyze_file_against_architecture
+        from app.services.ai_services.ai_service_v2 import analyze_file_against_architecture
         result = analyze_file_against_architecture(code, language, reference)
 
         print("the result is", result)
