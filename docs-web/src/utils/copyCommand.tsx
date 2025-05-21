@@ -1,3 +1,4 @@
+import { Copy } from "lucide-react";
 import Container from "../components/common/Container";
 
 interface CopyCommandProps {
