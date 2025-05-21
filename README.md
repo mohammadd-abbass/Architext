@@ -83,7 +83,7 @@
 
 | Playground Page                           | Config Generator                    |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/ezgif.com-optimize (2).gif" />| <img src="./readme/images/ezgif.com-optimize (2).gif" /> |
+| <img src="./readme/images/ViteReactTS-GoogleChrome2025-05-2023-02-22-ezgif.com-optimize.gif" />| <img src="./readme/images/ezgif.com-optimize (2).gif" /> |
 
 <!-- ### Mobile View 
 | Login screen                            | Register screen                       | Register screen                       |
