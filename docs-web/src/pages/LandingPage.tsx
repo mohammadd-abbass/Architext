@@ -11,46 +11,11 @@ import AvailableSection from "../components/features/Landing/Available";
 import FaqsSection from "../components/features/Landing/Faqs";
 import TestimonialSection from "../components/features/Landing/Testimonial";
 import { useNavigate } from "react-router-dom";
+import { codeSnippets } from "../constants/constants";
 
 const LandingPage = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [isCopied, setIsCopied] = React.useState(false);
-  const codeSnippets = [
-    "// @architext-rule: layer-boundary",
-    "function enforceArchitecture() {",
-    "  checkLayerDependencies();",
-    "}",
-    "export const config = {",
-    "  strictMode: true,",
-    "  autoComment: true",
-    "};",
-
-    // Python
-    "# @architext_rule(layer_boundary)",
-    "def analyze_complexity():",
-    "    return cognitive_analysis()",
-    "class ArchitectureConfig:",
-    "    def __init__(self, strict=True):",
-    "        self.strict = strict",
-    "        self.auto_comment = True",
-    "// @architext-rule: layer-boundary",
-    "function enforceArchitecture() {",
-    "  checkLayerDependencies();",
-    "}",
-    "export const config = {",
-    "  strictMode: true,",
-    "  autoComment: true",
-    "};",
-
-    // Python
-    "# @architext_rule(layer_boundary)",
-    "def analyze_complexity():",
-    "    return cognitive_analysis()",
-    "class ArchitectureConfig:",
-    "    def __init__(self, strict=True):",
-    "        self.strict = strict",
-    "        self.auto_comment = True",
-  ];
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText("npm init @architext/config@latest");
