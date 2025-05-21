@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
 import { loadArchitecture } from '../../utils/loadArchitecture';
 import { readAllFiles } from '../../utils/readAllFiles';
 import { checkArchitectureAPI } from '../../services/checkArchitectureAPI';
