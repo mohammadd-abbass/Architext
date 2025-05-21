@@ -142,7 +142,7 @@
 
 #### Staging Deployment
 
-- **Server URL**: 
+- **Server URL**: `http://15.188.84.203/`
 - When code is pushed to the `stage` branch:
   - GitHub Actions builds and tags Docker images for all services.
   - These images are pushed to Docker Hub using the commit SHA as the tag.
