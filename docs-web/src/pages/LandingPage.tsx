@@ -11,6 +11,7 @@ import AvailableSection from "../components/features/Landing/Available";
 import FaqsSection from "../components/features/Landing/Faqs";
 import TestimonialSection from "../components/features/Landing/Testimonial";
 import { useNavigate } from "react-router-dom";
+import { codeSnippets } from "../constants/constants";
 
 const LandingPage = () => {
   const navigate = useNavigate();
