@@ -17,5 +17,6 @@ export const createTestUser = async () => {
     throw new Error('Failed to create test user');
   }
 
-  return fakeUser;
+  const token = response.body.data.token;
+  return { token, user: fakeUser };
 }
