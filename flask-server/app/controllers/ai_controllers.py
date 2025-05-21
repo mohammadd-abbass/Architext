@@ -62,7 +62,7 @@ def check_architecture():
     reference = data.referenceArchitecture
 
     try:
-        from app.services.ai_controller_services.ai_service_v2 import check_project_architecture
+        from app.services.ai_services.ai_service_v2 import check_project_architecture
         result = check_project_architecture(files, reference)
         return jsonify({"result": result})
     except Exception as e:
