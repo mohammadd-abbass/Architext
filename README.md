@@ -83,7 +83,7 @@
 
 | Playground Page                           | Config Generator                    |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/images/ezgif.com-optimize (2).gif" />| <img src="./readme/images/ezgif.com-optimize (2).gif" /> |
+| <img src="./readme/images/ViteReactTS-GoogleChrome2025-05-2023-02-22-ezgif.com-optimize.gif" />| <img src="./readme/images/ezgif.com-optimize (2).gif" /> |
 
 <!-- ### Mobile View 
 | Login screen                            | Register screen                       | Register screen                       |
@@ -159,8 +159,14 @@
 
 
 
-| Postman API 1                            | Postman API 2                       | Postman API 3                        |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+
+
+| Generate Comments API                           | Calculate Complexity API                       |
+| --------------------------------------- | ------------------------------------- |
+| <img src="./readme/images/Screenshot 2025-05-21 035609.png" /> |<img src="./readme/images/Screenshot 2025-05-21 035410.png" /> |
+
+| Signup API                          | Login API |
+| --------------------------------------- | ------------------------------------- |
+|<img src="./readme/images/Screenshot 2025-05-21 040721.png" height=""/> |<img src="./readme/images/Screenshot 2025-05-21 041005.png" /> |
 
 <br><br>
