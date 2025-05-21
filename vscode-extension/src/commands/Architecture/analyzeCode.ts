@@ -27,7 +27,7 @@ export const analyzeCurrentFile = async () => {
             },
             async () => {
                 const response = await analyzeCode(code, languageId, referenceArchitecture);
-                console.log(response);
+                console.log("the following is the response", response);
                 const parsed = response.result;
 
                 const diagnostics: vscode.Diagnostic[] = parsed.diagnostics.map((item: any) => {

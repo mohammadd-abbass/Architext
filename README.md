@@ -59,7 +59,7 @@
 
     - Full documentation
 
-    - Live playground to test the extension
+    - Live playground for testing the extension
 
     - Config generator with AI assistance for creating your own .arch.json
 
@@ -142,6 +142,7 @@
 
 #### Staging Deployment
 
+- **Server URL**: `http://15.188.84.203/`
 - When code is pushed to the `stage` branch:
   - GitHub Actions builds and tags Docker images for all services.
   - These images are pushed to Docker Hub using the commit SHA as the tag.
@@ -152,6 +153,7 @@
 
 #### Production Deployment
 
+- **Server URL**: `http://35.181.172.247/`
 - The production pipeline mirrors the staging process and is triggered on push to the `main` branch.
 - It targets a **self-hosted production server**, pulling the final images and deploying the services using Docker Compose for a seamless release.
 
