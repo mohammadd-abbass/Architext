@@ -20,7 +20,7 @@ def generate_comments():
         return jsonify({"error": "No code provided"}), 400
     
     try:
-        from services.ai_controller_services.ai_controller_service_v2 import generate_function_comments
+        from app.services.ai_controller_services.ai_service_v2 import generate_function_comments
         result = generate_function_comments(code, language)
         return jsonify({"code": result})
     except Exception as e:
@@ -43,7 +43,7 @@ def calculate_complexity():
         return jsonify({"error": "No code provided"}), 400
     
     try:
-        from services.ai_controller_services.ai_controller_service_v2 import calculate_function_complexity
+        from app.services.ai_controller_services.ai_service_v2 import calculate_function_complexity
         result = calculate_function_complexity(code, language)
         return jsonify({"code": result})
     except Exception as e:
@@ -62,7 +62,7 @@ def check_architecture():
     reference = data.referenceArchitecture
 
     try:
-        from services.ai_controller_services.ai_controller_service_v2 import check_project_architecture
+        from app.services.ai_controller_services.ai_service_v2 import check_project_architecture
         result = check_project_architecture(files, reference)
         return jsonify({"result": result})
     except Exception as e:
@@ -88,7 +88,7 @@ def analyze_file_architecture():
 
 
     try:
-        from services.ai_controller_services.ai_controller_service_v2 import analyze_file_against_architecture
+        from app.services.ai_controller_services.ai_service_v2 import analyze_file_against_architecture
         result = analyze_file_against_architecture(code, language, reference)
 
         print("the result is", result)
@@ -112,7 +112,7 @@ def generate_config():
         return jsonify({"error": "No config provided"}), 400
 
     try:
-        from services.ai_controller_services.ai_controller_service_v2 import generate_config
+        from app.services.ai_controller_services.ai_service_v2 import generate_config
         result = generate_config(config, session_id)
         return jsonify({"result": result})
     except Exception as e:
